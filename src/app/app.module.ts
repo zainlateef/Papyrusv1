@@ -1,7 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './feed/navbar/navbar.component';
 import { FeedComponent } from './feed/feed.component';
@@ -11,6 +9,7 @@ import { HomeComponent } from './home/home.component';
 import { RouterModule, Routes } from '@angular/router'
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { ViewPostComponent } from './feed/view-post/view-post.component';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 const routes: Routes=[
   {path: '', component: HomeComponent},
@@ -35,7 +34,8 @@ const routes: Routes=[
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    AngularFontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

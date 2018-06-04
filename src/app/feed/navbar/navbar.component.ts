@@ -10,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 
       <ul class="nav__list" [ngClass]="{'nav__list--active':showMenu}">
         <li class="nav__item">
-          <a href="#1" class="nav__link c-blue"><i class="fa fa-camera-retro"></i></a>
+          <a href="#1" class="nav__link c-blue"><fa name="camera-retro"></fa></a>
         </li>
         <li class="nav__item">
           <a href="#2" class="nav__link c-yellow scrolly"><i class="fa fa-bolt"></i></a>
