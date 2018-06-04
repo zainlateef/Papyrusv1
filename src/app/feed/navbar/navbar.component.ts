@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'navbar',
@@ -26,10 +27,18 @@ import { Component, OnInit } from '@angular/core';
     </nav>`,
   styleUrls: ['./navbar.component.css','./original_style.scss']
 })
+
 export class NavbarComponent
 {
-    
     showMenu : boolean = false;
+
+    constructor(private route : ActivatedRoute)
+    {
+      this.route.params.subscribe( params => {
+        console.log(params);
+      })
+    }
+
     toggleMenu()
     {
       this.showMenu=!this.showMenu;
