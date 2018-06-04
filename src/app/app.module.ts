@@ -3,16 +3,36 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './navbar/navbar.component';
+import { NavbarComponent } from './feed/navbar/navbar.component';
+import { FeedComponent } from './feed/feed.component';
+import { InteractComponent } from './interact/interact.component';
+import { PublishComponent } from './publish/publish.component';
+import { HomeComponent } from './home/home.component';
+import { RouterModule, Routes } from '@angular/router'
+import { ErrorPageComponent } from './error-page/error-page.component';
 
+const routes: Routes=[
+  {path: '', component: HomeComponent},
+  {path: 'feed/:uid/:category', component: FeedComponent},
+  {path: 'feed/:uid', component: FeedComponent},
+  {path: 'interact/:uid', component: InteractComponent},
+  {path: 'publish/:uid', component: PublishComponent},
+  {path: '**', component: ErrorPageComponent}
+]
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent
+    NavbarComponent,
+    FeedComponent,
+    InteractComponent,
+    PublishComponent,
+    HomeComponent,
+    ErrorPageComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]
