@@ -8,7 +8,6 @@ import { ActivatedRoute } from '@angular/router';
       <div class="burger" [ngClass]="{'burger--active':showMenu}" (click)="toggleMenu()">
         <div class="burger__patty"></div>
       </div>
-
       <ul class="nav__list" [ngClass]="{'nav__list--active':showMenu}">
         <li class="nav__item">
           <a href="#1" class="nav__link c-blue"><fa name="camera-retro"></fa></a>
@@ -23,19 +22,27 @@ import { ActivatedRoute } from '@angular/router';
           <a href="#4" class="nav__link c-green"><i class="fa fa-paper-plane"></i></a>
         </li>
       </ul>
-
-    </nav>`,
+  </nav>`,
   styleUrls: ['./navbar.component.css','./original_style.scss']
 })
 
-export class NavbarComponent
+export class NavbarComponent implements OnInit
 {
     showMenu : boolean = false;
-
     constructor(private route : ActivatedRoute)
+    {}
+    ngOnInit()
     {
       this.route.params.subscribe( params => {
         console.log(params);
+        if(!params.hasOwnProperty('knack'))
+        {
+          console.log("no knack found");
+        }
+        else
+        {
+          console.log("uid:"+params.uid+", knack:"+params.knack);
+        }
       })
     }
 

@@ -10,12 +10,13 @@ import { RouterModule, Routes } from '@angular/router'
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { ViewPostComponent } from './feed/view-post/view-post.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { MainFeedComponent } from './main-feed/main-feed.component';
 
 const routes: Routes=[
   {path: '', component: HomeComponent},
-  {path: 'feed/:uid/:category', component: FeedComponent},
+  {path: 'feed', component: MainFeedComponent},
   {path: 'feed/:uid', component: FeedComponent},
-  {path: 'feed/:uid/view/:postID', component: ViewPostComponent},
+  {path: 'view/:postID', component: ViewPostComponent},
   {path: 'interact/:uid', component: InteractComponent},
   {path: 'publish/:uid', component: PublishComponent},
   {path: '**', component: ErrorPageComponent}
@@ -30,7 +31,8 @@ const routes: Routes=[
     PublishComponent,
     HomeComponent,
     ErrorPageComponent,
-    ViewPostComponent
+    ViewPostComponent,
+    MainFeedComponent
   ],
   imports: [
     BrowserModule,
