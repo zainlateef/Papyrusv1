@@ -33,17 +33,7 @@ export class NavbarComponent implements OnInit
     {}
     ngOnInit()
     {
-      this.route.params.subscribe( params => {
-        console.log(params);
-        if(!params.hasOwnProperty('knack'))
-        {
-          console.log("no knack found");
-        }
-        else
-        {
-          console.log("uid:"+params.uid+", knack:"+params.knack);
-        }
-      })
+      
     }
 
     toggleMenu()
