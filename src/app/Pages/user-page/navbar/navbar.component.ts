@@ -10,7 +10,7 @@ import { MenuItem } from '../../../Models/menu-item';
       </div>
       <ul class="nav__list" [ngClass]="{'nav__list--active':showMenu}">
         <li *ngFor="let item of menuItems" class="nav__item">
-          <a href="#1" class="nav__link"><fa [name]="item.iconName"></fa></a>
+          <a href="#1" class="nav__link"><fa class="icon" [name]="item.iconName"></fa></a>
         </li>
       </ul>
   </nav>`,
@@ -42,7 +42,10 @@ export class NavbarComponent implements OnInit,OnDestroy
     {
       console.log("Navbar loads uid:"+this.uid);
       this.menuItems=[];
-      this.menuItems.push(new MenuItem("camera-retro","photos","yellow"),new MenuItem("user","home","blue"));
+      let item=new MenuItem("camera-retro","photos","yellow");
+      for(let i=0;i<10;i++)
+      this.menuItems.push(item);
+      // this.menuItems.push(new MenuItem("camera-retro","photos","yellow"),new MenuItem("user","home","blue"));
     }
 
     toggleMenu()

@@ -60,9 +60,9 @@ ul {
     font-size: 24px;
     transition: $ease;
     
-    &:hover {
-      background: mix(black, $nav-bg, 10);
-    }
+    // &:hover {
+    //   background: mix(black, $nav-bg, 10);
+    // }
   }
   
   @media (max-width: 640px) {
