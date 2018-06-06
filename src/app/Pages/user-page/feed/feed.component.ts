@@ -29,7 +29,7 @@ export class FeedComponent extends UrlChangeDetection implements OnInit {
 
   loadOnUrlChange(params)
   {
-    console.log("Feed loads uid:"+params.uid+" category:"+params.category);
+    console.log("Feed loads uid:"+params.uid+" facet:"+params.facet);
   }
 
 }

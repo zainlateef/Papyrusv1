@@ -4,7 +4,7 @@ import { MenuItem } from '../../../../Models/menu-item';
 @Component({
   selector: 'nav-item',
   template: 
-  ` <a [routerLink]="['/feed','uid',{category : item.category}]" class="nav__link">
+  ` <a [routerLink]="[{facet : item.facet}]" class="nav__link">
       <fa class="icon" [name]="item.iconName" [ngStyle]="{'color':item.color}"></fa>
     </a>
   `
@@ -15,9 +15,11 @@ export class NavItemComponent implements OnInit {
 
   @Input("item") item : MenuItem;
   
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
+
   }
 
 }
