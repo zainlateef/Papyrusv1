@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-
+import { MenuItem } from '../../../Models/menu-item';
 @Component({
   selector: 'navbar',
   template: 
@@ -9,30 +9,22 @@ import { ActivatedRoute } from '@angular/router';
         <div class="burger__patty"></div>
       </div>
       <ul class="nav__list" [ngClass]="{'nav__list--active':showMenu}">
-        <li class="nav__item">
-          <a href="#1" class="nav__link c-blue"><fa name="camera-retro"></fa></a>
-        </li>
-        <li class="nav__item">
-          <a href="#2" class="nav__link c-yellow scrolly"><i class="fa fa-bolt"></i></a>
-        </li>
-        <li class="nav__item">
-          <a href="#3" class="nav__link c-red"><i class="fa fa-music"></i></a>
-        </li>
-        <li class="nav__item">
-          <a href="#4" class="nav__link c-green"><i class="fa fa-paper-plane"></i></a>
+        <li *ngFor="let item of menuItems" class="nav__item">
+          <a href="#1" class="nav__link"><fa [name]="item.iconName"></fa></a>
         </li>
       </ul>
   </nav>`,
   styleUrls: ['./navbar.component.css','./original_style.scss']
 })
 
-export class NavbarComponent implements OnInit
+export class NavbarComponent implements OnInit,OnDestroy
 {
     constructor(private route : ActivatedRoute){}
 
     showMenu : boolean = false;
     routeSubscription : any;
     uid : string;
+    menuItems : MenuItem[];
 
     ngOnInit()
     {
@@ -49,10 +41,17 @@ export class NavbarComponent implements OnInit
     loadItems()
     {
       console.log("Navbar loads uid:"+this.uid);
+      this.menuItems=[];
+      this.menuItems.push(new MenuItem("camera-retro","photos","yellow"),new MenuItem("user","home","blue"));
     }
 
     toggleMenu()
     {
       this.showMenu=!this.showMenu;
+    }
+
+    ngOnDestroy()
+    {
+      this.routeSubscription.unsubscribe();
     }
 }
