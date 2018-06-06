@@ -4,7 +4,7 @@ import { MenuItem } from '../../../../Models/menu-item';
 @Component({
   selector: 'nav-item',
   template: 
-  ` <a href="#1" class="nav__link">
+  ` <a [routerLink]="['/feed','uid',{category : item.category}]" class="nav__link">
       <fa class="icon" [name]="item.iconName" [ngStyle]="{'color':item.color}"></fa>
     </a>
   `
