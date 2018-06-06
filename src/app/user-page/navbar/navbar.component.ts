@@ -28,12 +28,27 @@ import { ActivatedRoute } from '@angular/router';
 
 export class NavbarComponent implements OnInit
 {
+    constructor(private route : ActivatedRoute){}
+
     showMenu : boolean = false;
-    constructor(private route : ActivatedRoute)
-    {}
+    routeSubscription : any;
+    uid : string;
+
     ngOnInit()
     {
-      
+      this.routeSubscription=this.route.params.subscribe( params => 
+      {
+        if(this.uid!=params.uid)
+        {
+          this.uid=params.uid
+          this.loadItems();
+        }
+      })
+    }
+
+    loadItems()
+    {
+      console.log("Navbar loads uid:"+this.uid);
     }
 
     toggleMenu()
