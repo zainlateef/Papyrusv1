@@ -1,33 +1,40 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 @Component({
-  selector: 'app-feed',
-  templateUrl: './feed.component.html',
+  selector: 'feed',
+  template: 
+  `
+  <!--img src="https://i.gifer.com/Iu5Q.gif" alt=""-->
+  <p>
+    <br>
+    feed
+  </p>
+  `
+  ,
   styleUrls: ['./feed.component.css']
 })
-export class FeedComponent implements OnInit {
+export class FeedComponent implements OnInit,OnDestroy {
 
   constructor(private route : ActivatedRoute) { }
 
-  uid : string;
-  currentCategory: string;
+  routeSubscription : any;
 
-  ngOnInit() {
-    this.route.parent.params.subscribe( params => {
-      this.uid=params.uid;
-      console.log("uid in feed component:"+this.uid);
+  ngOnInit() 
+  { 
+    this.routeSubscription=this.route.params.subscribe( params => 
+    {
+      this.loadFeed(params);
     })
-    this.route.params.subscribe( params => {
-      if(!params.hasOwnProperty('category'))
-      {
-        console.log("no category selected");
-      }
-      else
-      {
-        this.currentCategory=params.category;
-        console.log("category:"+this.currentCategory);
-      }
-    })
+  }
+
+  loadFeed(params)
+  {
+    console.log("Feed loads uid:"+params.uid+" category:"+params.category);
+  }
+
+  ngOnDestroy()
+  {
+    this.routeSubscription.unsubscribe();
   }
 
 }

@@ -1,19 +1,22 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-user-page',
-  templateUrl: './user-page.component.html',
+  template: 
+  `
+    <navbar></navbar>
+    <feed></feed>
+  `
+  ,
   styleUrls: ['./user-page.component.css']
 })
 export class UserPageComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute) {  }
+  constructor() {  }
 
-  ngOnInit() {
-    this.route.params.subscribe( params => {
-        console.log("uid in userpage:"+params.uid);
-    })
+  ngOnInit() 
+  {
+    
   }
 
 }

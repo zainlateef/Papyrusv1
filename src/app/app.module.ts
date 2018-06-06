@@ -16,12 +16,8 @@ import { UserPageComponent } from './user-page/user-page.component';
 const routes: Routes=[
   {path: '', component: HomeComponent},
   {path: 'feed', component: MainFeedComponent},
-  {path: 'feed/:uid', component: UserPageComponent, children:
-    [
-      {path: '', component: FeedComponent},
-      {path: ':category', component: FeedComponent}
-    ]
-  },
+  {path: 'feed/:uid', component: UserPageComponent},
+  {path: 'feed/:uid/:category', component:UserPageComponent},
   {path: 'view/:postID', component: ViewPostComponent},
   {path: 'interact/:uid', component: InteractComponent},
   {path: 'publish/:uid', component: PublishComponent},
