@@ -23,7 +23,7 @@ export abstract class UrlChangeDetection implements OnDestroy
           if(this.uid!=params.uid)
           {
             this.uid=params.uid
-            this.loadOnUrlChange(params.uid);
+            this.loadOnUrlChange(params);
           }
         })
     }

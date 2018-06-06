@@ -11,7 +11,7 @@ import { UrlChangeDetection } from '../../../Models/url-changes';
       </div>
       <ul class="nav__list" [ngClass]="{'nav__list--active':showMenu}">
         <li *ngFor="let item of menuItems" class="nav__item">
-          <a href="#1" class="nav__link"><fa class="icon" [name]="item.iconName" [ngStyle]="{'color':item.color}"></fa></a>
+          <nav-item [item]="item"></nav-item>
         </li>
       </ul>
   </nav>`,
@@ -25,8 +25,6 @@ export class NavbarComponent extends UrlChangeDetection implements OnInit
     }
 
     showMenu : boolean = false;
-    routeSubscription : any;
-    uid : string;
     menuItems : MenuItem[];
 
     ngOnInit()
@@ -34,9 +32,9 @@ export class NavbarComponent extends UrlChangeDetection implements OnInit
       this.detectUidChanges();
     }
 
-    loadOnUrlChange()
+    loadOnUrlChange(params)
     {
-      console.log("Navbar loads uid:"+this.uid);
+      console.log("Navbar loads uid:"+params.uid);
       this.menuItems=[];
       this.menuItems.push(new MenuItem("camera-retro","photos","#00ffff"),new MenuItem("user","home","#ff0080"));
     }

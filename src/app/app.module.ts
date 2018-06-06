@@ -6,12 +6,13 @@ import { FeedComponent } from './Pages/user-page/feed/feed.component';
 import { InteractComponent } from './Pages/interact/interact.component';
 import { PublishComponent } from './Pages/publish/publish.component';
 import { HomeComponent } from './Pages/home/home.component';
-import { RouterModule, Routes } from '@angular/router'
 import { ErrorPageComponent } from './Pages/error-page/error-page.component';
 import { ViewPostComponent } from './Pages/view-post/view-post.component';
-import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { MainFeedComponent } from './Pages/main-feed/main-feed.component';
 import { UserPageComponent } from './Pages/user-page/user-page.component';
+import { NavItemComponent } from './Pages/user-page/navbar/nav-item/nav-item.component';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { RouterModule, Routes } from '@angular/router'
 
 const routes: Routes=[
   {path: '', component: HomeComponent},
@@ -35,7 +36,8 @@ const routes: Routes=[
     InteractComponent,
     PublishComponent,
     ViewPostComponent,
-    ErrorPageComponent
+    ErrorPageComponent,
+    NavItemComponent
   ],
   imports: [
     BrowserModule,
