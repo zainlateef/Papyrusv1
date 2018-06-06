@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { UrlChangeDetection } from '../../../Models/url-changes';
 @Component({
   selector: 'feed',
   template: 
@@ -13,28 +14,22 @@ import { ActivatedRoute } from '@angular/router';
   ,
   styleUrls: ['./feed.component.css']
 })
-export class FeedComponent implements OnInit,OnDestroy {
+export class FeedComponent extends UrlChangeDetection implements OnInit {
 
-  constructor(private route : ActivatedRoute) { }
+  constructor(private route : ActivatedRoute) {
+    super(route);
+  }
 
   routeSubscription : any;
 
   ngOnInit() 
   { 
-    this.routeSubscription=this.route.params.subscribe( params => 
-    {
-      this.loadFeed(params);
-    })
+    this.detectAllUrlChanges();
   }
 
-  loadFeed(params)
+  loadOnUrlChange(params)
   {
     console.log("Feed loads uid:"+params.uid+" category:"+params.category);
-  }
-
-  ngOnDestroy()
-  {
-    this.routeSubscription.unsubscribe();
   }
 
 }
