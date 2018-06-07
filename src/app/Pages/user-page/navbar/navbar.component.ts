@@ -5,16 +5,20 @@ import { UrlChangeDetection } from '../../../Models/url-changes';
 @Component({
   selector: 'navbar',
   template: 
-  `<nav class="nav">
-      <div class="burger" [ngClass]="{'burger--active':showMenu}" (click)="toggleMenu()">
-        <div class="burger__patty"></div>
-      </div>
-      <ul class="nav__list" [ngClass]="{'nav__list--active':showMenu}">
-        <li *ngFor="let item of menuItems" class="nav__item">
-          <nav-item [item]="item"></nav-item>
-        </li>
-      </ul>
-  </nav>`,
+  `
+  <div class="wrapper">
+    <nav class="nav">
+        <div class="burger" [ngClass]="{'burger--active':showMenu}" (click)="toggleMenu()">
+          <div class="burger__patty"></div>
+        </div>
+        <ul class="nav__list" [ngClass]="{'nav__list--active':showMenu}">
+          <li *ngFor="let item of menuItems" class="nav__item">
+            <nav-item [item]="item"></nav-item>
+          </li>
+        </ul>
+    </nav>
+  </div>
+  `,
   styleUrls: ['./navbar.component.css','./original_style.scss']
 })
 
