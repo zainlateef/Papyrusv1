@@ -9,7 +9,7 @@ import { MenuItem } from '../../../../Models/menu-item';
     </a>
   `
   ,
-  styleUrls: ['./nav-item.component.css','../original_style.scss']
+  styleUrls: ['./nav-item.component.scss','../original_style.scss']
 })
 export class NavItemComponent implements OnInit {
 

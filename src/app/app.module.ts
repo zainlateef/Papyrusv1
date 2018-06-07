@@ -12,7 +12,7 @@ import { MainFeedComponent } from './Pages/main-feed/main-feed.component';
 import { UserPageComponent } from './Pages/user-page/user-page.component';
 import { NavItemComponent } from './Pages/user-page/navbar/nav-item/nav-item.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
-import { RouterModule, Routes } from '@angular/router'
+import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes=[
   {path: '', component: HomeComponent},

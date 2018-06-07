@@ -12,7 +12,7 @@ import { UrlChangeDetection } from '../../../Models/url-changes';
   </p>
   `
   ,
-  styleUrls: ['./feed.component.css']
+  styleUrls: ['./feed.component.scss']
 })
 export class FeedComponent extends UrlChangeDetection implements OnInit {
 

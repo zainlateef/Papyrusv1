@@ -8,7 +8,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
     <feed></feed>
   `
   ,
-  styleUrls: ['./user-page.component.css']
+  styleUrls: ['./user-page.component.scss']
 })
 export class UserPageComponent implements OnInit {
 
