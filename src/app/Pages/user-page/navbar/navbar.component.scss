@@ -1,15 +1,16 @@
 $ease: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+$nav-bg: #2b3033;
 .wrapper
 {
     position: fixed;
     width : 100vw;
     height: 15vh;
-    background : red;
     top: 0;
     left: 0;
     transition: $ease;
 
     @media (max-width: 640px) {
         height: 10vh;
+        background : $nav-bg;
     }
 }
