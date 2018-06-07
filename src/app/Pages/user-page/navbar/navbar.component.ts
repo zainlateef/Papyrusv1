@@ -19,7 +19,7 @@ import { UrlChangeDetection } from '../../../Models/url-changes';
     </nav>
   </div>
   `,
-  styleUrls: ['./navbar.component.css','./original_style.scss']
+  styleUrls: ['./navbar.component.scss','./original_style.scss']
 })
 
 export class NavbarComponent extends UrlChangeDetection implements OnInit
