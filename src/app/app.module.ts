@@ -14,7 +14,7 @@ import { NavItemComponent } from './Pages/user-page/navbar/nav-item/nav-item.com
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { RouterModule, Routes } from '@angular/router';
 
-const routes: Routes=[
+export const routes: Routes=[
   {path: '', component: HomeComponent},
   {path: 'feed', component: MainFeedComponent},
   {path: 'feed/:uid', component: UserPageComponent},
