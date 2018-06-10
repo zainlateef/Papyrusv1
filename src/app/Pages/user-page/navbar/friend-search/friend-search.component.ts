@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
   selector: 'friend-search',
   template: `
   <div class="wrapper">
-    <fa name="search" size="2x"></fa>
+    <fa class="icon" name="search" size="2x"></fa>
   </div>
   `,
   styleUrls: ['./friend-search.component.scss']
