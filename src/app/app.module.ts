@@ -14,6 +14,8 @@ import { FacetItemComponent } from './Pages/user-page/navbar/facet-menu/facet-it
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { RouterModule, Routes } from '@angular/router';
 import { NavbarComponent } from './Pages/user-page/navbar/navbar.component';
+import { FriendSearchComponent } from './Pages/user-page/navbar/friend-search/friend-search.component';
+import { UserMenuComponent } from './Pages/user-page/navbar/user-menu/user-menu.component';
 
 export const routes: Routes=[
   {path: '', component: HomeComponent},
@@ -38,7 +40,9 @@ export const routes: Routes=[
     ViewPostComponent,
     ErrorPageComponent,
     FacetItemComponent,
-    NavbarComponent
+    NavbarComponent,
+    FriendSearchComponent,
+    UserMenuComponent
   ],
   imports: [
     BrowserModule,
