@@ -1,17 +1,17 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { MenuItem } from '../../../../Models/menu-item';
+import { MenuItem } from '../../../../../Models/menu-item';
 
 @Component({
-  selector: 'nav-item',
+  selector: 'facet-item',
   template: 
   ` <a [routerLink]="[{facet : item.facet}]" class="nav__link">
       <fa class="icon" [name]="item.iconName" [ngStyle]="{'color':item.color}"></fa>
     </a>
   `
   ,
-  styleUrls: ['./nav-item.component.scss','../original_style.scss']
+  styleUrls: ['./facet-item.component.scss','../original_style.scss']
 })
-export class NavItemComponent implements OnInit {
+export class FacetItemComponent implements OnInit {
 
   @Input("item") item : MenuItem;
   
