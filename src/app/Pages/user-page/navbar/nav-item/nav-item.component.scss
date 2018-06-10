@@ -9,6 +9,6 @@ $nav-bg: #2b3033;
 .nav__link
 {
     @media (max-width: 640px) {
-        background : $nav-bg;
+        background : rgba(41, 41, 41, 0.6);
     }
 }
