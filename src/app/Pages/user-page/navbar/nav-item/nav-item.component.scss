@@ -2,8 +2,10 @@ $nav-bg: #2b3033;
 
 .nav__link:hover .icon 
 {
-    font-size: 1.6em;
-    transition: 0.1s ease-in-out;
+    @media (min-width: 640px) {
+        font-size: 1.6em;
+        transition: 0.1s ease-in-out;
+    }
 }
 
 .nav__link
