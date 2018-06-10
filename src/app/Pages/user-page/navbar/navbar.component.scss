@@ -17,8 +17,16 @@ $nav-bg: #2b3033;
 
 .right
 {
+    display: table;
     float: right;
+    height: 100%;
     @media (max-width: 320px) {
         display: none;
     }
+}
+
+.center
+{
+    display: table-cell;
+    vertical-align: middle;
 }
