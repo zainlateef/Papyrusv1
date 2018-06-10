@@ -23,6 +23,10 @@ $nav-bg: #2b3033;
     @media (max-width: 320px) {
         display: none;
     }
+    @media (min-width: 640px) {
+        right: 5%;
+        position: absolute;
+    }
 }
 
 .center
