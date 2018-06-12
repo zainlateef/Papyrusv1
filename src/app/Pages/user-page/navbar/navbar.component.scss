@@ -17,15 +17,14 @@ $nav-bg: #2b3033;
 
 .right
 {
+    position: absolute;
+    right: 7%;
     display: table;
     float: right;
     height: 100%;
+    
     @media (max-width: 320px) {
         display: none;
-    }
-    @media (min-width: 640px) {
-        right: 5%;
-        position: absolute;
     }
 }
 
