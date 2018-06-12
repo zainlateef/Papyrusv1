@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { UrlChangeDetection } from '../../../Models/url-changes';
+import { UrlChangeDetection } from '../../../Parent-Classes/url-changes';
 @Component({
   selector: 'feed',
   template: 

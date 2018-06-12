@@ -16,6 +16,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { NavbarComponent } from './Pages/user-page/navbar/navbar.component';
 import { FriendSearchComponent } from './Pages/user-page/navbar/friend-search/friend-search.component';
 import { UserMenuComponent } from './Pages/user-page/navbar/user-menu/user-menu.component';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 export const routes: Routes=[
   {path: '', component: HomeComponent},
@@ -47,7 +48,9 @@ export const routes: Routes=[
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes,{useHash: true}),
-    AngularFontAwesomeModule
+    AngularFontAwesomeModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

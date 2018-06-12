@@ -1,19 +1,20 @@
 import { Component, OnInit } from '@angular/core';
+import { ReactiveForm } from '../../../../Parent-Classes/reactive-form'
 
 @Component({
   selector: 'friend-search',
   template: `
   <div class="wrapper">
     <fa class="icon" name="search" size="2x"></fa>
+    <input type="search" [formControl]="search">
   </div>
   `,
   styleUrls: ['./friend-search.component.scss']
 })
-export class FriendSearchComponent implements OnInit {
+export class FriendSearchComponent extends ReactiveForm implements OnInit {
 
-  constructor() { }
-
-  ngOnInit() {
+  onFormChange(term: any) {
+    console.log(term);
   }
 
 }

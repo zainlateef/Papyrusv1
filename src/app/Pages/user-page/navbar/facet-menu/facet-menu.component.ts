@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MenuItem } from '../../../../Models/menu-item';
-import { UrlChangeDetection } from '../../../../Models/url-changes';
+import { UrlChangeDetection } from '../../../../Parent-Classes/url-changes';
 @Component({
   selector: 'facet-menu',
   template: 
