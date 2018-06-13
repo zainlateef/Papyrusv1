@@ -9,6 +9,9 @@ import 'rxjs/add/operator/distinctUntilChanged';
   <div class="wrapper">
     <fa (click)="toggleSearch()" class="icon" name="search" size="2x"></fa>
     <input [ngClass]="{'searchbar-closed' : !showSearchBar }" class="searchbar-open" type="search" [formControl]="search">
+    <ul class="list">
+      <li *ngFor="let term of terms">{{term}}</li>
+    </ul>
   </div>
   `,
   styleUrls: ['./friend-search.component.scss']
@@ -18,6 +21,7 @@ export class FriendSearchComponent implements OnInit,OnDestroy {
   search : FormControl;
   showSearchBar : boolean;
   subscription : any;
+  terms : Array<string> = new Array;
 
   ngOnInit()
   {
@@ -27,6 +31,10 @@ export class FriendSearchComponent implements OnInit,OnDestroy {
 
   onFormChange(term: any) {
     console.log(term);
+    if(term==="")
+    this.terms=[];
+    else
+    this.terms.push(term);
   }
 
   toggleSearch()
