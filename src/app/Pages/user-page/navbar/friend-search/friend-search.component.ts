@@ -6,7 +6,7 @@ import { ReactiveForm } from '../../../../Parent-Classes/reactive-form'
   template: `
   <div class="wrapper">
     <fa class="icon" name="search" size="2x"></fa>
-    <input type="search" [formControl]="search">
+    <input type="search" class="searchbar" [formControl]="search">
   </div>
   `,
   styleUrls: ['./friend-search.component.scss']
