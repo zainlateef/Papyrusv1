@@ -10,7 +10,7 @@ import 'rxjs/add/operator/distinctUntilChanged';
     <fa (click)="toggleSearch()" class="icon" name="search" size="2x"></fa>
     <input [ngClass]="{'searchbar-closed' : !showSearchBar }" class="searchbar-open" type="search" [formControl]="search">
     <ul class="list">
-      <li *ngFor="let term of terms">{{term}}</li>
+      <li class="list-item" *ngFor="let term of terms">{{term}}</li>
     </ul>
   </div>
   `,

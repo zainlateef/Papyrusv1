@@ -44,4 +44,12 @@ input.searchbar-open:focus {
 .list
 {
     position: absolute;
+    list-style: none;
+}
+
+.list-item
+{
+    background-color: rgb(241, 233, 210);
+    padding: 5px;
+    min-width: 130px;
 }
