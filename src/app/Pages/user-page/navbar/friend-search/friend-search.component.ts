@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { ReactiveForm } from '../../../../Parent-Classes/reactive-form'
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/distinctUntilChanged';
 
 @Component({
   selector: 'friend-search',
@@ -12,7 +13,15 @@ import { FormControl } from '@angular/forms';
   `,
   styleUrls: ['./friend-search.component.scss']
 })
-export class FriendSearchComponent extends ReactiveForm implements OnInit {
+export class FriendSearchComponent implements OnInit,OnDestroy {
+
+  search : FormControl;
+  subscription : any;
+
+  ngOnInit()
+  {
+    this.initializeForm();
+  }
 
   onFormChange(term: any) {
     console.log(term);
@@ -23,4 +32,19 @@ export class FriendSearchComponent extends ReactiveForm implements OnInit {
     console.log("it's a toggle");
   }
 
+  initializeForm() 
+  {
+    this.search=new FormControl();
+    this.subscription=this.search.valueChanges
+        .debounceTime(200)
+        .distinctUntilChanged()
+        .subscribe( term => {
+            this.onFormChange(term);
+        });
+  }
+
+  ngOnDestroy() 
+  {
+    this.subscription.unsubscribe();
+  }
 }
