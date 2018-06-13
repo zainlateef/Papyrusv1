@@ -7,8 +7,8 @@ import 'rxjs/add/operator/distinctUntilChanged';
   selector: 'friend-search',
   template: `
   <div class="wrapper">
-    <fa class="icon" name="search" size="2x" (click)="toggleSearch()"></fa>
-    <input type="search" class="searchbar" [formControl]="search">
+    <fa (click)="toggleSearch()" class="icon" name="search" size="2x"></fa>
+    <input *ngIf="showSearchBar" type="search" class="searchbar" [formControl]="search">
   </div>
   `,
   styleUrls: ['./friend-search.component.scss']
@@ -16,10 +16,12 @@ import 'rxjs/add/operator/distinctUntilChanged';
 export class FriendSearchComponent implements OnInit,OnDestroy {
 
   search : FormControl;
+  showSearchBar : boolean;
   subscription : any;
 
   ngOnInit()
   {
+    this.showSearchBar = false;
     this.initializeForm();
   }
 
@@ -29,7 +31,7 @@ export class FriendSearchComponent implements OnInit,OnDestroy {
 
   toggleSearch()
   {
-    console.log("it's a toggle");
+    this.showSearchBar=!this.showSearchBar;
   }
 
   initializeForm() 
