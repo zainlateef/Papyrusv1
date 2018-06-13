@@ -51,10 +51,17 @@ input.searchbar-open:focus {
 {
     background-color: rgb(241, 233, 210);
     padding: 5px;
-    min-width: 130px;
+    width: 150px;
 }
 .list-item:hover
 {
-    border: 1px outset rebeccapurple;
+    border: 1px outset black;
     cursor: pointer;
+}
+
+.rounded-pic
+{
+    border-radius: 50%;
+    width: 4vw;
+    height: 4vw;
 }

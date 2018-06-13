@@ -12,6 +12,7 @@ import { User } from '../../../../Models/user';
     <input [ngClass]="{'searchbar-closed' : !showSearchBar }" class="searchbar-open" type="search" [formControl]="search">
     <ul class="list">
       <li [routerLink]="['/feed',user.uid]" class="list-item" *ngFor="let user of userMatches">
+          <img [src]="user.profilePic" class="rounded-pic">
           {{user.firstName}} {{user.lastName}}
       </li>
     </ul>
