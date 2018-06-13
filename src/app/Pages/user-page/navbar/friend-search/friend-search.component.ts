@@ -8,7 +8,7 @@ import 'rxjs/add/operator/distinctUntilChanged';
   template: `
   <div class="wrapper">
     <fa (click)="toggleSearch()" class="icon" name="search" size="2x"></fa>
-    <input *ngIf="showSearchBar" type="search" class="searchbar" [formControl]="search">
+    <input [ngClass]="{'searchbar-closed' : !showSearchBar }" class="searchbar-open" type="search" [formControl]="search">
   </div>
   `,
   styleUrls: ['./friend-search.component.scss']
@@ -32,6 +32,14 @@ export class FriendSearchComponent implements OnInit,OnDestroy {
   toggleSearch()
   {
     this.showSearchBar=!this.showSearchBar;
+  }
+
+  toggleClass()
+  {
+    if(this.showSearchBar)
+      return "searchbar-open";
+    else
+      return "searchbar-closed";
   }
 
   initializeForm() 

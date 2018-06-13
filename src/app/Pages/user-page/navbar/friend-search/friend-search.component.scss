@@ -10,13 +10,14 @@
     }
 }
 
-.searchbar
+.searchbar-open
 {
     position: relative;
     bottom: 6px;
     border: 0 none;
     width: 150px;
     padding: 6px 15px 6px 15px;
+    transition: all 0.35s;
     -webkit-border-radius: 20px;
     -moz-border-radius: 20px;
     border-radius: 20px;
@@ -24,7 +25,18 @@
     -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 3px rgba(0, 0, 0, 0.2) inset;
     box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 3px rgba(0, 0, 0, 0.2) inset;
 }
+.searchbar-closed
+{
+    width: 0;
+    opacity: 0;
+    padding: 0;
+    margin: 0;
+    &:hover
+    {
+        cursor: default;
+    }
+}
 
-input.searchbar:focus {
+input.searchbar-open:focus {
     outline-width: 0;
 }
