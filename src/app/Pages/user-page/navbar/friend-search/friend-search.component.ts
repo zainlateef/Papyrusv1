@@ -13,7 +13,9 @@ import { User } from '../../../../Models/user';
     <ul class="list">
       <li [routerLink]="['/feed',user.uid]" class="list-item" *ngFor="let user of userMatches">
           <img [src]="user.profilePic" class="rounded-pic">
-          {{user.firstName}} {{user.lastName}}
+          <div class="name">
+            {{user.firstName}} {{user.lastName}}
+          </div>
       </li>
     </ul>
   </div>
