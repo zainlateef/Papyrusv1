@@ -36,7 +36,7 @@ export class FacetMenuComponent extends UrlChangeDetection implements OnInit
 
     loadOnUrlChange(params)
     {
-      console.log("Navbar loads uid:"+params.uid);
+      console.log("HTTP Call: Navbar loads uid:"+params.uid);
       this.menuItems=[];
       this.menuItems.push(new MenuItem("camera-retro","photos","#00ffff"),new MenuItem("user","home","#ff0080"));
     }

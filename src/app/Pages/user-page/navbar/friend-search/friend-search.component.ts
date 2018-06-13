@@ -30,7 +30,7 @@ export class FriendSearchComponent implements OnInit,OnDestroy {
   }
 
   onFormChange(term: any) {
-    console.log(term);
+    console.log("HTTP Call:Query this parameter"+term);
     if(term==="")
     this.terms=[];
     else

@@ -30,9 +30,9 @@ export class FeedComponent extends UrlChangeDetection implements OnInit {
   loadOnUrlChange(params)
   {
     if(!params.facet)
-      console.log("No facet selected. Load first facet of uid:"+params.uid+" by making special first facet ajax call");
+      console.log("HTTP Call:No facet selected. Load first facet of uid:"+params.uid+" by making special first facet ajax call");
     else
-      console.log("Feed loads uid:"+params.uid+" facet:"+params.facet);
+      console.log("HTTP Call:Feed loads uid:"+params.uid+" facet:"+params.facet);
   }
 
 }
