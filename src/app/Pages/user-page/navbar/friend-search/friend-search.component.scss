@@ -53,3 +53,8 @@ input.searchbar-open:focus {
     padding: 5px;
     min-width: 130px;
 }
+.list-item:hover
+{
+    border: 1px outset rebeccapurple;
+    cursor: pointer;
+}
