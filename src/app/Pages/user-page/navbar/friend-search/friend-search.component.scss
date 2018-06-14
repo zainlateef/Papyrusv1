@@ -47,23 +47,32 @@ input.searchbar-open:focus {
 {
     position: absolute;
     list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 .list-item
 {
-    padding: 3px;
-    min-width: 130px;
+    font: 200 13px/1.5 Helvetica, Verdana, sans-serif;
+    background: white;
+    border-bottom: 1px solid #ccc;
+}
+
+.list-item:last-child 
+{
+    border: none;
 }
 
 .list-item:hover
 {
-    border: 1px outset black;
+    font-size: 20px;
+    background: #f6f6f6;
     cursor: pointer;
 }
 
 .rounded-pic
 {
-    display: inline-block;
+    display: none;
     border-radius: 50%;
     width: 30px;
     height: 30px;
@@ -71,10 +80,13 @@ input.searchbar-open:focus {
 
 .name
 {
-    display: inline-block;
-    position: relative;
-    font-family: 'Raleway', 'Helvetica';
-    font-size: 70%;
-    bottom: 6.5px;
-    left: 3px;
+    text-decoration: none;
+    color: #000;
+
+    -webkit-transition: font-size 0.3s ease, background-color 0.3s ease;
+    -moz-transition: font-size 0.3s ease, background-color 0.3s ease;
+    -o-transition: font-size 0.3s ease, background-color 0.3s ease;
+    -ms-transition: font-size 0.3s ease, background-color 0.3s ease;
+    transition: font-size 0.3s ease, background-color 0.3s ease;
+    min-width: 215px;
 }
