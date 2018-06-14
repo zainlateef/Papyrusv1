@@ -74,6 +74,11 @@ input.searchbar-open:focus {
         width: 40px;
         height: 40px;
     }
+    .content
+    {
+        overflow: scroll;
+        text-overflow: unset;
+    }
 }
 
 .rounded-pic
@@ -87,6 +92,12 @@ input.searchbar-open:focus {
 
 .content
 {
+    width: 215px;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
     text-decoration: none;
     color: #000;
 
@@ -95,5 +106,4 @@ input.searchbar-open:focus {
     -o-transition: font-size 0.3s ease, background-color 0.3s ease;
     -ms-transition: font-size 0.3s ease, background-color 0.3s ease;
     transition: font-size 0.3s ease, background-color 0.3s ease;
-    width: 215px;
 }
