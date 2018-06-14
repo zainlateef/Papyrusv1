@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'user-menu',
@@ -6,9 +7,21 @@ import { Component, OnInit } from '@angular/core';
   <div class="wrapper">
     <fa (click)="toggleMenu()" class="icon" name="user" size="2x"></fa>
     <ul *ngIf="showMenu">
-      <li *ngFor="let item of menuItems">
-        
-      <li>
+      <li *ngIf="loggedIn" [routerLink]="['/feed',uid]"> 
+        Your Profile 
+      </li>
+      <li *ngIf="loggedIn" [routerLink]="['/interact',uid]"> 
+        Interactions 
+      </li>
+      <li *ngIf="loggedIn" [routerLink]="['/publish',uid]"> 
+        Publish 
+      </li>
+      <li *ngIf="loggedIn" (click)="logout()"> 
+        Logout 
+      </li>
+      <li *ngIf="!loggedIn" [routerLink]="['/']"> 
+        Login 
+      </li>
     </ul>
   </div>
   `,
@@ -16,13 +29,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserMenuComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router : Router) { }
 
   showMenu : boolean;
+  loggedIn : boolean;
+  uid : string;
 
   ngOnInit() 
   {
     this.showMenu=false;
+    this.loggedIn=this.authenticate();
+  }
+
+  authenticate()
+  {
+    //HTTP Call: Authenticate the user and get the user id
+    this.uid="zboi";
+    return true;
+  }
+
+  logout()
+  {
+    //HTTP Call: Logout process
+    this.router.navigate(['/']);
   }
 
   toggleMenu()
