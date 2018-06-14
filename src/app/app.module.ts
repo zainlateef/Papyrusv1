@@ -17,6 +17,7 @@ import { NavbarComponent } from './Pages/user-page/navbar/navbar.component';
 import { FriendSearchComponent } from './Pages/user-page/navbar/friend-search/friend-search.component';
 import { UserMenuComponent } from './Pages/user-page/navbar/user-menu/user-menu.component';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { ClickOutsideModule } from 'ng-click-outside';
 
 export const routes: Routes=[
   {path: '', component: HomeComponent},
@@ -50,7 +51,8 @@ export const routes: Routes=[
     RouterModule.forRoot(routes,{useHash: true}),
     AngularFontAwesomeModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    ClickOutsideModule
   ],
   providers: [],
   bootstrap: [AppComponent]
