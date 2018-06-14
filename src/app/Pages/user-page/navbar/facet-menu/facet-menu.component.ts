@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { MenuItem } from '../../../../Models/menu-item';
+import { FacetItem } from '../../../../Models/facet-item';
 import { UrlChangeDetection } from '../../../../Parent-Classes/url-changes';
 @Component({
   selector: 'facet-menu',
@@ -11,7 +11,7 @@ import { UrlChangeDetection } from '../../../../Parent-Classes/url-changes';
       <div class="burger__patty"></div>
     </div>
     <ul class="nav__list" [ngClass]="{'nav__list--active':showMenu}">
-      <li *ngFor="let item of menuItems" class="nav__item">
+      <li *ngFor="let item of facetItems" class="nav__item">
         <facet-item [item]="item"></facet-item>
       </li>
     </ul>
@@ -27,7 +27,7 @@ export class FacetMenuComponent extends UrlChangeDetection implements OnInit
     }
 
     showMenu : boolean = false;
-    menuItems : MenuItem[];
+    facetItems : FacetItem[];
 
     ngOnInit()
     {
@@ -37,8 +37,8 @@ export class FacetMenuComponent extends UrlChangeDetection implements OnInit
     loadOnUrlChange(params)
     {
       console.log("HTTP Call: Navbar loads uid:"+params.uid);
-      this.menuItems=[];
-      this.menuItems.push(new MenuItem("camera-retro","photos","#00ffff"),new MenuItem("user","home","#ff0080"));
+      this.facetItems=[];
+      this.facetItems.push(new FacetItem("camera-retro","photos","#00ffff"),new FacetItem("user","home","#ff0080"));
     }
 
     toggleMenu()

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { MenuItem } from '../../../../../Models/menu-item';
+import { FacetItem } from '../../../../../Models/facet-item';
 
 @Component({
   selector: 'facet-item',
@@ -13,7 +13,7 @@ import { MenuItem } from '../../../../../Models/menu-item';
 })
 export class FacetItemComponent implements OnInit {
 
-  @Input("item") item : MenuItem;
+  @Input("item") item : FacetItem;
   
   constructor() {
   }
