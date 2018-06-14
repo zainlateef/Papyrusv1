@@ -48,6 +48,7 @@ input.searchbar-open:focus {
     position: absolute;
     list-style: none;
     margin: 0;
+    top: 85%;
     padding: 0;
 }
 
@@ -68,14 +69,20 @@ input.searchbar-open:focus {
     font-size: 20px;
     background: #f6f6f6;
     cursor: pointer;
+    .rounded-pic
+    {
+        width: 40px;
+        height: 40px;
+    }
 }
 
 .rounded-pic
 {
-    display: none;
+    display: inline-block;
     border-radius: 50%;
     width: 30px;
     height: 30px;
+    transition: all 0.3s ease;
 }
 
 .name
@@ -88,5 +95,5 @@ input.searchbar-open:focus {
     -o-transition: font-size 0.3s ease, background-color 0.3s ease;
     -ms-transition: font-size 0.3s ease, background-color 0.3s ease;
     transition: font-size 0.3s ease, background-color 0.3s ease;
-    min-width: 215px;
+    width: 215px;
 }
