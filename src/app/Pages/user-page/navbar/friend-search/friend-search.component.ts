@@ -57,14 +57,8 @@ export class FriendSearchComponent implements OnInit,OnDestroy {
   toggleSearch()
   {
     this.showSearchBar=!this.showSearchBar;
-  }
-
-  toggleClass()
-  {
-    if(this.showSearchBar)
-      return "searchbar-open";
-    else
-      return "searchbar-closed";
+    if(!this.showSearchBar)
+      this.userMatches.clear();
   }
 
   initializeForm() 
