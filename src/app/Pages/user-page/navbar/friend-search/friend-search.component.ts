@@ -10,8 +10,8 @@ import { User } from '../../../../Models/user';
   <div class="wrapper" (clickOutside)="onClickedOutside($event)">
     <fa (click)="toggleSearch()" class="icon" name="search" size="2x"></fa>
     <input [ngClass]="{'searchbar-closed' : !showSearchBar }" class="searchbar-open" type="search" [formControl]="search">
-    <ul class="list">
-      <li [routerLink]="['/feed',user.uid]" class="list-item" *ngFor="let user of userMatches">
+    <ul>
+      <li [routerLink]="['/feed',user.uid]" *ngFor="let user of userMatches">
         <div class="content">
           <img [src]="user.profilePic" class="rounded-pic">
           {{user.firstName}} {{user.lastName}}
