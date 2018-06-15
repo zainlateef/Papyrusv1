@@ -2,6 +2,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
+import { trigger, transition, useAnimation } from '@angular/animations';
+import { zoomIn } from 'ng-animate';
 import { User } from '../../../../Models/user';
 
 @Component({
@@ -11,7 +13,7 @@ import { User } from '../../../../Models/user';
     <fa (click)="toggleSearch()" class="icon" name="search" size="2x"></fa>
     <input [ngClass]="{'searchbar-closed' : !showSearchBar }" class="searchbar-open" type="search" [formControl]="search">
     <ul>
-      <li [routerLink]="['/feed',user.uid]" *ngFor="let user of userMatches">
+      <li [@zoomIn]="zoomIn" [routerLink]="['/feed',user.uid]" *ngFor="let user of userMatches">
         <div class="content">
           <img [src]="user.profilePic" class="rounded-pic">
           {{user.firstName}} {{user.lastName}}
@@ -20,10 +22,14 @@ import { User } from '../../../../Models/user';
     </ul>
   </div>
   `,
-  styleUrls: ['./friend-search.component.scss']
+  styleUrls: ['./friend-search.component.scss'],
+  animations: [
+    trigger('zoomIn', [transition('void => *', useAnimation(zoomIn, { params:{timing:0.15} } ))])
+  ]
 })
 export class FriendSearchComponent implements OnInit,OnDestroy {
 
+  zoomIn: any;
   search : FormControl;
   showSearchBar : boolean;
   subscription : any;
@@ -43,6 +49,7 @@ export class FriendSearchComponent implements OnInit,OnDestroy {
       this.userMatches.clear();
     else
     {
+      this.userMatches.clear();
       //HTTP call returns set of users. This logic will be removed
       this.userDatabase.filter( user => {
         if(user.firstName.toUpperCase().includes(term.toUpperCase()) || user.firstName.toUpperCase().includes(term.toUpperCase()))

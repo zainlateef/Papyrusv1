@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { FacetMenuComponent } from './Pages/user-page/navbar/facet-menu/facet-menu.component';
@@ -48,6 +49,7 @@ export const routes: Routes=[
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     RouterModule.forRoot(routes,{useHash: true}),
     AngularFontAwesomeModule,
     ReactiveFormsModule,
