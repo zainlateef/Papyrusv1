@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
     <fa (click)="toggleMenu()" class="icon" name="user" size="2x"></fa>
     <ul *ngIf="showMenu">
       <li *ngIf="loggedIn" [routerLink]="['/feed',uid]"> 
-        Your Profile 
+        Profile 
       </li>
       <li *ngIf="loggedIn" [routerLink]="['/interact',uid]"> 
         Interactions 
