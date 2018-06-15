@@ -1,6 +1,9 @@
 .wrapper
 {
     display: inline-block;
+    position: relative;
+    width: 23px;
+    text-align: center;
 }
 
 .icon
@@ -16,8 +19,12 @@ ul
     width: 100px;
     position : absolute;
     padding: 0;
-    margin-left: -50%;
+    margin: 0;
+    left: -34.5px;
     list-style: none;
+    @media (max-width: 640px) {
+        top: 100%;
+    }
 }
 
 li
