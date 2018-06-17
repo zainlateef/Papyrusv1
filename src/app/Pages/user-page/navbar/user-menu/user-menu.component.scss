@@ -1,14 +1,14 @@
 .wrapper
 {
-    display: inline-block;
+    display: inline-flex;
     position: relative;
-    width: 23px;
-    text-align: center;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
 }
 
 .icon
 {
-    position: relative;
     @media (max-width: 640px) {
         color: white;
     }
@@ -20,11 +20,8 @@ ul
     position : absolute;
     padding: 0;
     margin: 0;
-    left: -34.5px;
+    top: 100%;
     list-style: none;
-    @media (max-width: 640px) {
-        top: 10vh;
-    }
 }
 
 li

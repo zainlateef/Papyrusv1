@@ -6,10 +6,8 @@ import { Component, OnInit } from '@angular/core';
   <div class="wrapper">
     <facet-menu></facet-menu>
     <div class="right">
-      <div class="center">
         <friend-search></friend-search>
         <user-menu></user-menu>
-      </div>
     </div>
     <div style="clear: right; min-height: 1px"></div>
   </div>

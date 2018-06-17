@@ -5,7 +5,9 @@ import { Router } from '@angular/router';
   selector: 'user-menu',
   template: `
   <div class="wrapper">
+
     <fa (click)="toggleMenu()" class="icon" name="user" size="2x"></fa>
+
     <ul *ngIf="showMenu">
       <li *ngIf="loggedIn" [routerLink]="['/feed',uid]"> 
         Profile 
@@ -23,6 +25,7 @@ import { Router } from '@angular/router';
         Login 
       </li>
     </ul>
+
   </div>
   `,
   styleUrls: ['./user-menu.component.scss']

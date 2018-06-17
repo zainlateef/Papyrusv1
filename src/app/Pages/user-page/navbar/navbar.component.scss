@@ -17,19 +17,12 @@ $nav-bg: #2b3033;
 
 .right
 {
-    position: absolute;
+    position: relative;
     right: 7%;
-    display: table;
     float: right;
     height: 100%;
     
     @media (max-width: 319px), (max-height: 320px){
         display: none;
     }
-}
-
-.center
-{
-    display: table-cell;
-    vertical-align: middle;
 }
