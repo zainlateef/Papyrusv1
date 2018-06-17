@@ -2,7 +2,10 @@
 
 .wrapper
 {
-    display: inline-block;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
 }
 
 .icon
@@ -14,8 +17,6 @@
 
 .searchbar-open
 {
-    position: relative;
-    bottom: 6px;
     border: 0 none;
     width: 150px;
     padding: 6px 15px 6px 15px;
@@ -48,8 +49,8 @@ ul
     position: absolute;
     list-style: none;
     margin: 0;
-    top: 85%;
     padding: 0;
+    top: 100%;
 }
 
 li
