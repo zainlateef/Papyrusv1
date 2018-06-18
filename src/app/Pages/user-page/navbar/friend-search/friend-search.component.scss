@@ -50,10 +50,12 @@ ul
     list-style: none;
     margin: 0;
     padding: 0;
-    top: 100%;
+    top: 80%;
+    right: 0;
 
     @media(max-width: 640px)
     {
+        top: 100%;
         right: -7vw;
         width: 100vw;
     }
@@ -66,7 +68,8 @@ li
     height: 40px;
     background: white;
     border-bottom: 1px solid #ccc;
-    width: 215px;
+
+    width: 207px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -92,7 +95,12 @@ li
             justify-content: center;
             align-items: center;
             height: 100%;
-            margin: 0 15px 0 15px;
+            margin: 0 7px 0 7px;
+
+            @media (max-width:640px)
+            {
+                margin: 0 15px 0 15px;
+            }
     
             img
             {
@@ -122,29 +130,9 @@ li:last-child
 
 li:hover
 {
-    @media(min-width: 640px)
-    {
-        font-size: 20px;
-        background: #f6f6f6;
-        cursor: pointer;
-        .rounded-pic
-        {
-            width: 40px;
-            height: 40px;
-        }
-        .content
-        {
-            overflow: scroll;
-            text-overflow: unset;
-        }
-    }
-
-    @media (max-width: 640px)
-    {
-        background: #f6f6f6;
-        cursor: pointer;
-        color: rgb(0, 171, 228);
-    }
+    background: #f6f6f6;
+    cursor: pointer;
+    color: rgb(0, 171, 228);
 }
 
 
