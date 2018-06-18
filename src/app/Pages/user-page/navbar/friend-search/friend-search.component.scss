@@ -63,8 +63,55 @@ ul
 li
 {
     font: 200 13px/1.5 Helvetica, Verdana, sans-serif;
+    height: 100px;
     background: white;
     border-bottom: 1px solid #ccc;
+    width: 215px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-decoration: none;
+    color: #000;
+
+    -webkit-transition: font-size 0.3s ease, background-color 0.3s ease;
+    -moz-transition: font-size 0.3s ease, background-color 0.3s ease;
+    -o-transition: font-size 0.3s ease, background-color 0.3s ease;
+    -ms-transition: font-size 0.3s ease, background-color 0.3s ease;
+    transition: font-size 0.3s ease, background-color 0.3s ease;
+
+    @media (max-width: 640px)
+    {
+        width: 100%;
+    }
+
+    .wrapper
+    {
+        .image
+        {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+    
+            img
+            {
+                border-radius: 50%;
+                width: 30px;
+                height: 30px;
+                transition: all 0.3s ease;
+            }
+        }
+    
+        .name
+        {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+
+    }
+
 }
 
 li:last-child 
@@ -89,32 +136,8 @@ li:hover
     }
 }
 
-.rounded-pic
-{
-    display: inline-block;
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    transition: all 0.3s ease;
-}
 
 .content
 {
-    width: 215px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    text-decoration: none;
-    color: #000;
 
-    -webkit-transition: font-size 0.3s ease, background-color 0.3s ease;
-    -moz-transition: font-size 0.3s ease, background-color 0.3s ease;
-    -o-transition: font-size 0.3s ease, background-color 0.3s ease;
-    -ms-transition: font-size 0.3s ease, background-color 0.3s ease;
-    transition: font-size 0.3s ease, background-color 0.3s ease;
-
-    @media (max-width: 640px)
-    {
-        width: 100%;
-    }
 }
