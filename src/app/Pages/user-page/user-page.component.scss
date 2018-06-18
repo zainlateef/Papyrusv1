@@ -1,0 +1,17 @@
+.wrapper
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: 15vh;
+    bottom: 15vh;
+    padding: 0 10% 0 10%;
+    z-index: -1;
+    border: yellow dashed;
+    @media(max-width: 640px)
+    {
+        top: 10vh;
+        bottom: 10vh;
+    }
+}

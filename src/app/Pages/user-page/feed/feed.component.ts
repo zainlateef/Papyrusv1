@@ -5,11 +5,6 @@ import { UrlChangeDetection } from '../../../Parent-Classes/url-changes';
   selector: 'feed',
   template: 
   `
-  <!--img src="https://i.gifer.com/Iu5Q.gif" alt=""-->
-  <p>
-    <br>
-    feed
-  </p>
   `
   ,
   styleUrls: ['./feed.component.scss']
