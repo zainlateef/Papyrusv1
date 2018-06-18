@@ -6,12 +6,13 @@
     position: relative;
     top: 15vh;
     bottom: 15vh;
-    padding: 0 10% 0 10%;
+    padding: 0 100px 0 100px;
     z-index: -1;
     border: yellow dashed;
     @media(max-width: 640px)
     {
         top: 10vh;
         bottom: 10vh;
+        padding: 0;
     }
 }
