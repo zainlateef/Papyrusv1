@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'user-menu',
   template: `
-  <div class="wrapper">
+  <div class="wrapper" (clickOutside)="onClickedOutside($event)">
 
     <fa (click)="toggleMenu()" class="icon" name="user" size="2x"></fa>
 
@@ -60,6 +60,10 @@ export class UserMenuComponent implements OnInit {
   toggleMenu()
   {
     this.showMenu=!this.showMenu;
+  }
+
+  onClickedOutside(e: Event) {
+    this.showMenu=false;
   }
 
 }
