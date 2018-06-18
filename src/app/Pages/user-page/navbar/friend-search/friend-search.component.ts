@@ -15,7 +15,7 @@ import { User } from '../../../../Models/user';
     <ul>
       <li [@zoomIn]="zoomIn" [routerLink]="['/feed',user.uid]" *ngFor="let user of userMatches">
       <div class="wrapper">
-        <div class="image">
+        <div class="image-wrapper">
           <img [src]="user.profilePic">
         </div>
         <div class="name">
