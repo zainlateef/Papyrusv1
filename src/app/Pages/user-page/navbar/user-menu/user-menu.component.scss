@@ -22,6 +22,7 @@ ul
     padding: 0;
     margin: 0;
     top: 80%;
+    right: -23px;
     list-style: none;
 
     @media(max-width: 640px)
@@ -32,11 +33,10 @@ ul
 
 li
 {
-    text-align: center;
     background-color: white;
     font: 200 13px/1.5 Helvetica, Verdana, sans-serif;
     border-bottom: 1px solid #ccc;
-    padding: 5px 5px 5px 5px;
+    padding: 5px 5px 5px 8px;
 
     -webkit-transition: font-size 0.3s ease, background-color 0.3s ease;
     -moz-transition: font-size 0.3s ease, background-color 0.3s ease;
