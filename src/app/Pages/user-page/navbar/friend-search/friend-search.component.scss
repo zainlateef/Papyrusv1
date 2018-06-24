@@ -13,12 +13,18 @@
     @media (max-width: 640px) {
         color: white;
     }
+
+    -webkit-transition: opacity 0.1s ease;
+    -moz-transition: opacity 0.1s ease;
+    -o-transition: opacity 0.1s ease;
+    -ms-transition: opacity 0.1s ease;
+    transition: opacity 0.1s ease;
 }
 
 .searchbar-open
 {
     border: 0 none;
-    width: 150px;
+    width: 180px;
     padding: 6px 15px 6px 15px;
     transition: all 0.35s;
     -webkit-border-radius: 20px;
