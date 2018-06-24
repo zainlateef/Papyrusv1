@@ -68,9 +68,10 @@ export class FriendSearchComponent implements OnInit,OnDestroy {
 
   toggleSearch()
   {
-    this.showSearchBar=!this.showSearchBar;
-    if(!this.showSearchBar)
-      this.userMatches.clear();
+    if(this.showSearchBar)
+      this.closeSearchBar();
+    else
+      this.openSearchBar();
   }
 
   initializeForm() 
@@ -101,11 +102,19 @@ export class FriendSearchComponent implements OnInit,OnDestroy {
       ++this.counter;
       if(this.counter > 1)
       {
-        this.showSearchBar=false;
-        this.userMatches.clear();
+        this.closeSearchBar();
         this.counter=0;
       }
     }
+  }
+
+  openSearchBar(): any {
+    this.showSearchBar=true;
+  }
+
+  closeSearchBar(): any {
+    this.userMatches.clear();
+    this.showSearchBar=false;
   }
 
   ngOnDestroy() 
