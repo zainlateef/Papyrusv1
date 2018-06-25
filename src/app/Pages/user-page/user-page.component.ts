@@ -51,8 +51,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
     Before the crossing of the mountains the Hobbits had already become divided into three somewhat different breeds: Harfoots, Stoors, and Fallohides. The Harfoots were browner of skin, smaller, and shorter, and they were beardless and bootless; their hands and feet were neat and nimble; and they preferred highlands and hillsides. The Stoors were broader, heavier in build; their feet and hands were larger, and they preferred flat lands and riversides. The Fallohides were fairer of skin and also of hair, and they were taller and slimmer than the others; they were lovers of trees and of woodlands.
     
     The Harfoots had much to do with Dwarves in ancient times, and long lived in the foothills of the mountains. They moved westward early, and roamed over Eriador as far as Weathertop while the others were still in the Wilderland. They were the most normal and representative variety of Hobbit, and far the most numerous. They were the most inclined to settle in one place, a
-    </div>
     <feed></feed>
+    </div>
   `
   ,
   styleUrls: ['./user-page.component.scss']

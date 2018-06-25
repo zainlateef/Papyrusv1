@@ -14,14 +14,14 @@ import { User } from '../../../../Models/user';
     <input [ngClass]="{'searchbar-closed' : !showSearchBar }" class="searchbar-open" type="search" [formControl]="search" (clickOutside)="onClickedOutside($event)">
     <ul>
       <li [@zoomIn]="zoomIn" [routerLink]="['/feed',user.uid]" *ngFor="let user of userMatches">
-      <div class="wrapper">
-        <div class="image-wrapper">
-          <img [src]="user.profilePic">
+        <div class="wrapper">
+          <div class="image-wrapper">
+            <img [src]="user.profilePic">
+          </div>
+          <div class="name">
+            {{user.firstName}} {{user.lastName}}
+          </div>
         </div>
-        <div class="name">
-          {{user.firstName}} {{user.lastName}}
-        </div>
-      </div>
       </li>
     </ul>
   </div>
