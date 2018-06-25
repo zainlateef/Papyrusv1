@@ -19,6 +19,7 @@ import { FriendSearchComponent } from './Pages/user-page/navbar/friend-search/fr
 import { UserMenuComponent } from './Pages/user-page/navbar/user-menu/user-menu.component';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ClickOutsideModule } from 'ng-click-outside';
+import { EditButtonService } from './Services/edit-button.service';
 
 export const routes: Routes=[
   {path: '', component: HomeComponent},
@@ -56,7 +57,7 @@ export const routes: Routes=[
     FormsModule,
     ClickOutsideModule
   ],
-  providers: [],
+  providers: [EditButtonService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

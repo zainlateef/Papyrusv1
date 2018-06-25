@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FacetItem } from '../../../../Models/facet-item';
 import { UrlChangeDetection } from '../../../../Parent-Classes/url-changes';
+import { EditButtonService } from '../../../../Services/edit-button.service';
 @Component({
   selector: 'facet-menu',
   template: 
@@ -22,8 +23,9 @@ import { UrlChangeDetection } from '../../../../Parent-Classes/url-changes';
 
 export class FacetMenuComponent extends UrlChangeDetection implements OnInit
 {
-    constructor(private route : ActivatedRoute){
+    constructor(private route : ActivatedRoute, private editService : EditButtonService){
       super(route);
+      editService.change.subscribe(console.log("Edit button reached in facetmenu"));
     }
 
     showMenu : boolean = false;
