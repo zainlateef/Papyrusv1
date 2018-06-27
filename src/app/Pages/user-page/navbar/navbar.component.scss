@@ -13,6 +13,7 @@ $nav-bg: #2b3033;
     transition: $ease;
 
     @media (max-width: 640px) {
+        //come back
         position: fixed;
         height: 10vh;
         background : $nav-bg;

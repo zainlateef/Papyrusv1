@@ -1,19 +1,18 @@
 .wrapper
 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: block;
     text-align: justify;
     position: relative;
-    top: 15vh;
-    bottom: 15vh;
+    margin: 0 auto;
+    width: -webkit-calc(100% - 200px);
+    width:    -moz-calc(100% - 200px);
+    width:         calc(100% - 200px);
     max-width: 1000px;
-    padding: 0 100px 0 100px;
-    z-index: -1;
     border-bottom: yellow dashed;
     border-top: yellow dashed;
     @media(max-width: 640px)
     {
+        width: 100vw;
         top: 10vh;
         bottom: 10vh;
         padding: 0;
