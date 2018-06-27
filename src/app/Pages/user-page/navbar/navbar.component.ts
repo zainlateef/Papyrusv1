@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'navbar',
   template: `
-  <div class="wrapper" [ngStyle]="{ 'z-index' : searchIsOpen ? '100' : 'initial' }">
+  <div class="wrapper" [ngStyle]="searchIsOpen && { 'z-index' : '100'  }">
     <facet-menu></facet-menu>
     <div class="right">
         <friend-search (emitSearchStatus)="getSearchEvent($event)"></friend-search>
