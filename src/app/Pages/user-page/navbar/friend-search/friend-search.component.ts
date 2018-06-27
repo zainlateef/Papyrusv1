@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
@@ -36,6 +36,7 @@ export class FriendSearchComponent implements OnInit,OnDestroy {
   zoomIn: any;
   search : FormControl;
   showSearchBar : boolean;
+  @Output() emitSearchStatus = new EventEmitter<boolean>();
   subscription : any;
   userMatches : Set<User> = new Set;
   userDatabase : Array<User> = new Array;
@@ -110,11 +111,13 @@ export class FriendSearchComponent implements OnInit,OnDestroy {
 
   openSearchBar(): any {
     this.showSearchBar=true;
+    this.emitSearchStatus.emit(true);
   }
 
   closeSearchBar(): any {
     this.userMatches.clear();
     this.showSearchBar=false;
+    this.emitSearchStatus.emit(false);
   }
 
   ngOnDestroy() 
