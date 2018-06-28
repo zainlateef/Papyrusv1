@@ -14,6 +14,7 @@ import { FacetItem } from '../../../../../Models/facet-item';
 export class FacetItemComponent implements OnInit {
 
   @Input("item") item : FacetItem;
+  @Input("editMode") editMode : boolean;
   
   constructor() {
   }
