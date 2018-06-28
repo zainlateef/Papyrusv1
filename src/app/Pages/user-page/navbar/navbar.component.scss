@@ -16,6 +16,7 @@ $nav-bg: #2b3033;
         position: fixed;
         height: 10vh;
         background : $nav-bg;
+        z-index: 2;
     }
 }
 
