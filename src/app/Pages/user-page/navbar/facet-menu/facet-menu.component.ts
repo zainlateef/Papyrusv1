@@ -13,7 +13,7 @@ import { EditButtonService } from '../../../../Services/edit-button.service';
     </div>
     <ul class="nav__list" [ngClass]="{'nav__list--active':showMenu}">
       <li *ngFor="let item of facetItems" class="nav__item">
-        <facet-item [item]="item"></facet-item>
+        <facet-item [editMode]="editMode" [item]="item"></facet-item>
       </li>
     </ul>
   </nav>
@@ -25,15 +25,16 @@ export class FacetMenuComponent extends UrlChangeDetection implements OnInit
 {
     constructor(private route : ActivatedRoute, private editService : EditButtonService){
       super(route);
-      editService.change.subscribe(console.log("Edit button reached in facetmenu"));
     }
 
     showMenu : boolean = false;
+    editMode : boolean = false;
     facetItems : FacetItem[];
 
     ngOnInit()
     {
       this.detectUidChanges();
+      this.editService.change.subscribe( editButtonEvent=> this.editMode=editButtonEvent);
     }
 
     loadOnUrlChange(params)
