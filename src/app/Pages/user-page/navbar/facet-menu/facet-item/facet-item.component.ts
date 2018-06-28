@@ -5,7 +5,7 @@ import { FacetItem } from '../../../../../Models/facet-item';
   selector: 'facet-item',
   template: 
   ` <a [routerLink]="[{facet : item.facet}]" class="nav__link">
-      <fa class="icon" [name]="item.iconName" [ngStyle]="{'color':item.color}"></fa>
+      <fa class="icon faa-float animated faa-fast" [name]="item.iconName" [ngStyle]="{'color':item.color}"></fa>
     </a>
   `
   ,
