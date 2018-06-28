@@ -7,7 +7,7 @@ import { EditButtonService } from '../../../../Services/edit-button.service';
   selector: 'facet-menu',
   template: 
   `
-  <nav class="nav">
+  <nav class="nav" (clickOutside)="onClickedOutside($event)">
     <div class="burger" [ngClass]="{'burger--active':showMenu}" (click)="toggleMenu()">
       <div class="burger__patty"></div>
     </div>
@@ -46,5 +46,10 @@ export class FacetMenuComponent extends UrlChangeDetection implements OnInit
     toggleMenu()
     {
       this.showMenu=!this.showMenu;
+    }
+
+    onClickedOutside($event)
+    {
+      this.showMenu=false;
     }
 }
