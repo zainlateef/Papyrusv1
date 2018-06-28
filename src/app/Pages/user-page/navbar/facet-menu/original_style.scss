@@ -1,3 +1,4 @@
+// original: https://codepen.io/ettrics/embed/ogRaRv?height=265&theme-id=dark&slug-hash=ogRaRv&default-tab=css%2Cresult&user=ettrics&embed-version=2
 $nav-bg: #2b3033;
 $blue: #5fc7ea;
 $red: #e68568;
@@ -45,6 +46,9 @@ ul {
   &__item {
     flex: 1;
     position: relative;
+    @media (max-width: 640px) {
+      display: none;
+    }
   }
   
   &__link {
@@ -68,9 +72,16 @@ ul {
   
   @media (max-width: 640px) {
     width: 70px;
-    
     &__list {
-      height: 90vh;
+      height: 0;
+      &--active {
+        height: 90vh;
+        transform: translate(0, 0);
+        .nav__item
+        {
+          display: initial;
+        }
+      }
     }
   }
 }

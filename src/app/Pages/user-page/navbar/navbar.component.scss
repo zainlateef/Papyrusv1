@@ -31,3 +31,11 @@ $nav-bg: #2b3033;
         display: none;
     }
 }
+
+.zindex-on
+{
+    @media(min-width: 640px)
+    {
+        z-index: 100;
+    }
+}
