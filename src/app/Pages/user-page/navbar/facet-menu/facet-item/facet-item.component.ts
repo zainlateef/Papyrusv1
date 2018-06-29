@@ -5,7 +5,9 @@ import { FacetItem } from '../../../../../Models/facet-item';
   selector: 'facet-item',
   template: 
   ` <a [routerLink]="[{facet : item.facet}]" class="nav__link">
-      <fa class="icon" [ngClass]="{'faa-float animated faa-fast': editMode}" [name]="item.iconName" [ngStyle]="{'color':item.color}"></fa>
+      <div>
+        <i [class]="item.iconName" [ngClass]="{'faa-float animated faa-fast': editMode}" [ngStyle]="{'color':item.color}"></i>
+      </div>
     </a>
   `
   ,
