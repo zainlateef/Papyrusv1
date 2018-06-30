@@ -20,6 +20,7 @@ import { UserMenuComponent } from './Pages/user-page/navbar/user-menu/user-menu.
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ClickOutsideModule } from 'ng-click-outside';
 import { EditButtonService } from './Services/edit-button.service';
+import { ColorPickerModule } from 'ngx-color-picker';
 
 export const routes: Routes=[
   {path: '', component: HomeComponent},
@@ -55,7 +56,8 @@ export const routes: Routes=[
     AngularFontAwesomeModule,
     ReactiveFormsModule,
     FormsModule,
-    ClickOutsideModule
+    ClickOutsideModule,
+    ColorPickerModule
   ],
   providers: [EditButtonService],
   bootstrap: [AppComponent]

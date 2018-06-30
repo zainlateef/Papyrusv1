@@ -28,6 +28,7 @@
     "ng-animate": "^0.3.2",
     "ng-click-outside": "^4.0.0",
     "ng2-dragula": "^1.5.0",
+    "ngx-color-picker": "^6.3.3",
     "rxjs": "^5.5.6",
     "zone.js": "^0.8.19"
   },

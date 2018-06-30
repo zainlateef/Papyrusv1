@@ -10,7 +10,7 @@ import { FacetItem } from '../../../../../Models/facet-item';
         <div class="editMenu">
           <img src="/assets/images/error.svg">
           <input>
-        </div>
+          <button class="colorpicker" [(colorPicker)]="color" [style.background]="color" [cpPosition]="'bottom'" [cpDisableInput]="true"></button>        </div>
       </div>
     </a>
   `
