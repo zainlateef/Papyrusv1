@@ -14,3 +14,31 @@ $nav-bg: #2b3033;
         background : rgba(41, 41, 41, 0.6);
     }
 }
+
+.wrapper
+{
+    position: relative;
+    border: red dashed;
+    .icon
+    {
+        border: greenyellow dashed;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .editMenu
+    {
+        border: navajowhite dashed;
+        display: inline-block;
+        position: absolute;
+        width: 170px;
+        height: 100px;
+        top: -55%;
+        left: 100%;
+        
+        img
+        {
+            width: 10px;
+        }
+    }
+}
