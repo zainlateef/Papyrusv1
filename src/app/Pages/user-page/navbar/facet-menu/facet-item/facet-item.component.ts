@@ -9,6 +9,7 @@ import { FacetItem } from '../../../../../Models/facet-item';
         <i [class]="item.iconName" [ngClass]="{'faa-float animated faa-fast': editMode}" [ngStyle]="{'color':item.color}"></i>
         <div class="editMenu">
           <img src="/assets/images/error.svg">
+          <input>
         </div>
       </div>
     </a>

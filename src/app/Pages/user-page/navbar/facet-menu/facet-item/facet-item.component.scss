@@ -33,12 +33,13 @@ $nav-bg: #2b3033;
         position: absolute;
         width: 170px;
         height: 100px;
-        top: -55%;
+        top: -80%;
         left: 100%;
         
         img
         {
-            width: 10px;
+            width: 15px;
+            vertical-align: middle;
         }
     }
 }
