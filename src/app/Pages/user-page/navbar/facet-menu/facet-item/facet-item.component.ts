@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FacetItem } from '../../../../../Models/facet-item';
+import { EditButtonService } from '../../../../../Services/edit-button.service';
 
 @Component({
   selector: 'facet-item',
@@ -7,10 +8,11 @@ import { FacetItem } from '../../../../../Models/facet-item';
   ` <a [routerLink]="[{facet : item.facet}]" class="nav__link">
       <div class="wrapper">
         <i [class]="item.iconName" [ngClass]="{'faa-float animated faa-fast': editMode}" [ngStyle]="{'color':item.color}"></i>
-        <div class="editMenu">
+        <div class="editMenu" *ngIf="editMode">
           <img src="/assets/images/error.svg">
           <input>
-          <button class="colorpicker" [(colorPicker)]="color" [style.background]="color" [cpPosition]="'bottom'" [cpDisableInput]="true"></button>        </div>
+          <button class="colorpicker" [(colorPicker)]="color" [style.background]="color" [cpPosition]="'bottom'" [cpDisableInput]="true"></button>
+        </div>
       </div>
     </a>
   `
@@ -20,13 +22,13 @@ import { FacetItem } from '../../../../../Models/facet-item';
 export class FacetItemComponent implements OnInit {
 
   @Input("item") item : FacetItem;
-  @Input("editMode") editMode : boolean;
+  editMode : boolean = false;
   
-  constructor() {
+  constructor(private editService : EditButtonService) {
   }
 
   ngOnInit() {
-    this.editMode=false;
+    this.editService.change.subscribe( editButtonEvent => this.editMode=editButtonEvent );
   }
 
 }
