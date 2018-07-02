@@ -33,7 +33,7 @@ export class FacetMenuComponent extends UrlChangeDetection implements OnInit
     ngOnInit()
     {
       this.detectUidChanges();
-      this.editService.change.subscribe( editButtonEvent=> this.handleEditEvent(editButtonEvent));
+      this.editService.change.subscribe( editButtonEvent=> this.handleEditButtonEvent(editButtonEvent));
     }
 
     loadOnUrlChange(params)
@@ -48,7 +48,7 @@ export class FacetMenuComponent extends UrlChangeDetection implements OnInit
       this.showMenu=!this.showMenu;
     }
 
-    handleEditEvent(editButtonStatus)
+    handleEditButtonEvent(editButtonStatus)
     {
       if(editButtonStatus)
         this.showMenu=true;
