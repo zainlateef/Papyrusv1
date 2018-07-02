@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'navbar',
   template: `
-  <div class="wrapper" [ngClass]="{'increase-zindex':searchIsOpen}">
+  <div class="wrapper">
     <facet-menu></facet-menu>
     <div class="right">
         <friend-search (emitSearchStatus)="getSearchEvent($event)"></friend-search>

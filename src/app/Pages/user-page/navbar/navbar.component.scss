@@ -11,12 +11,12 @@ $nav-bg: #2b3033;
     right: 0;
     margin: 0 auto; 
     transition: $ease;
+    z-index: 2;
 
     @media (max-width: 640px) {
         position: fixed;
         height: 10vh;
         background : $nav-bg;
-        z-index: 2;
     }
 }
 
@@ -29,13 +29,5 @@ $nav-bg: #2b3033;
     
     @media (max-width: 319px), (max-height: 320px){
         display: none;
-    }
-}
-
-.increase-zindex
-{
-    @media(min-width: 640px)
-    {
-        z-index: 100;
     }
 }
