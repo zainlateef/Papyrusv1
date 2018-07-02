@@ -9,7 +9,7 @@ import { EditButtonService } from '../../../../../Services/edit-button.service';
       <div class="wrapper">
         <i [class]="item.iconName" [ngClass]="{'faa-float animated faa-fast': editMode}" [ngStyle]="{'color':item.color}"></i>
         <div class="editMenu" *ngIf="editMode">
-          <img src="/assets/images/error.svg">
+          <img src="/assets/images/close.png">
           <input>
           <button class="colorpicker" [(colorPicker)]="color" [style.background]="color" [cpPosition]="'bottom'" [cpDisableInput]="true"></button>
         </div>
