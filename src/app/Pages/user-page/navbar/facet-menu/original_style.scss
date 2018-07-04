@@ -24,7 +24,7 @@ ul {
 }
 
 .nav {
-  // position: fixed;
+  position: fixed;
   z-index: 1;
   top: 0;
   left: 0;
@@ -88,6 +88,7 @@ ul {
 
 .burger {
   height: 15vh;
+  max-height: 100px;
   position: relative;
   display: flex;
   justify-content: center;
