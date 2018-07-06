@@ -5,7 +5,7 @@ import { EditButtonService } from '../../../../../Services/edit-button.service';
 @Component({
   selector: 'facet-item',
   template: 
-  ` <a [routerLink]="editMode? null : [{facet : item.facet}]" class="nav__link">
+  ` <a [routerLink]="editMode ? null : [{facet : item.facet}]" class="nav__link">
       <div class="wrapper">
         <i [class]="item.iconName" [ngClass]="{'faa-float animated faa-fast': editMode}" [ngStyle]="{'color':item.color}"></i>
         <div class="editMenu" *ngIf="editMode">
