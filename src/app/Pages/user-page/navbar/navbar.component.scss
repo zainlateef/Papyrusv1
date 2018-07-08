@@ -17,6 +17,8 @@ $nav-bg: #2b3033;
     transition: $ease;
 
     @media (max-width: 640px) {
+        position: fixed;
+        z-index: 2;
         height: 10vh;
         background : $nav-bg;
     }
