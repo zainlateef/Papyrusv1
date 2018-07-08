@@ -18,21 +18,21 @@ $nav-bg: #2b3033;
 .wrapper
 {
     position: relative;
-    border: red dashed;
+    // border: red dashed;
     .icon
     {
-        border: greenyellow dashed;
+        // border: greenyellow dashed;
         display: inline-flex;
         justify-content: center;
         align-items: center;
     }
     .editMenu
     {
-        border: navajowhite dashed;
+        // border: navajowhite dashed;
         display: inline-block;
         position: absolute;
         top: -80%;
-        left: 100%;
+        left: 150%;
         width: max-content;
         
         img

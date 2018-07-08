@@ -7,7 +7,7 @@ import { EditButtonService } from '../../../../../Services/edit-button.service';
   template: 
   ` <a [routerLink]="editMode ? null : [{facet : item.facet}]" class="nav__link">
       <div class="wrapper">
-        <i (click)="editMode ? toggleEditMenu() : null " [class]="item.iconName" [ngClass]="{'faa-float animated faa-fast': editMode}" [ngStyle]="{'color':item.color}"></i>
+        <i [ngStyle]="{'color':item.color}" (click)="editMode ? toggleEditMenu() : null " [class]="item.iconName" [ngClass]="{'faa-float animated faa-fast': editMode}"></i>
         <div class="editMenu" *ngIf="editMode" (clickOutside)=" editMenu ? onClickedOutside($event) : null">
           <img src="/assets/images/close.png">
           <input *ngIf="editMenu">
