@@ -31,19 +31,23 @@ $nav-bg: #2b3033;
         border: navajowhite dashed;
         display: inline-block;
         position: absolute;
-        width: 170px;
-        height: 100px;
         top: -80%;
         left: 100%;
+        width: max-content;
         
         img
         {
+            display: inline-block;
             width: 15px;
             vertical-align: middle;
         }
-        .colorpicker
+        input
         {
             display: inline-block;
+        }
+        .colorpicker
+        {
+            display: block;
             width: 15px; 
             height: 15px;
         }
