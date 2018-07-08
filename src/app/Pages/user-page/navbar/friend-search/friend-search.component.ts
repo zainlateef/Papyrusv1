@@ -36,7 +36,6 @@ export class FriendSearchComponent implements OnInit,OnDestroy {
   zoomIn: any;
   search : FormControl;
   showSearchBar : boolean;
-  @Output() emitSearchStatus = new EventEmitter<boolean>();
   subscription : any;
   userMatches : Set<User> = new Set;
   userDatabase : Array<User> = new Array;
@@ -111,13 +110,11 @@ export class FriendSearchComponent implements OnInit,OnDestroy {
 
   openSearchBar(): any {
     this.showSearchBar=true;
-    this.emitSearchStatus.emit(true);
   }
 
   closeSearchBar(): any {
     this.userMatches.clear();
     this.showSearchBar=false;
-    this.emitSearchStatus.emit(false);
   }
 
   ngOnDestroy() 

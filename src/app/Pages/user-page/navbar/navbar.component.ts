@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   <div class="wrapper">
     <facet-menu></facet-menu>
     <div class="right">
-        <friend-search (emitSearchStatus)="getSearchEvent($event)"></friend-search>
+        <friend-search></friend-search>
         <user-menu></user-menu>
     </div>
     <div style="clear: right; min-height: 1px"></div>
@@ -18,15 +18,7 @@ export class NavbarComponent implements OnInit {
 
   constructor() { }
 
-  searchIsOpen : boolean;
-
   ngOnInit() {
-    this.searchIsOpen=false;
-  }
-
-  getSearchEvent(searchIsOpen)
-  {
-    this.searchIsOpen=searchIsOpen;
   }
 
 }
