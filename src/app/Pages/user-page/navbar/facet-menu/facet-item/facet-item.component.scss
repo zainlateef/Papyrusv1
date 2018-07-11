@@ -18,7 +18,10 @@ $nav-bg: #2b3033;
 .wrapper
 {
     position: relative;
-    // border: red dashed;
+    border: red dashed;
+    width: 30px;
+    text-align: center;
+
     .icon
     {
         // border: greenyellow dashed;
@@ -31,27 +34,30 @@ $nav-bg: #2b3033;
         // border: navajowhite dashed;
         display: inline-block;
         position: absolute;
-        top: -80%;
-        left: 150%;
+        top: -50%;
+        left: 110%;
         width: max-content;
         
         img
         {
             display: inline-block;
             width: 15px;
-            vertical-align: middle;
+            vertical-align: top;
         }
-        input
+        .editOptions
         {
             display: inline-block;
-        }
-        .colorpicker
-        {
-            display: block;
-            width: 15px; 
-            height: 15px;
-            position: relative;
-            left: 15px;
+            text-align: left;
+            input
+            {
+                display: block;
+            }
+            .colorpicker
+            {
+                display: inline-block;
+                width: 15px; 
+                height: 15px;
+            }
         }
     }
 }
