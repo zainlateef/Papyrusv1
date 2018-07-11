@@ -50,11 +50,13 @@ $nav-bg: #2b3033;
             display: block;
             width: 15px; 
             height: 15px;
+            position: relative;
+            left: 15px;
         }
     }
 }
 
-::ng-deep .saturation-lightness
+::ng-deep .arrow-bottom
 {
-    height: 80px !important;
+    visibility: hidden;
 }
