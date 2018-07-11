@@ -7,7 +7,7 @@ import { EditButtonService } from '../../../../../Services/edit-button.service';
   template: 
   ` <a [routerLink]="editMode ? null : [{facet : item.facet}]" class="nav__link">
       <div class="wrapper">
-        <i [ngStyle]="{'color':item.color}" (click)="editMode ? toggleEditMenu() : null " [class]="item.iconName" [ngClass]="{'faa-float animated faa-fast': editMode}"></i>
+        <i [ngStyle]="{'color':item.color}" (click)="editMode ? toggleEditMenu($event) : null " [class]="item.iconName" [ngClass]="{'faa-float animated faa-fast': editMode}"></i>
         <div class="editMenu" *ngIf="editMode" (clickOutside)=" editMenu ? onClickedOutside($event) : null">
           <img src="/assets/images/close.png">
           <input *ngIf="editMenu">
@@ -33,8 +33,9 @@ export class FacetItemComponent implements OnInit {
     this.editService.change.subscribe( editButtonEvent => this.editMode=editButtonEvent );
   }
 
-  toggleEditMenu()
+  toggleEditMenu(mouseclick : MouseEvent)
   {
+    console.log("this mouseclick: "+mouseclick.clientX+" "+mouseclick.clientY);
     this.editMenu=!this.editMenu;
   }
 
