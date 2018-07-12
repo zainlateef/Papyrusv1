@@ -8,7 +8,9 @@ declare var $: any;
   template: 
   ` <a [routerLink]="editMode ? null : [{facet : item.facet}]" class="nav__link">
       <div class="wrapper">
-        <i [ngStyle]="{'color':item.color}" (click)="editMode ? toggleEditOptions($event) : null " [class]="item.iconName" [ngClass]="{'faa-float animated faa-fast': editMode}"></i>
+        <div class="icon_wrapper" (click)="editMode ? toggleEditOptions($event) : null ">
+          <i [ngStyle]="{'color':item.color}" [class]="item.iconName" [ngClass]="{'faa-float animated faa-fast': editMode}"></i>
+        </div>
         <div class="editMenu" *ngIf="editMode" (clickOutside)=" editOptions ? onClickedOutside($event) : null">
           <img src="/assets/images/close.png">
           <div class="editOptions" *ngIf="editOptions">
