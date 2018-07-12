@@ -1,6 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, HostBinding } from '@angular/core';
 import { FacetItem } from '../../../../../Models/facet-item';
 import { EditButtonService } from '../../../../../Services/edit-button.service';
+declare var $: any;
 
 @Component({
   selector: 'facet-item',
@@ -10,9 +11,9 @@ import { EditButtonService } from '../../../../../Services/edit-button.service';
         <i [ngStyle]="{'color':item.color}" (click)="editMode ? toggleEditOptions($event) : null " [class]="item.iconName" [ngClass]="{'faa-float animated faa-fast': editMode}"></i>
         <div class="editMenu" *ngIf="editMode" (clickOutside)=" editOptions ? onClickedOutside($event) : null">
           <img src="/assets/images/close.png">
-          <div class="editOptions">
-            <input *ngIf="editOptions">
-            <button *ngIf="editOptions" class="colorpicker" [(colorPicker)]="color" [style.background]="color" [cpPosition]="'bottom'" [cpDisableInput]="true"></button>
+          <div class="editOptions" *ngIf="editOptions">
+            <input>
+            <button class="colorpicker" (colorPickerOpen)="colorPickerOpened(color)" [(colorPicker)]="color" [style.background]="color" [cpPosition]="colorPickerOrientation" [cpDisableInput]="true"></button>
           </div>
         </div>
       </div>
@@ -22,8 +23,8 @@ import { EditButtonService } from '../../../../../Services/edit-button.service';
   styleUrls: ['./facet-item.component.scss','../original_style.scss']
 })
 export class FacetItemComponent implements OnInit {
-
   @Input("item") item : FacetItem;
+  colorPickerOrientation : string;
   editMode : boolean = false;
   editOptions : boolean = false;
   counter : number = 0;
@@ -51,6 +52,22 @@ export class FacetItemComponent implements OnInit {
         this.counter=0;
       }
     }
+  }
+
+  colorPickerOpened(color)
+  {
+    let el=$( '.color-picker' );
+    let boundsOfColorPicker = el[0].getBoundingClientRect();
+    console.log(this.isElementInViewport(boundsOfColorPicker));
+    if(this.isElementInViewport(boundsOfColorPicker))
+      this.colorPickerOrientation="bottom";
+    else
+      this.colorPickerOrientation="top";
+  }
+
+  isElementInViewport(rectangle) 
+  {
+    return rectangle.top >= 0 && rectangle.left >= 0 && rectangle.bottom <= (window.innerHeight || document.documentElement.clientHeight) && rectangle.right <= (window.innerWidth || document.documentElement.clientWidth);
   }
 
 }

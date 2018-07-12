@@ -62,7 +62,7 @@ $nav-bg: #2b3033;
     }
 }
 
-::ng-deep .arrow-bottom
+::ng-deep .arrow-bottom, ::ng-deep .arrow-top
 {
     visibility: hidden;
 }
