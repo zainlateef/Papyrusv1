@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, HostBinding } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FacetItem } from '../../../../../Models/facet-item';
 import { EditButtonService } from '../../../../../Services/edit-button.service';
 declare var $: any;
