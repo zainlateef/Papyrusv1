@@ -19,7 +19,7 @@ import { EditButtonService } from '../../../../Services/edit-button.service';
         <a class="nav__link">
           <div class="wrapper">
             <div class="icon_wrapper">
-              <i class="fa fa-plus colorchange"></i>
+              <i class="material-icons">add</i>
             </div>
           </div>
         </a>
