@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { FacetItem } from '../../../../Models/facet-item';
 import { UrlChangeDetection } from '../../../../Parent-Classes/url-changes';
 import { EditButtonService } from '../../../../Services/edit-button.service';
+import { zoomIn } from 'ng-animate';
+import { transition, trigger, useAnimation } from '@angular/animations';
 @Component({
   selector: 'facet-menu',
   template: 
@@ -15,7 +17,7 @@ import { EditButtonService } from '../../../../Services/edit-button.service';
       <li *ngFor="let item of facetItems" class="nav__item">
         <facet-item [item]="item"></facet-item>
       </li>
-      <li class="nav__item" *ngIf="editModeTrue">
+      <li class="nav__item" *ngIf="editModeTrue" [@zoomIn]="zoomIn">
         <a class="nav__link">
           <div class="wrapper">
             <div class="icon_wrapper">
@@ -27,7 +29,10 @@ import { EditButtonService } from '../../../../Services/edit-button.service';
     </ul>
   </nav>
   `,
-  styleUrls: ['./facet-menu.component.scss','./original_style.scss','./facet-item/facet-item.component.scss']
+  styleUrls: ['./facet-menu.component.scss','./original_style.scss','./facet-item/facet-item.component.scss'],
+  animations: [
+    trigger('zoomIn', [transition('void => *', useAnimation(zoomIn, { params:{timing:0.15} } ))])
+  ]
 })
 
 export class FacetMenuComponent extends UrlChangeDetection implements OnInit
@@ -35,7 +40,7 @@ export class FacetMenuComponent extends UrlChangeDetection implements OnInit
     constructor(private route : ActivatedRoute, private editService : EditButtonService){
       super(route);
     }
-
+    zoomIn: any;
     showMenu : boolean = false;
     facetItems : FacetItem[];
     editModeTrue : boolean = false;
@@ -60,13 +65,13 @@ export class FacetMenuComponent extends UrlChangeDetection implements OnInit
       new FacetItem("fa fa-user","home1","#ff0080"),
       new FacetItem("fa fa-user","home2","#ff0080"),
       new FacetItem("fa fa-user","home3","#ff0080"),
-      new FacetItem("fa fa-user","home4","#ff0080"),
-      new FacetItem("fa fa-user","home5","#ff0080"),
-      new FacetItem("fa fa-user","home6","#ff0080"),
-      new FacetItem("fa fa-user","home7","#ff0080"),
-      new FacetItem("fa fa-user","home8","#ff0080"),
-      new FacetItem("fa fa-user","home9","#ff0080"),
-      new FacetItem("fa fa-user","home10","#ff0080"),
+      // new FacetItem("fa fa-user","home4","#ff0080"),
+      // new FacetItem("fa fa-user","home5","#ff0080"),
+      // new FacetItem("fa fa-user","home6","#ff0080"),
+      // new FacetItem("fa fa-user","home7","#ff0080"),
+      // new FacetItem("fa fa-user","home8","#ff0080"),
+      // new FacetItem("fa fa-user","home9","#ff0080"),
+      // new FacetItem("fa fa-user","home10","#ff0080"),
     );
     }
 
