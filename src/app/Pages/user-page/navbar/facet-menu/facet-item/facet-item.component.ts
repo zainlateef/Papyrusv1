@@ -26,7 +26,7 @@ declare var $: any;
 })
 export class FacetItemComponent implements OnInit {
   @Input("item") item : FacetItem;
-  colorPickerOrientation : string;
+  colorPickerOrientation : string = "bottom";
   editMode : boolean = false;
   editOptions : boolean = false;
   counter : number = 0;
@@ -61,10 +61,9 @@ export class FacetItemComponent implements OnInit {
     let el=$( '.color-picker' );
     let boundsOfColorPicker = el[0].getBoundingClientRect();
     console.log(this.isElementInViewport(boundsOfColorPicker));
-    if(this.isElementInViewport(boundsOfColorPicker))
-      this.colorPickerOrientation="bottom";
-    else
+    if(!this.isElementInViewport(boundsOfColorPicker))
       this.colorPickerOrientation="top";
+    //reset the color picker
   }
 
   isElementInViewport(rectangle) 

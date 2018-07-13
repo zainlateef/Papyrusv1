@@ -34,6 +34,7 @@ $nav-bg: #2b3033;
         // border: navajowhite dashed;
         display: inline-block;
         position: absolute;
+        z-index: 2;
         top: -50%;
         left: 110%;
         width: max-content;
@@ -65,4 +66,9 @@ $nav-bg: #2b3033;
 ::ng-deep .arrow-bottom, ::ng-deep .arrow-top
 {
     visibility: hidden;
+}
+
+::ng-deep .color-picker
+{
+    top: unset !important;
 }

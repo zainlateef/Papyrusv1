@@ -8,7 +8,7 @@ import { EditButtonService } from '../../../../Services/edit-button.service';
   template: 
   `
   <nav class="nav" (clickOutside)="onClickedOutside($event)">
-    <div class="burger" [ngClass]="{'burger--active':showMenu}" (click)="toggleMenu()">
+    <div class="burger" (click)="toggleMenu()" [ngClass]="{'burger--active':showMenu}" [ngStyle]="{'z-index': burgerZIndex}">
       <div class="burger__patty"></div>
     </div>
     <ul class="nav__list" [ngClass]="{'nav__list--active':showMenu}">
@@ -29,6 +29,8 @@ export class FacetMenuComponent extends UrlChangeDetection implements OnInit
 
     showMenu : boolean = false;
     facetItems : FacetItem[];
+    editModeTrue : boolean = false;
+    burgerZIndex=2;
 
     ngOnInit()
     {
@@ -59,18 +61,29 @@ export class FacetMenuComponent extends UrlChangeDetection implements OnInit
 
     toggleMenu()
     {
+      if(this.editModeTrue)
+      this.editService.toggle();
+
       this.showMenu=!this.showMenu;
     }
 
     handleEditButtonEvent(editButtonStatus)
     {
-      if(editButtonStatus)
-        this.showMenu=true;
+      this.editModeTrue=editButtonStatus;
+      if(this.editModeTrue)
+      {
+        this.showMenu=true
+        this.burgerZIndex=0;
+      }
+      else
+      {
+        this.burgerZIndex=2
+      }
     }
 
     onClickedOutside($event)
     {
-      if(!this.editService.editMode)
+      if(!this.editModeTrue)
       this.showMenu=false;
     }
 }
