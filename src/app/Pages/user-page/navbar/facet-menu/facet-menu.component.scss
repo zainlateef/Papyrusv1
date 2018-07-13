@@ -2,3 +2,65 @@
 {
   display: inline-block;
 }
+.colorchange
+{
+  color:rgb(92, 92, 255);
+  -webkit-animation:colorchange 1s infinite alternate;
+  animation:colorchange 1s infinite alternate;
+}
+
+@-webkit-keyframes colorchange {
+  0% {
+    
+    color: rgb(92, 108, 255);
+  }
+  
+  10% {
+    
+    color: rgb(92, 124, 255);
+  }
+  
+  20% {
+    
+    color: rgb(92, 140, 255);
+  }
+  
+  30% {
+    
+    color: rgb(92, 156, 255);
+  }
+  
+  40% {
+    
+    color: rgb(92, 172, 255);
+  }
+  
+  50% {
+    
+    color: rgb(92, 188, 255);
+  }
+  
+  60% {
+    
+    color: rgb(92, 204, 255);
+  }
+  
+  70% {
+    
+    color: rgb(92, 220, 255);
+  }
+  80% {
+ 
+    color: rgb(92, 236, 255);
+  }
+  
+  90% {
+ 
+    color: rgb(92, 252, 255);
+  }
+  
+  100% {
+    
+    color: rgb(92, 255, 255);
+  }
+}

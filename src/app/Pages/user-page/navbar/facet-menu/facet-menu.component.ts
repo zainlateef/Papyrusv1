@@ -15,10 +15,19 @@ import { EditButtonService } from '../../../../Services/edit-button.service';
       <li *ngFor="let item of facetItems" class="nav__item">
         <facet-item [item]="item"></facet-item>
       </li>
+      <li class="nav__item" *ngIf="editModeTrue">
+        <a class="nav__link">
+          <div class="wrapper">
+            <div class="icon_wrapper">
+              <i class="fa fa-plus colorchange"></i>
+            </div>
+          </div>
+        </a>
+      </li>
     </ul>
   </nav>
   `,
-  styleUrls: ['./facet-menu.component.scss','./original_style.scss']
+  styleUrls: ['./facet-menu.component.scss','./original_style.scss','./facet-item/facet-item.component.scss']
 })
 
 export class FacetMenuComponent extends UrlChangeDetection implements OnInit
@@ -31,6 +40,8 @@ export class FacetMenuComponent extends UrlChangeDetection implements OnInit
     facetItems : FacetItem[];
     editModeTrue : boolean = false;
     burgerZIndex=2;
+    addItem : FacetItem = new FacetItem("fa fa-plus","home10","#ff0080");
+
 
     ngOnInit()
     {
@@ -74,6 +85,7 @@ export class FacetMenuComponent extends UrlChangeDetection implements OnInit
       {
         this.showMenu=true
         this.burgerZIndex=0;
+        this.facetItems.push
       }
       else
       {
