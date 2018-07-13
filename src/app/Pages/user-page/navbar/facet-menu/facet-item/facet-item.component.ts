@@ -35,7 +35,15 @@ export class FacetItemComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.checkIfNewlyCreated()
     this.editService.change.subscribe( editButtonEvent => this.editMode=editButtonEvent );
+  }
+
+  checkIfNewlyCreated()
+  {
+    this.editMode=this.editService.editMode;
+    if(this.editMode)
+    this.editOptions=true;
   }
 
   toggleEditOptions(mouseclick : MouseEvent)

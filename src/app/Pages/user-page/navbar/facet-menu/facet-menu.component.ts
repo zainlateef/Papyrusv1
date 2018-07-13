@@ -21,7 +21,7 @@ import { transition, trigger, useAnimation } from '@angular/animations';
         <a class="nav__link">
           <div class="wrapper">
             <div class="icon_wrapper">
-              <i class="material-icons">add</i>
+              <i  (click)="addNewFacet()" class="material-icons">add</i>
             </div>
           </div>
         </a>
@@ -29,7 +29,7 @@ import { transition, trigger, useAnimation } from '@angular/animations';
     </ul>
   </nav>
   `,
-  styleUrls: ['./facet-menu.component.scss','./original_style.scss','./facet-item/facet-item.component.scss'],
+  styleUrls: ['./facet-menu.component.scss','./original_style.scss','./facet-item/facet-item.component.scss',],
   animations: [
     trigger('zoomIn', [transition('void => *', useAnimation(zoomIn, { params:{timing:0.15} } ))])
   ]
@@ -45,7 +45,6 @@ export class FacetMenuComponent extends UrlChangeDetection implements OnInit
     facetItems : FacetItem[];
     editModeTrue : boolean = false;
     burgerZIndex=2;
-    addItem : FacetItem = new FacetItem("fa fa-plus","home10","#ff0080");
 
 
     ngOnInit()
@@ -75,14 +74,6 @@ export class FacetMenuComponent extends UrlChangeDetection implements OnInit
     );
     }
 
-    toggleMenu()
-    {
-      if(this.editModeTrue)
-      this.editService.toggle();
-
-      this.showMenu=!this.showMenu;
-    }
-
     handleEditButtonEvent(editButtonStatus)
     {
       this.editModeTrue=editButtonStatus;
@@ -96,6 +87,19 @@ export class FacetMenuComponent extends UrlChangeDetection implements OnInit
       {
         this.burgerZIndex=2
       }
+    }
+
+    addNewFacet()
+    {
+      this.facetItems.push(new FacetItem("fa fa-user","","#000000"));
+    }
+
+    toggleMenu()
+    {
+      if(this.editModeTrue)
+      this.editService.toggle();
+
+      this.showMenu=!this.showMenu;
     }
 
     onClickedOutside($event)
