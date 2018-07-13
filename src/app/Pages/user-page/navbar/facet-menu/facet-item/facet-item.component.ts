@@ -14,8 +14,9 @@ declare var $: any;
         <div class="editMenu" *ngIf="editMode" (clickOutside)=" editOptions ? onClickedOutside($event) : null">
           <img src="/assets/images/close.png">
           <div class="editOptions" *ngIf="editOptions">
-            <input>
+            <input class="iconSearchbar">
             <button class="colorpicker" (colorPickerOpen)="colorPickerOpened(color)" [(colorPicker)]="color" [style.background]="color" [cpPosition]="colorPickerOrientation" [cpDisableInput]="true"></button>
+            <input class="tooltipInput">
           </div>
         </div>
       </div>

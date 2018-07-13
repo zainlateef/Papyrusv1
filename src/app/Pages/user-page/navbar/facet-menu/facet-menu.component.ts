@@ -21,7 +21,7 @@ import { transition, trigger, useAnimation } from '@angular/animations';
         <a class="nav__link">
           <div class="wrapper">
             <div class="icon_wrapper">
-              <i  (click)="addNewFacet()" class="material-icons">add</i>
+              <i (click)="addNewFacet()" class="material-icons">add</i>
             </div>
           </div>
         </a>

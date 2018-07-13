@@ -49,7 +49,7 @@ $nav-bg: #2b3033;
         {
             display: inline-block;
             text-align: left;
-            input
+            .iconSearchbar
             {
                 display: block;
             }
@@ -58,6 +58,11 @@ $nav-bg: #2b3033;
                 display: inline-block;
                 width: 15px; 
                 height: 15px;
+            }
+            .tooltipInput
+            {
+                display: inline-block;
+                width: 109px;
             }
         }
     }
