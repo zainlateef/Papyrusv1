@@ -14,9 +14,9 @@ declare var $: any;
         <div class="editMenu" *ngIf="editMode" (clickOutside)=" editOptions ? onClickedOutside($event) : null">
           <img src="/assets/images/close.png">
           <div class="editOptions" *ngIf="editOptions">
-            <input class="iconSearchbar">
-            <button class="colorpicker" (colorPickerOpen)="colorPickerOpened(color)" [(colorPicker)]="color" [style.background]="color" [cpPosition]="colorPickerOrientation" [cpDisableInput]="true"></button>
-            <input class="tooltipInput">
+            <input class="iconSearchbar" placeholder="Search for an icon...">
+            <button class="colorpicker" (colorPickerOpen)="colorPickerOpened(color)" [(colorPicker)]="color" (colorPickerChange)="setColor(color)"[style.background]="color" [cpPosition]="colorPickerOrientation" [cpDisableInput]="true"></button>
+            <input class="tooltipInput" placeholder="Label" [value]="item.facet">
           </div>
         </div>
       </div>
@@ -31,6 +31,7 @@ export class FacetItemComponent implements OnInit {
   editMode : boolean = false;
   editOptions : boolean = false;
   counter : number = 0;
+  color : any;
   
   constructor(private editService : EditButtonService) {
   }
@@ -38,6 +39,7 @@ export class FacetItemComponent implements OnInit {
   ngOnInit() {
     this.checkIfNewlyCreated()
     this.editService.change.subscribe( editButtonEvent => this.editMode=editButtonEvent );
+    this.color=this.item.color;
   }
 
   checkIfNewlyCreated()
@@ -78,6 +80,11 @@ export class FacetItemComponent implements OnInit {
   isElementInViewport(rectangle) 
   {
     return rectangle.top >= 0 && rectangle.left >= 0 && rectangle.bottom <= (window.innerHeight || document.documentElement.clientHeight) && rectangle.right <= (window.innerWidth || document.documentElement.clientWidth);
+  }
+
+  setColor(color)
+  {
+    this.item.color=color;
   }
 
 }

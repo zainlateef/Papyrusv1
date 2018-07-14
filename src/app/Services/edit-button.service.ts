@@ -7,7 +7,14 @@ export class EditButtonService
     @Output() change: EventEmitter<boolean> = new EventEmitter();
 
     toggle() {
-        this.editMode = !this.editMode;
+        if(this.editMode)
+            this.editMode=false
+        else
+        {
+            //verify that you're on the right page (the users page) and that you are signed and authenticated
+            this.editMode=true;
+        }
+
         this.change.emit(this.editMode);
     }
     
