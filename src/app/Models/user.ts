@@ -1,10 +1,10 @@
 export class User
 {
-    constructor(){}
-
-    uid : string;
-    firstName : string;
-    lastName : string;
-    profilePic : string;
+    constructor(
+        public uid : string, 
+        public firstName : string, 
+        public lastName : string, 
+        public profilePic : string
+    ){}
 
 }

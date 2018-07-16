@@ -15,6 +15,7 @@ declare var $: any;
           <img src="/assets/images/close.png">
           <div class="editExtraOptions" *ngIf="editExtraOptions">
             <input class="iconSearchbar" placeholder="Search for an icon...">
+              
             <button class="colorpicker" (colorPickerOpen)="colorPickerOpened(color)" [(colorPicker)]="color" (colorPickerChange)="setColor(color)"[style.background]="color" [cpPosition]="colorPickerOrientation" [cpDisableInput]="true"></button>
             <input class="tooltipInput" placeholder="Label" [value]="item.facet">
           </div>
