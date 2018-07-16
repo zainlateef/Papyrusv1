@@ -13,6 +13,7 @@ export class EditButtonService
 
     reset()
     {
+        console.log("reset");
         this.editMode=false;
         this.change.emit(this.editMode);
     }
