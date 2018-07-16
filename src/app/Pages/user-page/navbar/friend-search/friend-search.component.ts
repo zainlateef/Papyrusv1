@@ -49,13 +49,11 @@ export class FriendSearchComponent implements OnInit,OnDestroy {
   }
 
   onFormChange(term: any) {
+    //HTTP call returns set of users. All this logic will be rewritten and optimized
     console.log("HTTP Call:Query this parameter"+term);
-    if(term==="")
-      this.userMatches.clear();
-    else
+    this.userMatches.clear();
+    if(term!=="")
     {
-      this.userMatches.clear();
-      //HTTP call returns set of users. This logic will be removed
       this.userDatabase.filter( user => {
         if(user.firstName.toUpperCase().includes(term.toUpperCase()) || user.firstName.toUpperCase().includes(term.toUpperCase()))
           this.userMatches.add(user);
@@ -63,7 +61,6 @@ export class FriendSearchComponent implements OnInit,OnDestroy {
           this.userMatches.add(user);
       });
     }
-    
   }
 
   toggleSearch()

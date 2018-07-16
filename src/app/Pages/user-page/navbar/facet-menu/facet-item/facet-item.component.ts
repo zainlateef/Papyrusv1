@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FacetItem } from '../../../../../Models/facet-item';
 import { EditButtonService } from '../../../../../Services/edit-button.service';
+import { FormControl } from '../../../../../../../node_modules/@angular/forms';
+import { IconSearchResult } from '../../../../../Models/icon-search-result';
 declare var $: any;
 
 @Component({
@@ -14,8 +16,10 @@ declare var $: any;
         <div class="editMenu" *ngIf="editMode" (clickOutside)=" editExtraOptions ? onClickedOutside($event) : null">
           <img src="/assets/images/close.png">
           <div class="editExtraOptions" *ngIf="editExtraOptions">
-            <input class="iconSearchbar" placeholder="Search for an icon...">
-              
+            <input class="iconSearchbar" placeholder="Search for an icon..." type="search" [formControl]="search">
+              <li *ngFor="let icon of iconMatches">
+                <i [class]="icon.iconFullName"></i>
+              </li>
             <button class="colorpicker" (colorPickerOpen)="colorPickerOpened(color)" [(colorPicker)]="color" (colorPickerChange)="setColor(color)"[style.background]="color" [cpPosition]="colorPickerOrientation" [cpDisableInput]="true"></button>
             <input class="tooltipInput" placeholder="Label" [value]="item.facet">
           </div>
@@ -28,18 +32,56 @@ declare var $: any;
 })
 export class FacetItemComponent implements OnInit {
   @Input("item") item : FacetItem;
+  search : FormControl;
   colorPickerOrientation : string = "bottom";
   editMode : boolean = false;
   editExtraOptions : boolean = false;
   counter : number = 0;
   color : any;
+  subscription : any;
+  iconMatches : Set<IconSearchResult> = new Set;
+  iconDatabase : Array<IconSearchResult> = new Array;
   
   constructor(private editService : EditButtonService) {
   }
 
   ngOnInit() {
     this.editServiceSetup()
+    this.initializeForm();
+    this.initializeDummyData();
     this.color=this.item.color;
+  }
+
+  initializeForm() 
+  {
+    this.search=new FormControl();
+    this.subscription=this.search.valueChanges
+        .debounceTime(200)
+        .distinctUntilChanged()
+        .subscribe( term => {
+            this.onFormChange(term);
+        });
+  }
+
+  initializeDummyData()
+  {
+    let icon1=new IconSearchResult("cog","fas fa-cog")
+    let icon2=new IconSearchResult("plane","fas fa-plane")
+    let icon3=new IconSearchResult("archive","far fa-archive")
+    this.iconDatabase.push(icon1,icon2,icon3);
+  }
+
+  onFormChange(term: any) {
+    //HTTP call returns set of users. All this logic will be rewritten and optimized
+    console.log("HTTP Call:Query this parameter"+term);
+    this.iconMatches.clear();
+    if(term!=="")
+    {
+      this.iconDatabase.filter( icon => {
+        if(icon.iconNickname.toUpperCase().includes(term.toUpperCase()))
+          this.iconMatches.add(icon);
+      });
+    }
   }
 
   editServiceSetup()
