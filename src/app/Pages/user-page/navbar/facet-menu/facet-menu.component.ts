@@ -50,7 +50,7 @@ export class FacetMenuComponent extends UrlChangeDetection implements OnInit
     ngOnInit()
     {
       this.detectUidChanges();
-      this.editService.change.subscribe( editButtonEvent=> this.handleEditButtonEvent(editButtonEvent));
+      this.editServiceSetup();
     }
 
     loadOnUrlChange(params)
@@ -73,27 +73,7 @@ export class FacetMenuComponent extends UrlChangeDetection implements OnInit
       // new FacetItem("fa fa-user","home10","#ff0080"),
     );
     }
-
-    handleEditButtonEvent(editButtonStatus)
-    {
-      this.editModeTrue=editButtonStatus;
-      if(this.editModeTrue)
-      {
-        this.showMenu=true
-        this.burgerZIndex=0;
-        this.facetItems.push
-      }
-      else
-      {
-        this.burgerZIndex=2
-      }
-    }
-
-    addNewFacet()
-    {
-      this.facetItems.push(new FacetItem("fa fa-user","","#000000"));
-    }
-
+    
     toggleMenu()
     {
       if(this.editModeTrue)
@@ -102,9 +82,34 @@ export class FacetMenuComponent extends UrlChangeDetection implements OnInit
       this.showMenu=!this.showMenu;
     }
 
+    addNewFacet()
+    {
+      this.facetItems.push(new FacetItem("fa fa-user","","#000000"));
+    }
+
     onClickedOutside($event)
     {
       if(!this.editModeTrue)
       this.showMenu=false;
+    }
+
+    editServiceSetup()
+    {
+      this.editModeTrue=this.editService.editMode;
+      this.editService.change.subscribe( editButtonEvent => 
+      {
+        this.editModeTrue=editButtonEvent;
+        if(this.editModeTrue)
+        {
+          this.showMenu=true
+          this.burgerZIndex=0;
+          this.facetItems.push
+        }
+        else
+        {
+          this.burgerZIndex=2
+        }
+        
+      });
     }
 }

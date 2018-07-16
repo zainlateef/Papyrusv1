@@ -8,12 +8,12 @@ declare var $: any;
   template: 
   ` <a [routerLink]="editMode ? null : [{facet : item.facet}]" class="nav__link">
       <div class="wrapper">
-        <div class="icon_wrapper" (click)="editMode ? toggleEditOptions($event) : null ">
+        <div class="icon_wrapper" (click)="editMode ? toggleEditExtraOptions($event) : null ">
           <i [ngStyle]="{'color':item.color}" [class]="item.iconName" [ngClass]="{'faa-float animated faa-fast': editMode}"></i>
         </div>
-        <div class="editMenu" *ngIf="editMode" (clickOutside)=" editOptions ? onClickedOutside($event) : null">
+        <div class="editMenu" *ngIf="editMode" (clickOutside)=" editExtraOptions ? onClickedOutside($event) : null">
           <img src="/assets/images/close.png">
-          <div class="editOptions" *ngIf="editOptions">
+          <div class="editExtraOptions" *ngIf="editExtraOptions">
             <input class="iconSearchbar" placeholder="Search for an icon...">
             <button class="colorpicker" (colorPickerOpen)="colorPickerOpened(color)" [(colorPicker)]="color" (colorPickerChange)="setColor(color)"[style.background]="color" [cpPosition]="colorPickerOrientation" [cpDisableInput]="true"></button>
             <input class="tooltipInput" placeholder="Label" [value]="item.facet">
@@ -29,7 +29,7 @@ export class FacetItemComponent implements OnInit {
   @Input("item") item : FacetItem;
   colorPickerOrientation : string = "bottom";
   editMode : boolean = false;
-  editOptions : boolean = false;
+  editExtraOptions : boolean = false;
   counter : number = 0;
   color : any;
   
@@ -37,31 +37,31 @@ export class FacetItemComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.checkIfNewlyCreated()
-    this.editService.change.subscribe( editButtonEvent => this.editMode=editButtonEvent );
+    this.editServiceSetup()
     this.color=this.item.color;
   }
 
-  checkIfNewlyCreated()
+  editServiceSetup()
   {
     this.editMode=this.editService.editMode;
     if(this.editMode)
-    this.editOptions=true;
+    this.editExtraOptions=true;
+    this.editService.change.subscribe( editButtonEvent => this.editMode=editButtonEvent );
   }
 
-  toggleEditOptions(mouseclick : MouseEvent)
+  toggleEditExtraOptions(mouseclick : MouseEvent)
   {
     console.log("this mouseclick: "+mouseclick.clientX+" "+mouseclick.clientY);
-    this.editOptions=!this.editOptions;
+    this.editExtraOptions=!this.editExtraOptions;
   }
 
   onClickedOutside(e: Event) {
-    if(this.editOptions)
+    if(this.editExtraOptions)
     {
       ++this.counter;
       if(this.counter > 1)
       {
-        this.editOptions=false;
+        this.editExtraOptions=false;
         this.counter=0;
       }
     }
