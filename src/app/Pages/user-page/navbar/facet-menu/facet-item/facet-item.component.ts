@@ -16,7 +16,7 @@ declare var $: any;
         <div class="editMenu" *ngIf="editMode" (clickOutside)=" editExtraOptions ? onClickedOutside($event) : null">
           <img src="/assets/images/close.png">
           <div class="editExtraOptions" *ngIf="editExtraOptions">
-            <input class="iconSearchbar" placeholder="Search for an icon..." type="search" [formControl]="search">
+            <input class="iconSearchbar" placeholder="Search for an icon..." type="search" [formControl]="search" [iconPicker]="icon" (iconPickerSelect)="onIconPickerSelect(newIcon)">>
               <li *ngFor="let icon of iconMatches">
                 <i [class]="icon.iconFullName"></i>
               </li>
@@ -59,7 +59,7 @@ export class FacetItemComponent implements OnInit {
         .debounceTime(200)
         .distinctUntilChanged()
         .subscribe( term => {
-            this.onFormChange(term);
+            //this.onFormChange(term);
         });
   }
 
