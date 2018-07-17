@@ -21,7 +21,6 @@ import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ClickOutsideModule } from 'ng-click-outside';
 import { EditButtonService } from './Services/edit-button.service';
 import { ColorPickerModule } from 'ngx-color-picker';
-import { IconPickerModule } from 'ngx-icon-picker';
 
 export const routes: Routes=[
   {path: '', component: HomeComponent},
@@ -58,8 +57,7 @@ export const routes: Routes=[
     ReactiveFormsModule,
     FormsModule,
     ClickOutsideModule,
-    ColorPickerModule,
-    IconPickerModule
+    ColorPickerModule
   ],
   providers: [EditButtonService],
   bootstrap: [AppComponent]
