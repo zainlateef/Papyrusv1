@@ -17,9 +17,11 @@ declare var $: any;
           <img src="/assets/images/close.png">
           <div class="editExtraOptions" *ngIf="editExtraOptions">
             <input class="iconSearchbar" placeholder="Search for an icon..." type="search" [formControl]="search">
+            <ul class="iconSearchResults">
               <li *ngFor="let icon of iconMatches">
                 <i [class]="icon.iconFullName"></i>
               </li>
+            </ul>
             <button class="colorpicker" (colorPickerOpen)="colorPickerOpened(color)" [(colorPicker)]="color" (colorPickerChange)="setColor(color)"[style.background]="color" [cpPosition]="colorPickerOrientation" [cpDisableInput]="true"></button>
             <input class="tooltipInput" placeholder="Label" [value]="item.facet">
           </div>
@@ -67,7 +69,7 @@ export class FacetItemComponent implements OnInit {
   {
     let icon1=new IconSearchResult("cog","fas fa-cog")
     let icon2=new IconSearchResult("plane","fas fa-plane")
-    let icon3=new IconSearchResult("archive","far fa-archive")
+    let icon3=new IconSearchResult("archive","fas fa-archive")
     this.iconDatabase.push(icon1,icon2,icon3);
   }
 

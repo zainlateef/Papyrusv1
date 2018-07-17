@@ -1,11 +1,12 @@
 $nav-bg: #2b3033;
 
-.nav__link:hover .icon 
+.nav__link:hover i
 {
-    @media (min-width: 640px) {
-        font-size: 1.6em;
-        transition: 0.1s ease-in-out;
-    }
+    // can't decide if i want hover or not
+    // @media (min-width: 640px) {
+    //     font-size: 1.6em;
+    //     transition: 0.2s ease-in-out;
+    // }
 }
 
 .nav__link
@@ -55,6 +56,18 @@ $nav-bg: #2b3033;
                 height: 22px;
                 border: 0 none;
                 padding-left: 8px;
+            }
+            ul.iconSearchResults
+            {
+                width: 134px;
+                z-index: 2;
+                position: absolute;
+                background-color: white;                 
+                i
+                {
+                    font-size: 0.8em;
+                }
+                
             }
             .colorpicker
             {
