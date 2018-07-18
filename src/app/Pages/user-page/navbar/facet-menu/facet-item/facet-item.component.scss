@@ -53,13 +53,15 @@ $nav-bg: #2b3033;
             .iconSearchbar
             {
                 display: block;
+                width: 131px;
                 height: 22px;
                 border: 0 none;
                 padding-left: 8px;
+                padding-right: 9px;
             }
             ul.iconSearchResults
             {
-                width: 134px;
+                width: 131px;
                 z-index: 2;
                 position: absolute;
                 background-color: white;  
@@ -108,7 +110,6 @@ $nav-bg: #2b3033;
                 li:hover
                 {
                     background: #f6f6f6;
-                    cursor: pointer;
                 }              
                 
             }
