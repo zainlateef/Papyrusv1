@@ -3,12 +3,13 @@ import { FacetItem } from '../../../../../Models/facet-item';
 import { EditButtonService } from '../../../../../Services/edit-button.service';
 import { FormControl } from '@angular/forms';
 import { IconSearchResult } from '../../../../../Models/icon-search-result';
+import { Router, ActivatedRoute } from '../../../../../../../node_modules/@angular/router';
 declare var $: any;
 
 @Component({
   selector: 'facet-item',
   template: 
-  ` <a [routerLink]="editMode ? null : [{facet : item.facet}]" class="nav__link">
+  ` <a (click)="routeToFacet()" class="nav__link">
       <div class="wrapper">
         <div class="icon_wrapper" (click)="toggleEditExtraOptions($event)">
           <i [ngStyle]="{'color':item.color}" [class]="item.iconName" [ngClass]="{'faa-float animated faa-fast': editMode}"></i>
@@ -47,8 +48,11 @@ export class FacetItemComponent implements OnInit {
   iconMatches : Set<IconSearchResult> = new Set;
   iconDatabase : Array<IconSearchResult> = new Array;
   
-  constructor(private editService : EditButtonService) {
-  }
+  constructor(
+    private editService : EditButtonService, 
+    private router: Router, 
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit() {
     this.editServiceSetup()
@@ -74,6 +78,12 @@ export class FacetItemComponent implements OnInit {
     let icon2=new IconSearchResult("plane","fas fa-plane")
     let icon3=new IconSearchResult("archive","fas fa-archive")
     this.iconDatabase.push(icon1,icon2,icon3);
+  }
+
+  routeToFacet()
+  {
+    if(!this.editMode)
+    this.router.navigate([{facet : this.item.facet}], { relativeTo: this.route });
   }
 
   onFormChange(term: any) {
