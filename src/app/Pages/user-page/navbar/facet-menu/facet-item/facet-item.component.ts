@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FacetItem } from '../../../../../Models/facet-item';
 import { EditButtonService } from '../../../../../Services/edit-button.service';
-import { FormControl } from '../../../../../../../node_modules/@angular/forms';
+import { FormControl } from '@angular/forms';
 import { IconSearchResult } from '../../../../../Models/icon-search-result';
 declare var $: any;
 
