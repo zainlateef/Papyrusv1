@@ -19,7 +19,10 @@ declare var $: any;
             <input class="iconSearchbar" placeholder="Search for an icon..." type="search" [formControl]="search">
             <ul class="iconSearchResults">
               <li *ngFor="let icon of iconMatches">
-                <i [class]="icon.iconFullName"></i>
+                <div class="listWrapper">
+                  <i [class]="icon.iconFullName"></i>
+                  <div class="nickname">{{icon.iconNickname}}</div>
+                </div>
               </li>
             </ul>
             <button class="colorpicker" (colorPickerOpen)="colorPickerOpened(color)" [(colorPicker)]="color" (colorPickerChange)="setColor(color)"[style.background]="color" [cpPosition]="colorPickerOrientation" [cpDisableInput]="true"></button>

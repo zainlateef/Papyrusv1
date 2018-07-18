@@ -62,11 +62,54 @@ $nav-bg: #2b3033;
                 width: 134px;
                 z-index: 2;
                 position: absolute;
-                background-color: white;                 
-                i
+                background-color: white;  
+                li
                 {
-                    font-size: 0.8em;
+                    width: 100%;
+                    background: white;
+                    border-bottom: 1px solid #ccc;
+                    overflow: scroll;
+                    white-space: nowrap;
+                    text-decoration: none;
+                    color: #000;
+                    -webkit-transition: background-color 0.3s ease;
+                    -moz-transition: background-color 0.3s ease;
+                    -o-transition: background-color 0.3s ease;
+                    -ms-transition: background-color 0.3s ease;
+                    transition: background-color 0.3s ease;
+                    .listWrapper
+                    {
+                        display: inline-flex;
+                        justify-content: center;
+                        align-items: center;
+                        i
+                        {
+                            display: inline-block;
+                            font-size: 0.8em;
+                            padding: 0 6px;
+                        }
+                        .nickname
+                        {
+                            display: inline-flex;
+                            font: 200 13px/1.5 Helvetica, Verdana, sans-serif;
+                            justify-content: center;
+                            align-items: center;
+                            height: 100%;
+                        }
+                    }
+
                 }
+
+                li:last-child 
+                {
+                    border: none;
+                }
+
+                li:hover
+                {
+                    background: #f6f6f6;
+                    cursor: pointer;
+                }              
                 
             }
             .colorpicker
