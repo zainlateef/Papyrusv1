@@ -10,10 +10,10 @@ declare var $: any;
   template: 
   ` <a [routerLink]="editMode ? null : [{facet : item.facet}]" class="nav__link">
       <div class="wrapper">
-        <div class="icon_wrapper" (click)="editMode ? toggleEditExtraOptions($event) : null ">
+        <div class="icon_wrapper" (click)="toggleEditExtraOptions($event)">
           <i [ngStyle]="{'color':item.color}" [class]="item.iconName" [ngClass]="{'faa-float animated faa-fast': editMode}"></i>
         </div>
-        <div class="editMenu" *ngIf="editMode" (clickOutside)=" editExtraOptions ? onClickedOutside($event) : null">
+        <div class="editMenu" *ngIf="editMode" (clickOutside)="onClickedOutside($event)">
           <img src="/assets/images/close.png">
           <div class="editExtraOptions" *ngIf="editExtraOptions">
             <input class="iconSearchbar" placeholder="Search for an icon..." type="search" [formControl]="search">
@@ -99,8 +99,13 @@ export class FacetItemComponent implements OnInit {
 
   toggleEditExtraOptions(mouseclick : MouseEvent)
   {
-    console.log("this mouseclick: "+mouseclick.clientX+" "+mouseclick.clientY);
-    this.editExtraOptions=!this.editExtraOptions;
+    if(this.editMode)
+    {
+      console.log("this mouseclick: "+mouseclick.clientX+" "+mouseclick.clientY);
+      this.editExtraOptions=!this.editExtraOptions;
+    }
+    else
+    this.editExtraOptions=false;
   }
 
   onClickedOutside(e: Event) {
