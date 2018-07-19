@@ -1,5 +1,6 @@
 @import '~font-awesome/css/font-awesome.min.css';
 @import '~font-awesome-animation/dist/font-awesome-animation.min.css';
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 * {
     -webkit-box-sizing: border-box;
        -moz-box-sizing: border-box;

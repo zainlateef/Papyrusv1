@@ -21,6 +21,8 @@ import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ClickOutsideModule } from 'ng-click-outside';
 import { EditButtonService } from './Services/edit-button.service';
 import { ColorPickerModule } from 'ngx-color-picker';
+import { MatTooltipModule } from '@angular/material';
+import 'hammerjs';
 
 export const routes: Routes=[
   {path: '', component: HomeComponent},
@@ -57,7 +59,8 @@ export const routes: Routes=[
     ReactiveFormsModule,
     FormsModule,
     ClickOutsideModule,
-    ColorPickerModule
+    ColorPickerModule,
+    MatTooltipModule
   ],
   providers: [EditButtonService],
   bootstrap: [AppComponent]

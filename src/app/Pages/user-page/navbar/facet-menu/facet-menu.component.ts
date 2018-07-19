@@ -10,7 +10,7 @@ import { transition, trigger, useAnimation } from '@angular/animations';
   template: 
   `
   <nav class="nav" (clickOutside)="onClickedOutside($event)">
-    <i *ngIf="!editModeTrue && pageOwner" class="fas fa-edit editIcon" (click)="toggleEditMode()"></i>
+    <i *ngIf="!editModeTrue && pageOwner" class="fas fa-edit editIcon" (click)="toggleEditMode()" matTooltip="Info about the action"></i>
     <div class="burger" (click)="toggleMenu()" [ngClass]="{'burger--active':showMenu}" [ngStyle]="{'z-index': burgerZIndex}">
       <div class="burger__patty"></div>
     </div>
