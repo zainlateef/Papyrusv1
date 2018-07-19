@@ -10,7 +10,7 @@ import { transition, trigger, useAnimation } from '@angular/animations';
   template: 
   `
   <nav class="nav" (clickOutside)="onClickedOutside($event)">
-    <i *ngIf="!editModeTrue" class="fas fa-edit editIcon" (click)="toggleEditMode()"></i>
+    <i *ngIf="!editModeTrue && pageOwner" class="fas fa-edit editIcon" (click)="toggleEditMode()"></i>
     <div class="burger" (click)="toggleMenu()" [ngClass]="{'burger--active':showMenu}" [ngStyle]="{'z-index': burgerZIndex}">
       <div class="burger__patty"></div>
     </div>
@@ -45,6 +45,7 @@ export class FacetMenuComponent extends UrlChangeDetection implements OnInit
     showMenu : boolean = false;
     facetItems : FacetItem[];
     editModeTrue : boolean = false;
+    pageOwner : boolean = false;
     burgerZIndex=2;
 
 
@@ -117,5 +118,7 @@ export class FacetMenuComponent extends UrlChangeDetection implements OnInit
         }
         
       });
+      this.pageOwner=this.editService.isPageOwner;
+      this.editService.pageOwnerStatus.subscribe( status => this.pageOwner=status);
     }
 }

@@ -89,9 +89,9 @@ export class UserPageComponent extends UrlChangeDetection implements OnInit {
   loadOnUrlChange(params: any) {
     this.editService.reset();
     if(params.uid=="zboi")
-      this.pageOwner=true;
+      this.editService.emitPageOwnerStatus(true);
     else
-      this.pageOwner=false;
+      this.editService.emitPageOwnerStatus(false);
   }
 
   toggleEditMode()
