@@ -10,6 +10,7 @@ import { transition, trigger, useAnimation } from '@angular/animations';
   template: 
   `
   <nav class="nav" (clickOutside)="onClickedOutside($event)">
+    <i *ngIf="!editModeTrue" class="fas fa-edit editIcon" (click)="toggleEditMode()"></i>
     <div class="burger" (click)="toggleMenu()" [ngClass]="{'burger--active':showMenu}" [ngStyle]="{'z-index': burgerZIndex}">
       <div class="burger__patty"></div>
     </div>
@@ -17,7 +18,7 @@ import { transition, trigger, useAnimation } from '@angular/animations';
       <li *ngFor="let item of facetItems" class="nav__item">
         <facet-item [item]="item"></facet-item>
       </li>
-      <li class="nav__item" *ngIf="editModeTrue" [@zoomIn]="zoomIn">
+      <li *ngIf="editModeTrue" class="nav__item" [@zoomIn]="zoomIn">
         <a class="nav__link">
           <div class="wrapper">
             <div class="icon_wrapper">
@@ -80,6 +81,11 @@ export class FacetMenuComponent extends UrlChangeDetection implements OnInit
       this.editService.toggle();
 
       this.showMenu=!this.showMenu;
+    }
+
+    toggleEditMode()
+    {
+      this.editService.toggle();
     }
 
     addNewFacet()
