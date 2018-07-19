@@ -102,7 +102,7 @@ export class FacetMenuComponent extends UrlChangeDetection implements OnInit
     editServiceSetup()
     {
       this.editModeTrue=this.editService.editMode;
-      this.editService.change.subscribe( editButtonEvent => 
+      this.editService.editValueChange.subscribe( editButtonEvent => 
       {
         this.editModeTrue=editButtonEvent;
         if(this.editModeTrue)

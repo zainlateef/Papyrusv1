@@ -78,7 +78,7 @@ export class UserPageComponent extends UrlChangeDetection implements OnInit {
 
   editServiceSetup()
   {
-    this.editService.change.subscribe( editMode => {
+    this.editService.editValueChange.subscribe( editMode => {
       if(editMode)
         this.editStatus="Save";
       else

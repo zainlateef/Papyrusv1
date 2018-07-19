@@ -104,7 +104,7 @@ export class FacetItemComponent implements OnInit {
     this.editMode=this.editService.editMode;
     if(this.editMode)
     this.editExtraOptions=true;
-    this.editService.change.subscribe( editButtonEvent => this.editMode=editButtonEvent );
+    this.editService.editValueChange.subscribe( editButtonEvent => this.editMode=editButtonEvent );
   }
 
   toggleEditExtraOptions(mouseclick : MouseEvent)

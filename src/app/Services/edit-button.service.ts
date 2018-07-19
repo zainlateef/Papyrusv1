@@ -4,18 +4,18 @@ import { Injectable, Output, EventEmitter } from "@angular/core";
 export class EditButtonService 
 {
     editMode : boolean = false;
-    @Output() change: EventEmitter<boolean> = new EventEmitter();
+    @Output() editValueChange: EventEmitter<boolean> = new EventEmitter();
 
     toggle(){
         this.editMode=!this.editMode;
-        this.change.emit(this.editMode);
+        this.editValueChange.emit(this.editMode);
     }
 
     reset()
     {
         console.log("reset");
         this.editMode=false;
-        this.change.emit(this.editMode);
+        this.editValueChange.emit(this.editMode);
     }
     
 }
