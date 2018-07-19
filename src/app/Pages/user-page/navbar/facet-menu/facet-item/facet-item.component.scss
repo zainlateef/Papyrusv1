@@ -39,6 +39,10 @@ $nav-bg: #2b3033;
         top: -50%;
         left: 110%;
         width: max-content;
+        @media (max-width:640px)
+        {
+            left:53px;
+        }
         
         img
         {
