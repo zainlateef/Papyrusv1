@@ -2,7 +2,7 @@ export class FacetItem
 {
     constructor(
         public iconName : string, 
-        public facet : string, 
+        public label : string, 
         public color : string
     ){}
 }

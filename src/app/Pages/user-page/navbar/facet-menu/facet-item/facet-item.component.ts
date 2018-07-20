@@ -27,7 +27,7 @@ declare var $: any;
               </li>
             </ul>
             <button class="colorpicker" (colorPickerOpen)="colorPickerOpened(color)" [(colorPicker)]="color" (colorPickerChange)="setColor(color)"[style.background]="color" [cpPosition]="colorPickerOrientation" [cpDisableInput]="true"></button>
-            <input class="tooltipInput" placeholder="Label" [value]="item.facet">
+            <input class="tooltipInput" placeholder="Label" [value]="item.label">
           </div>
         </div>
       </div>
@@ -83,7 +83,7 @@ export class FacetItemComponent implements OnInit {
   routeToFacet()
   {
     if(!this.editMode)
-    this.router.navigate([{facet : this.item.facet}], { relativeTo: this.route });
+    this.router.navigate([{facet : this.item.label}], { relativeTo: this.route });
   }
 
   onFormChange(term: any) {
