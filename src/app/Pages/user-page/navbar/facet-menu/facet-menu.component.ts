@@ -10,7 +10,7 @@ import { transition, trigger, useAnimation } from '@angular/animations';
   template: 
   `
   <nav class="nav" (clickOutside)="onClickedOutside($event)">
-    <i *ngIf="!editModeTrue && pageOwner" class="fas fa-edit editIcon" (click)="toggleEditMode()" matTooltip="Edit your list" [matTooltipShowDelay]="1300"></i>
+    <i *ngIf="pageOwner" class="editIcon" [ngClass]="editMode ? 'far fa-check-square':'fas fa-edit'" (click)="toggleEditMode()" matTooltip="Edit your list" [matTooltipShowDelay]="1300"></i>
     <div class="burger" (click)="toggleMenu()" [ngClass]="{'burger--active':showMenu}" [ngStyle]="{'z-index': burgerZIndex}">
       <div class="burger__patty"></div>
     </div>
@@ -18,7 +18,7 @@ import { transition, trigger, useAnimation } from '@angular/animations';
       <li *ngFor="let item of facetItems" class="nav__item">
         <facet-item [item]="item"></facet-item>
       </li>
-      <li *ngIf="editModeTrue" class="nav__item" [@zoomIn]="zoomIn">
+      <li *ngIf="editMode" class="nav__item" [@zoomIn]="zoomIn">
         <a class="nav__link">
           <div class="wrapper">
             <div class="icon_wrapper">
@@ -44,7 +44,7 @@ export class FacetMenuComponent extends UrlChangeDetection implements OnInit
     zoomIn: any;
     showMenu : boolean = false;
     facetItems : FacetItem[];
-    editModeTrue : boolean = false;
+    editMode : boolean = false;
     pageOwner : boolean = false;
     burgerZIndex=2;
 
@@ -78,7 +78,7 @@ export class FacetMenuComponent extends UrlChangeDetection implements OnInit
     
     toggleMenu()
     {
-      if(this.editModeTrue)
+      if(this.editMode)
       this.editService.toggle();
 
       this.showMenu=!this.showMenu;
@@ -96,17 +96,17 @@ export class FacetMenuComponent extends UrlChangeDetection implements OnInit
 
     onClickedOutside($event)
     {
-      if(!this.editModeTrue)
+      if(!this.editMode)
       this.showMenu=false;
     }
 
     editServiceSetup()
     {
-      this.editModeTrue=this.editService.editMode;
+      this.editMode=this.editService.editMode;
       this.editService.editValueChange.subscribe( editButtonEvent => 
       {
-        this.editModeTrue=editButtonEvent;
-        if(this.editModeTrue)
+        this.editMode=editButtonEvent;
+        if(this.editMode)
         {
           this.showMenu=true
           this.burgerZIndex=0;

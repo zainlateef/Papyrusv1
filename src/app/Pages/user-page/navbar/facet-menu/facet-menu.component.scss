@@ -21,6 +21,15 @@
   }
 }
 
+.fa-check-square
+{
+  font-size: 1.3em;
+  @media (max-width: 640px)
+  {
+    font-size: 1em;
+  }
+}
+
 //----Animation for add button---//
 i.material-icons {
   font-size: 1.5rem;
