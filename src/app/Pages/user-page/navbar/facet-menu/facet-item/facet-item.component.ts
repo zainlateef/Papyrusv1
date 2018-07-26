@@ -11,9 +11,11 @@ declare var $: any;
   template: 
   ` <a (click)="routeToFacet()" class="nav__link">
       <div class="wrapper">
+
         <div class="icon_wrapper" (click)="toggleEditExtraOptions($event)">
-          <i [ngStyle]="{'color':item.color}" [class]="item.iconName" [ngClass]="{'faa-float animated faa-fast': editMode}"></i>
+          <i [ngStyle]="{'color':item.color}" [class]="item.iconName" [ngClass]="{'faa-float animated faa-fast': editMode}" [matTooltip]="item.label" [matTooltipShowDelay]="100"></i>
         </div>
+
         <div class="editMenu" *ngIf="editMode" (clickOutside)="onClickedOutside($event)">
           <img src="/assets/images/close.png">
           <div class="editExtraOptions" *ngIf="editExtraOptions">
@@ -30,6 +32,7 @@ declare var $: any;
             <input class="tooltipInput" placeholder="Label" [value]="item.label">
           </div>
         </div>
+
       </div>
     </a>
   `
