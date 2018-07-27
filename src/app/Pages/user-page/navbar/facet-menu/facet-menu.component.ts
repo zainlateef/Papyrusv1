@@ -47,6 +47,7 @@ export class FacetMenuComponent extends UrlChangeDetection implements OnInit
     editMode : boolean = false;
     pageOwner : boolean = false;
     burgerZIndex=2;
+    transitionFromOn : boolean = false;
     oldList : FacetItem[];
 
 
@@ -111,7 +112,7 @@ export class FacetMenuComponent extends UrlChangeDetection implements OnInit
         if(this.editMode)
           this.editModeIsOn();
         else
-          this.burgerZIndex=2;
+          this.editModeIsOff();
         
       });
       this.pageOwner=this.editService.isPageOwner;
@@ -120,8 +121,22 @@ export class FacetMenuComponent extends UrlChangeDetection implements OnInit
 
     editModeIsOn()
     {
-        this.showMenu=true
-        this.burgerZIndex=0;
-        this.oldList=this.facetItems.slice(0);
+      console.log("editModeOn")
+      this.showMenu=true
+      this.burgerZIndex=0;
+
+      this.transitionFromOn=true;
+      this.oldList=this.facetItems.slice(0);
+    }
+
+    editModeIsOff()
+    {
+      console.log("editModeOff")
+      this.burgerZIndex=2;
+      if(this.transitionFromOn)
+      {
+        console.log("fire the api call of "+this.uid+"if the list is different");
+        this.transitionFromOn=false;
+      }
     }
 }
