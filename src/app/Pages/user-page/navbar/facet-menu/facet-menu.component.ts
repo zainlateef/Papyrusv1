@@ -47,6 +47,7 @@ export class FacetMenuComponent extends UrlChangeDetection implements OnInit
     editMode : boolean = false;
     pageOwner : boolean = false;
     burgerZIndex=2;
+    oldList : FacetItem[];
 
 
     ngOnInit()
@@ -105,20 +106,22 @@ export class FacetMenuComponent extends UrlChangeDetection implements OnInit
       this.editMode=this.editService.editMode;
       this.editService.editValueChange.subscribe( editButtonEvent => 
       {
+        console.log("this happens at startup");
         this.editMode=editButtonEvent;
         if(this.editMode)
-        {
-          this.showMenu=true
-          this.burgerZIndex=0;
-          this.facetItems.push
-        }
+          this.editModeIsOn();
         else
-        {
-          this.burgerZIndex=2
-        }
+          this.burgerZIndex=2;
         
       });
       this.pageOwner=this.editService.isPageOwner;
       this.editService.pageOwnerStatus.subscribe( status => this.pageOwner=status);
+    }
+
+    editModeIsOn()
+    {
+        this.showMenu=true
+        this.burgerZIndex=0;
+        this.oldList=this.facetItems.slice(0);
     }
 }

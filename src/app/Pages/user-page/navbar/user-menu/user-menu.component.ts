@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
   template: `
   <div class="wrapper" (clickOutside)="onClickedOutside($event)">
     <fa (click)="toggleMenu()" class="icon" name="user" size="2x"></fa>
-    <ul *ngIf="showMenu">
+    <ul *ngIf="showMenu" class="noselect">
       <li *ngIf="loggedIn" [routerLink]="['/feed',uid]"> 
         Profile 
       </li>
