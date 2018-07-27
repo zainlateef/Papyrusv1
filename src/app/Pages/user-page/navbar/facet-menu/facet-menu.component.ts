@@ -10,7 +10,7 @@ import { transition, trigger, useAnimation } from '@angular/animations';
   template: 
   `
   <nav class="nav" (clickOutside)="onClickedOutside($event)">
-    <i *ngIf="pageOwner" class="editIcon" [ngClass]="editMode ? 'far fa-check-square':'fas fa-edit'" (click)="toggleEditMode()" [matTooltip]="!editMode? 'Edit your list' : null" [matTooltipShowDelay]="1300"></i>
+    <i *ngIf="pageOwner" class="editIcon" [ngClass]="editMode ? 'far fa-check-square':'fas fa-edit'" (click)="toggleEditMode()" [matTooltip]="!editMode? 'Edit your list' : 'Save list'" [matTooltipShowDelay]="1300"></i>
     <div class="burger" (click)="toggleMenu()" [ngClass]="{'burger--active':showMenu}" [ngStyle]="{'z-index': burgerZIndex}">
       <div class="burger__patty"></div>
     </div>
