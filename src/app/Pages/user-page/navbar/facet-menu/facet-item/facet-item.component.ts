@@ -13,7 +13,7 @@ declare var $: any;
       <div class="wrapper">
 
         <div class="icon_wrapper" (click)="toggleEditExtraOptions($event)">
-          <i [ngStyle]="{'color':item.color}" [class]="item.iconName" [ngClass]="{'faa-float animated faa-fast': editMode}" [matTooltip]="!editMode ? item.label : null" [matTooltipShowDelay]="100"></i>
+          <i [ngStyle]="{'color':item.color}" [class]="item.iconName" [ngClass]="{'faa-float animated faa-fast': editMode}" [matTooltip]="!editMode ? item.label : null" [matTooltipShowDelay]="400"></i>
         </div>
 
         <div class="editMenu" *ngIf="editMode" (clickOutside)="onClickedOutside($event)">
