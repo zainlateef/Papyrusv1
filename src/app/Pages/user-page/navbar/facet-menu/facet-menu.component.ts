@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FacetItem } from '../../../../Models/facet-item';
 import { UrlChangeDetection } from '../../../../Parent-Classes/url-changes';
@@ -41,6 +41,12 @@ export class FacetMenuComponent extends UrlChangeDetection implements OnInit
     constructor(private route : ActivatedRoute, private editService : EditButtonService){
       super(route);
     }
+    @HostListener('window:beforeunload', ['$event'])
+    unloadNotification($event: any) {
+        if (this.editMode && this.changesWereMade()) {
+            $event.returnValue=true;
+        }
+    }
     zoomIn: any;
     showMenu : boolean = false;
     facetItems : FacetItem[];
@@ -48,7 +54,7 @@ export class FacetMenuComponent extends UrlChangeDetection implements OnInit
     pageOwner : boolean = false;
     burgerZIndex=2;
     transitionFromOn : boolean = false;
-    oldList : FacetItem[];
+    oldList : string;
 
 
     ngOnInit()
@@ -59,7 +65,7 @@ export class FacetMenuComponent extends UrlChangeDetection implements OnInit
 
     loadOnUrlChange(params)
     {
-      console.log("HTTP Call: Navbar loads uid:"+params.uid);
+      //console.log("HTTP Call: Navbar loads uid:"+params.uid);
       this.facetItems=[];
       this.facetItems.push(
       new FacetItem("fa fa-user","home","#ff0080"),
@@ -107,7 +113,7 @@ export class FacetMenuComponent extends UrlChangeDetection implements OnInit
       this.editMode=this.editService.editMode;
       this.editService.editValueChange.subscribe( editButtonEvent => 
       {
-        console.log("this happens at startup");
+        //console.log("this happens at startup");
         this.editMode=editButtonEvent;
         if(this.editMode)
           this.editModeIsOn();
@@ -121,22 +127,29 @@ export class FacetMenuComponent extends UrlChangeDetection implements OnInit
 
     editModeIsOn()
     {
-      console.log("editModeOn")
+      //console.log("editModeOn")
       this.showMenu=true
       this.burgerZIndex=0;
 
       this.transitionFromOn=true;
-      this.oldList=this.facetItems.slice(0);
+      this.oldList=JSON.stringify(this.facetItems);
     }
 
     editModeIsOff()
     {
-      console.log("editModeOff")
+      //console.log("editModeOff")
       this.burgerZIndex=2;
       if(this.transitionFromOn)
       {
-        console.log("fire the api call of "+this.uid+"if the list is different");
+        if(this.changesWereMade())
+          //console.log("fire the api call of "+this.uid);
         this.transitionFromOn=false;
       }
+      //console.log("changes:"+this.changesWereMade())
+    }
+
+    changesWereMade()
+    {
+      return !(JSON.stringify(this.facetItems)===this.oldList);
     }
 }

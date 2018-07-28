@@ -91,7 +91,7 @@ export class FacetItemComponent implements OnInit {
 
   onFormChange(term: any) {
     //HTTP call returns set of users. All this logic will be rewritten and optimized
-    console.log("HTTP Call:Query this parameter"+term);
+    //console.log("HTTP Call:Query this parameter"+term);
     this.iconMatches.clear();
     if(term!=="")
     {
@@ -114,7 +114,7 @@ export class FacetItemComponent implements OnInit {
   {
     if(this.editMode)
     {
-      console.log("this mouseclick: "+mouseclick.clientX+" "+mouseclick.clientY);
+      //console.log("this mouseclick: "+mouseclick.clientX+" "+mouseclick.clientY);
       this.editExtraOptions=!this.editExtraOptions;
     }
     else
@@ -137,7 +137,7 @@ export class FacetItemComponent implements OnInit {
   {
     let el=$( '.color-picker' );
     let boundsOfColorPicker = el[0].getBoundingClientRect();
-    console.log(this.isElementInViewport(boundsOfColorPicker));
+    //console.log(this.isElementInViewport(boundsOfColorPicker));
     if(!this.isElementInViewport(boundsOfColorPicker))
       this.colorPickerOrientation="top";
     //reset the color picker

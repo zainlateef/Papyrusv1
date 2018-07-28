@@ -50,7 +50,7 @@ export class FriendSearchComponent implements OnInit,OnDestroy {
 
   onFormChange(term: any) {
     //HTTP call returns set of users. All this logic will be rewritten and optimized
-    console.log("HTTP Call:Query this parameter"+term);
+    //console.log("HTTP Call:Query this parameter"+term);
     this.userMatches.clear();
     if(term!=="")
     {

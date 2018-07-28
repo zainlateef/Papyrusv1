@@ -15,7 +15,7 @@ export class EditButtonService
 
     reset()
     {
-        console.log("reset");
+        //console.log("reset");
         this.editMode=false;
         this.editValueChange.emit(this.editMode);
         this.isPageOwner=false
