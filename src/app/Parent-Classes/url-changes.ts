@@ -32,7 +32,7 @@ export abstract class UrlChangeDetection implements OnDestroy
 
     ngOnDestroy()
     {
-        alert("subscription destroyed");
+        // alert("subscription destroyed");
         this.routeSubscription.unsubscribe();
     };
 }

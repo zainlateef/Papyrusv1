@@ -38,7 +38,7 @@ import { transition, trigger, useAnimation } from '@angular/animations';
   ]
 })
 
-export class FacetMenuComponent extends UrlChangeDetection implements OnInit
+export class FacetMenuComponent extends UrlChangeDetection implements OnInit,OnDestroy
 {
     constructor(private route : ActivatedRoute, private editService : EditButtonService){
       super(route);
@@ -50,12 +50,13 @@ export class FacetMenuComponent extends UrlChangeDetection implements OnInit
         }
     }
     zoomIn: any;
+    subscription: any;
     showMenu : boolean = false;
-    facetItems : FacetItem[];
     editMode : boolean = false;
     pageOwner : boolean = false;
+    navStoppedEditService : boolean = false;
+    facetItems : FacetItem[];
     burgerZIndex=2;
-    transitionFromOn : boolean = false;
     oldList : string;
 
 
@@ -84,14 +85,18 @@ export class FacetMenuComponent extends UrlChangeDetection implements OnInit
       // new FacetItem("fa fa-user","home9","#ff0080"),
       // new FacetItem("fa fa-user","home10","#ff0080"),
     );
+    this.oldList=JSON.stringify(this.facetItems);
     }
     
     toggleMenu()
     {
-      if(this.editMode)
-      this.editService.toggle();
-
       this.showMenu=!this.showMenu;
+
+      if(this.editMode)
+      {
+        this.navStoppedEditService=true;
+        this.editService.toggle();
+      }
     }
 
     toggleEditMode()
@@ -112,8 +117,11 @@ export class FacetMenuComponent extends UrlChangeDetection implements OnInit
 
     editServiceSetup()
     {
+      this.pageOwner=this.editService.isPageOwner;
       this.editMode=this.editService.editMode;
-      this.editService.editValueChange.subscribe( editButtonEvent => 
+
+      this.editService.pageOwnerStatus.subscribe( status => this.pageOwner=status);
+      this.subscription=this.editService.editValueChange.subscribe( editButtonEvent => 
       {
         //console.log("this happens at startup");
         this.editMode=editButtonEvent;
@@ -123,8 +131,6 @@ export class FacetMenuComponent extends UrlChangeDetection implements OnInit
           this.editModeIsOff();
         
       });
-      this.pageOwner=this.editService.isPageOwner;
-      this.editService.pageOwnerStatus.subscribe( status => this.pageOwner=status);
     }
 
     editModeIsOn()
@@ -132,26 +138,36 @@ export class FacetMenuComponent extends UrlChangeDetection implements OnInit
       //console.log("editModeOn")
       this.showMenu=true
       this.burgerZIndex=0;
-
-      this.transitionFromOn=true;
       this.oldList=JSON.stringify(this.facetItems);
     }
 
     editModeIsOff()
     {
-      //console.log("editModeOff")
-      this.burgerZIndex=2;
-      if(this.transitionFromOn)
+      console.log("editModeOff"+ this.showMenu + this.editMode + this.changesWereMade())
+      if( this.pageOwner && !this.navStoppedEditService && this.changesWereMade())
       {
-        if(this.changesWereMade())
-          //console.log("fire the api call of "+this.uid);
-        this.transitionFromOn=false;
+        alert("navigating away");
       }
-      //console.log("changes:"+this.changesWereMade())
+      else
+      {
+        this.burgerZIndex=2;
+        if(this.navStoppedEditService)
+        {
+          if(this.changesWereMade())
+            //console.log("fire the api call of "+this.uid);
+          this.navStoppedEditService=false;
+        }
+      }
     }
 
     changesWereMade()
     {
       return !(JSON.stringify(this.facetItems)===this.oldList);
+    }
+
+    ngOnDestroy()
+    {
+      this.editModeIsOff();
+      this.subscription.unsubscribe();
     }
 }
