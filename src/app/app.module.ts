@@ -22,6 +22,7 @@ import { ClickOutsideModule } from 'ng-click-outside';
 import { EditButtonService } from './Services/edit-button.service';
 import { ColorPickerModule } from 'ngx-color-picker';
 import { MatTooltipModule } from '@angular/material';
+import { EditMenuComponent } from './Pages/user-page/navbar/facet-menu/facet-item/edit-menu/edit-menu.component';
 import 'hammerjs';
 
 export const routes: Routes=[
@@ -49,7 +50,8 @@ export const routes: Routes=[
     FacetItemComponent,
     NavbarComponent,
     FriendSearchComponent,
-    UserMenuComponent
+    UserMenuComponent,
+    EditMenuComponent
   ],
   imports: [
     BrowserModule,

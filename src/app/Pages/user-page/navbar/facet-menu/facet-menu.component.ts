@@ -18,6 +18,7 @@ import { transition, trigger, useAnimation } from '@angular/animations';
       <li *ngFor="let item of facetItems" class="nav__item">
         <facet-item [item]="item"></facet-item>
       </li>
+
       <li *ngIf="editMode" class="nav__item" [@zoomIn]="zoomIn">
         <a class="nav__link">
           <div class="wrapper">
@@ -27,6 +28,7 @@ import { transition, trigger, useAnimation } from '@angular/animations';
           </div>
         </a>
       </li>
+      
     </ul>
   </nav>
   `,
