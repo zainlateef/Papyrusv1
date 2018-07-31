@@ -54,7 +54,7 @@ export class FacetMenuComponent extends UrlChangeDetection implements OnInit,OnD
     showMenu : boolean = false;
     editMode : boolean = false;
     pageOwner : boolean = false;
-    navStoppedEditService : boolean = false;
+    navButtonClicked : boolean = false;
     facetItems : FacetItem[];
     burgerZIndex=2;
     oldList : string;
@@ -94,7 +94,7 @@ export class FacetMenuComponent extends UrlChangeDetection implements OnInit,OnD
 
       if(this.editMode)
       {
-        this.navStoppedEditService=true;
+        this.navButtonClicked=true;
         this.editService.toggle();
       }
     }
@@ -143,18 +143,31 @@ export class FacetMenuComponent extends UrlChangeDetection implements OnInit,OnD
 
     editModeIsOff()
     {
-      if( this.pageOwner && !this.navStoppedEditService && this.changesWereMade())
+      if(this.navButtonClicked)
       {
-        alert("navigating away");
+        this.navButtonClicked=false;
+        //if(this.changesWereMade())
+          //console.log("fire the api call of "+this.uid);
       }
       else
       {
-        this.burgerZIndex=2;
-        if(this.navStoppedEditService)
+        this.checkForUnsavedChanges();
+      }
+      this.burgerZIndex=2;
+      
+    }
+
+    checkForUnsavedChanges()
+    {
+      if( this.pageOwner && this.changesWereMade())
+      {
+        if (confirm("Save the changes to your list?")) 
         {
-          if(this.changesWereMade())
-            //console.log("fire the api call of "+this.uid);
-          this.navStoppedEditService=false;
+          console.log(this.uid+" saved his changes");
+        } 
+        else 
+        {
+          console.log(this.uid+" declined his changes");
         }
       }
     }
