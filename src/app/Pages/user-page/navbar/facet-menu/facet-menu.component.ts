@@ -143,7 +143,6 @@ export class FacetMenuComponent extends UrlChangeDetection implements OnInit,OnD
 
     editModeIsOff()
     {
-      console.log("editModeOff"+ this.showMenu + this.editMode + this.changesWereMade())
       if( this.pageOwner && !this.navStoppedEditService && this.changesWereMade())
       {
         alert("navigating away");
