@@ -32,13 +32,13 @@
 
 .checkmark {
   .burger__patty {
-    transform: rotate(90deg);
+    transform: rotate(140deg);
     &:before {
-      transform: rotate(-45deg) translate(-7px,-7px) scaleX(0.7);
+      transform: translate(0px,10px);
     }
     
     &:after {
-      transform: rotate(45deg) translate(-7px,7px) scaleX(0.7);
+      transform: rotate(90deg) translateY(-20px) scaleX(0.5);
     }
   }
 }
