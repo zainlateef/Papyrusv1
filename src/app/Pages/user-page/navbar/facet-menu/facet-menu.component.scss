@@ -32,7 +32,7 @@
 
 .checkmark {
   .burger__patty {
-    transform: rotate(140deg);
+    transform: rotate(140deg) translate(-11px);
     &:before {
       transform: translate(0px,10px);
     }
