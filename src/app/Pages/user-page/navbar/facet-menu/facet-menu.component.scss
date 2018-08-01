@@ -30,6 +30,19 @@
   }
 }
 
+.checkmark {
+  .burger__patty {
+    transform: rotate(90deg);
+    &:before {
+      transform: rotate(-45deg) translate(-7px,-7px) scaleX(0.7);
+    }
+    
+    &:after {
+      transform: rotate(45deg) translate(-7px,7px) scaleX(0.7);
+    }
+  }
+}
+
 //----Animation for add button---//
 i.material-icons {
   font-size: 1.5rem;

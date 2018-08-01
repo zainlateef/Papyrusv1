@@ -11,7 +11,7 @@ import { transition, trigger, useAnimation } from '@angular/animations';
   `
   <nav class="nav" (clickOutside)="onClickedOutside($event)">
     <i *ngIf="pageOwner && !editMode" class="fas fa-edit editIcon" (click)="toggleEditMode()" [matTooltip]="'Edit your list'"  [matTooltipShowDelay]="1300"></i>
-    <div class="burger" (click)="toggleMenu()" [ngClass]="{'burger--active':showMenu}" [ngStyle]="{'z-index': burgerZIndex}">
+    <div class="burger" (click)="toggleMenu()" [ngClass]="{'burger--active':showMenu && !editMode, 'checkmark':showMenu && editMode}" [ngStyle]="{'z-index': burgerZIndex}">
       <div class="burger__patty"></div>
     </div>
     <ul class="nav__list" [ngClass]="{'nav__list--active':showMenu}">
