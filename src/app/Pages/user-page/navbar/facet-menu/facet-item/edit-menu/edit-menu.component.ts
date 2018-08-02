@@ -12,7 +12,7 @@ declare var $: any;
     <div class="editMenu" *ngIf="editMode" (clickOutside)="onClickedOutside($event)">
       <img src="/assets/images/close.png">
       <div class="fullEditMenu" *ngIf="showFullEditMenuValue">
-        <input class="iconSearchbar" placeholder="Search for an icon..." type="search" [formControl]="search">
+        <input class="iconSearchbar" placeholder="Search for an icon" type="search" [formControl]="search">
         <ul class="iconSearchResults">
           <li *ngFor="let icon of iconMatches">
             <div class="listWrapper">
