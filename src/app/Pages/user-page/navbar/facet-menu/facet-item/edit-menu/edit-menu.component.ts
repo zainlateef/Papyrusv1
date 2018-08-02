@@ -14,7 +14,7 @@ declare var $: any;
       <div class="fullEditMenu" *ngIf="showFullEditMenuValue">
         <input class="iconSearchbar" placeholder="Search for an icon" type="search" [formControl]="search">
         <ul class="iconSearchResults">
-          <li *ngFor="let icon of iconMatches">
+          <li *ngFor="let icon of iconMatches" (click)="iconSelected(icon)">
             <div class="listWrapper">
               <i [class]="icon.iconFullName"></i>
               <div class="nickname">{{icon.iconNickname}}</div>
@@ -71,6 +71,12 @@ export class EditMenuComponent implements OnInit {
     if(this.editMode)
     this.showFullEditMenuValue=true;
     this.editService.editValueChange.subscribe( editButtonEvent => this.editMode=editButtonEvent );
+  }
+
+  iconSelected(icon : Icon)
+  {
+    this.item.icon=icon;
+    this.iconMatches.clear();
   }
 
   onFormChange(term: any) {
