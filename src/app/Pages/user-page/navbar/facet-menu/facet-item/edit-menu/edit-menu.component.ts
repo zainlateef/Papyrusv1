@@ -3,8 +3,6 @@ import { Icon } from '../../../../../../Models/icon';
 import { FormControl } from '@angular/forms';
 import { FacetItem } from '../../../../../../Models/facet-item';
 import { EditButtonService } from '../../../../../../Services/edit-button.service';
-import { transition, trigger, useAnimation } from '../../../../../../../../node_modules/@angular/animations';
-import { zoomIn } from '../../../../../../../../node_modules/ng-animate';
 declare var $: any;
 
 @Component({
@@ -14,7 +12,7 @@ declare var $: any;
     <div class="editMenu" *ngIf="editMode" (clickOutside)="onClickedOutside($event)">
       <img src="/assets/images/close.png">
       <div class="fullEditMenu" *ngIf="showFullEditMenuValue">
-        <input class="iconSearchbar" placeholder="Search for an icon" type="search" [formControl]="search">
+        <input class="iconSearchbar" placeholder="Search for an icon" type="search" [formControl]="search" [value]="iconSearchValue">
         <ul class="iconSearchResults">
           <li *ngFor="let icon of iconMatches" (click)="iconSelected(icon)">
             <div class="listWrapper">
@@ -28,10 +26,7 @@ declare var $: any;
       </div>
     </div>
   `,
-  styleUrls: ['./edit-menu.component.scss','../../original_style.scss'],
-    animations: [
-    trigger('zoomIn', [transition('void => *', useAnimation(zoomIn, { params:{timing:0.15} } ))])
-  ]
+  styleUrls: ['./edit-menu.component.scss','../../original_style.scss']
 })
 export class EditMenuComponent implements OnInit {
   
@@ -52,8 +47,8 @@ export class EditMenuComponent implements OnInit {
     console.log("set to:"+this.showFullEditMenu)
   }
 
-  zoomIn : any;
   search : FormControl;
+  iconSearchValue : string = "";
   colorPickerOrientation : string = "bottom";
   editMode : boolean = false;
   color : any;
@@ -61,6 +56,7 @@ export class EditMenuComponent implements OnInit {
   iconDatabase : Array<Icon> = new Array;
   subscription : any;
   counter : number = 0;
+  clickOutsideProtection = false;
 
   constructor(private editService : EditButtonService) { }
 
@@ -82,7 +78,9 @@ export class EditMenuComponent implements OnInit {
   iconSelected(icon : Icon)
   {
     this.item.icon=icon;
+    this.iconSearchValue=this.item.icon.iconNickname;
     this.iconMatches.clear();
+    this.clickOutsideProtection=true;
   }
 
   onFormChange(term: any) {
@@ -119,19 +117,25 @@ export class EditMenuComponent implements OnInit {
   }
 
   onClickedOutside(e: Event) {
-    if(this.showFullEditMenu)
+    if(this.clickOutsideProtection)
+      this.clickOutsideProtection=false;
+    else if(this.showFullEditMenu)
     {
-      console.log("pass");
       ++this.counter;
       if(this.counter > 1)
       {
-        console.log("click outside is the culprit");
-        this.showFullEditMenu=false;
-        this.counter=0;
+        this.resetEditMenu();
       }
     }
     else
     this.counter=0;
+  }
+
+  resetEditMenu()
+  {
+    this.showFullEditMenu=false;
+    this.counter=0;
+    this.iconSearchValue="";
   }
 
   initializeForm() 
