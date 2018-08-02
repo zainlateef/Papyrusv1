@@ -5,6 +5,7 @@ import { UrlChangeDetection } from '../../../../Parent-Classes/url-changes';
 import { EditButtonService } from '../../../../Services/edit-button.service';
 import { zoomIn } from 'ng-animate';
 import { transition, trigger, useAnimation } from '@angular/animations';
+import { Icon } from '../../../../Models/icon';
 @Component({
   selector: 'facet-menu',
   template: 
@@ -71,12 +72,11 @@ export class FacetMenuComponent extends UrlChangeDetection implements OnInit,OnD
       //console.log("HTTP Call: Navbar loads uid:"+params.uid);
       this.facetItems=[];
       this.facetItems.push(
-      new FacetItem("fa fa-user","home","#ff0080"),
-      new FacetItem("fa fa-camera-retro","photos","#00ffff"),
-      new FacetItem("fa fa-user","home","#ff0080"),
-      new FacetItem("fa fa-user","home1","#ff0080"),
-      new FacetItem("fa fa-user","home2","#ff0080"),
-      new FacetItem("fa fa-user","home3","#ff0080"),
+      new FacetItem(new Icon("user","fa fa-user"),"home","#ff0080"),
+      new FacetItem(new Icon("camera-retro","fa fa-camera-retro"),"photos","#00ffff"),
+      new FacetItem(new Icon("user","fa fa-user"),"home1","#ff0080"),
+      new FacetItem(new Icon("user","fa fa-user"),"home2","#ff0080"),
+      new FacetItem(new Icon("user","fa fa-user"),"home3","#ff0080"),
       // new FacetItem("fa fa-user","home4","#ff0080"),
       // new FacetItem("fa fa-user","home5","#ff0080"),
       // new FacetItem("fa fa-user","home6","#ff0080"),
@@ -106,7 +106,7 @@ export class FacetMenuComponent extends UrlChangeDetection implements OnInit,OnD
 
     addNewFacet()
     {
-      this.facetItems.push(new FacetItem("fa fa-user","","#000000"));
+      this.facetItems.push(new FacetItem(new Icon("user","fa fa-user"),"","#000000"));
     }
 
     onClickedOutside($event)

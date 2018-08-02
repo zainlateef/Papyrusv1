@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { IconSearchResult } from '../../../../../../Models/icon-search-result';
-import { FormControl } from '../../../../../../../../node_modules/@angular/forms';
+import { Icon } from '../../../../../../Models/icon';
+import { FormControl } from '@angular/forms';
 import { FacetItem } from '../../../../../../Models/facet-item';
 import { EditButtonService } from '../../../../../../Services/edit-button.service';
 declare var $: any;
@@ -51,8 +51,8 @@ export class EditMenuComponent implements OnInit {
   colorPickerOrientation : string = "bottom";
   editMode : boolean = false;
   color : any;
-  iconMatches : Set<IconSearchResult> = new Set;
-  iconDatabase : Array<IconSearchResult> = new Array;
+  iconMatches : Set<Icon> = new Set;
+  iconDatabase : Array<Icon> = new Array;
   subscription : any;
   counter : number = 0;
 
@@ -134,9 +134,9 @@ export class EditMenuComponent implements OnInit {
 
   initializeDummyData()
   {
-    let icon1=new IconSearchResult("cog","fas fa-cog")
-    let icon2=new IconSearchResult("plane","fas fa-plane")
-    let icon3=new IconSearchResult("archive","fas fa-archive")
+    let icon1=new Icon("cog","fas fa-cog")
+    let icon2=new Icon("plane","fas fa-plane")
+    let icon3=new Icon("archive","fas fa-archive")
     this.iconDatabase.push(icon1,icon2,icon3);
   }
 

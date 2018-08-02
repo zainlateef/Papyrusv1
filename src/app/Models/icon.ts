@@ -1,4 +1,4 @@
-export class IconSearchResult
+export class Icon
 {
     constructor(
         public iconNickname : string,

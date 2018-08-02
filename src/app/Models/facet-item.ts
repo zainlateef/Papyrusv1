@@ -1,7 +1,9 @@
+import { Icon } from "./icon";
+
 export class FacetItem
 {
     constructor(
-        public iconName : string, 
+        public icon : Icon, 
         public label : string, 
         public color : string
     ){}
