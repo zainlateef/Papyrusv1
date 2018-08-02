@@ -3,6 +3,8 @@ import { Icon } from '../../../../../../Models/icon';
 import { FormControl } from '@angular/forms';
 import { FacetItem } from '../../../../../../Models/facet-item';
 import { EditButtonService } from '../../../../../../Services/edit-button.service';
+import { transition, trigger, useAnimation } from '../../../../../../../../node_modules/@angular/animations';
+import { zoomIn } from '../../../../../../../../node_modules/ng-animate';
 declare var $: any;
 
 @Component({
@@ -26,7 +28,10 @@ declare var $: any;
       </div>
     </div>
   `,
-  styleUrls: ['./edit-menu.component.scss','../../original_style.scss']
+  styleUrls: ['./edit-menu.component.scss','../../original_style.scss'],
+    animations: [
+    trigger('zoomIn', [transition('void => *', useAnimation(zoomIn, { params:{timing:0.15} } ))])
+  ]
 })
 export class EditMenuComponent implements OnInit {
   
@@ -47,6 +52,7 @@ export class EditMenuComponent implements OnInit {
     console.log("set to:"+this.showFullEditMenu)
   }
 
+  zoomIn : any;
   search : FormControl;
   colorPickerOrientation : string = "bottom";
   editMode : boolean = false;
