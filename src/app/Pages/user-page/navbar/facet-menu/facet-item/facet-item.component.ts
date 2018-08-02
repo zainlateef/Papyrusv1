@@ -9,7 +9,7 @@ import { Router, ActivatedRoute } from '../../../../../../../node_modules/@angul
   ` <a (click)="routeToFacet();toggleFullEditMenu($event)" class="nav__link">
       <div class="wrapper">
         <div class="icon_wrapper">
-          <i [ngStyle]="{'color':item.color}" [class]="item.iconName" [ngClass]="{'faa-float animated faa-fast': editMode}" [matTooltip]="!editMode ? item.label : null" [matTooltipShowDelay]="400"></i>
+          <i [ngStyle]="{'color':item.color}" [class]="item.iconName" [ngClass]="{'faa-float animated faa-fast': editMode}" [matTooltip]="!editMode ? item.label : null" [matTooltipShowDelay]="400" [matTooltipPosition]="'right'"></i>
         </div>
         <edit-menu [item]="item" [(showFullEditMenu)]="showFullEditMenu"></edit-menu>
       </div>
