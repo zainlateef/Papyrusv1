@@ -69,7 +69,7 @@ export class EditMenuComponent implements OnInit {
   {
     this.editMode=this.editService.editMode;
     if(this.editMode)
-    this.showFullEditMenuValue=true;
+    this.showFullEditMenu=true;
     this.editService.editValueChange.subscribe( editButtonEvent => this.editMode=editButtonEvent );
   }
 
@@ -119,6 +119,7 @@ export class EditMenuComponent implements OnInit {
       ++this.counter;
       if(this.counter > 1)
       {
+        console.log("click outside is the culprit");
         this.showFullEditMenu=false;
         this.counter=0;
       }
