@@ -22,7 +22,8 @@ declare var $: any;
           </li>
         </ul>
         <button class="colorpicker" (colorPickerOpen)="colorPickerOpened(color)" [(colorPicker)]="color" (colorPickerChange)="setColor(color)"[style.background]="color" [cpPosition]="colorPickerOrientation" [cpDisableInput]="true"></button>
-        <input class="labelInput" placeholder="Label" [formControl]="labelInput" [value]="item.label" [ngClass]="{'redBorder' : errorLabel}">
+        <input  class="labelInput" placeholder="Label" [formControl]="labelInput" [value]="item.label" [ngClass]="{'redBorder' : labelIsEmpty || labelIsNotUnique }">
+        <div class="errorMessage" *ngIf="labelIsEmpty || labelIsNotUnique">{{labelErrorMessage()}}</div>
       </div>
     </div>
   `,
@@ -49,7 +50,8 @@ export class EditMenuComponent implements OnInit {
 
   iconSearchbar : FormControl;
   labelInput : FormControl;
-  errorLabel : boolean = false;
+  labelIsEmpty : boolean = false;
+  labelIsNotUnique : boolean = false;
   iconSearchValue : string = "";
   colorPickerOrientation : string = "bottom";
   editMode : boolean = false;
@@ -154,9 +156,9 @@ export class EditMenuComponent implements OnInit {
         .distinctUntilChanged()
         .subscribe( input => {
           if(input==="")
-            this.errorLabel=true;
+            this.labelIsEmpty=true;
           else
-            this.errorLabel=false;
+            this.labelIsEmpty=false;
 
           this.item.label=input
         });
@@ -168,6 +170,15 @@ export class EditMenuComponent implements OnInit {
     let icon2=new Icon("plane","fas fa-plane")
     let icon3=new Icon("archive","fas fa-archive")
     this.iconDatabase.push(icon1,icon2,icon3);
+  }
+
+  labelErrorMessage()
+  {
+    if(this.labelIsEmpty)
+      return "You have to name your page";
+    else if(this.labelIsNotUnique)
+      return "Can't use the same name twice"
+    return "";
   }
 
 }
