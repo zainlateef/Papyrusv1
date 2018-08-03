@@ -47,7 +47,8 @@ export class FacetMenuComponent extends UrlChangeDetection implements OnInit,OnD
     @HostListener('window:beforeunload', ['$event'])
     unloadNotification($event: any) {
         if (this.editMode && this.changesWereMade()) {
-            $event.returnValue=true;
+          //Disabled for production
+          //$event.returnValue=true;
         }
     }
     zoomIn: any;

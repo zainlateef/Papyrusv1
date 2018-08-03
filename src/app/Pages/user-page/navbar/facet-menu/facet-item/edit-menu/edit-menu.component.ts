@@ -23,7 +23,7 @@ declare var $: any;
         </ul>
         <button class="colorpicker" (colorPickerOpen)="colorPickerOpened(color)" [(colorPicker)]="color" (colorPickerChange)="setColor(color)"[style.background]="color" [cpPosition]="colorPickerOrientation" [cpDisableInput]="true"></button>
         <input  class="labelInput" placeholder="Label" [formControl]="labelInput" [value]="item.label" [ngClass]="{'redBorder' : labelIsEmpty || labelIsNotUnique }">
-        <div class="errorMessage" *ngIf="labelIsEmpty || labelIsNotUnique">{{labelErrorMessage()}}</div>
+        <div class="errorMessage mat-tooltip" *ngIf="labelIsEmpty || labelIsNotUnique">{{labelErrorMessage()}}</div>
       </div>
     </div>
   `,
