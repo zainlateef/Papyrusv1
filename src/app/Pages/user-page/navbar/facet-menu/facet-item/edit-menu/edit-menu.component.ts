@@ -12,7 +12,7 @@ declare var $: any;
     <div class="editMenu" *ngIf="editMode" (clickOutside)="onClickedOutside($event)">
       <img src="/assets/images/close.png">
       <div class="fullEditMenu" *ngIf="showFullEditMenuValue">
-        <input class="iconSearchbar" placeholder="Search for an icon" type="search" [formControl]="search" [value]="iconSearchValue">
+        <input class="iconSearchbar" placeholder="Search for an icon" type="search" [formControl]="iconSearchbar" [value]="iconSearchValue">
         <ul class="iconSearchResults">
           <li *ngFor="let icon of iconMatches" (click)="iconSelected(icon)">
             <div class="listWrapper">
@@ -22,7 +22,7 @@ declare var $: any;
           </li>
         </ul>
         <button class="colorpicker" (colorPickerOpen)="colorPickerOpened(color)" [(colorPicker)]="color" (colorPickerChange)="setColor(color)"[style.background]="color" [cpPosition]="colorPickerOrientation" [cpDisableInput]="true"></button>
-        <input class="labelInput" placeholder="Label" [value]="item.label">
+        <input class="labelInput" placeholder="Label" [formControl]="labelInput" [value]="item.label" [ngClass]="{'redBorder' : errorLabel}">
       </div>
     </div>
   `,
@@ -47,14 +47,15 @@ export class EditMenuComponent implements OnInit {
     console.log("set to:"+this.showFullEditMenu)
   }
 
-  search : FormControl;
+  iconSearchbar : FormControl;
+  labelInput : FormControl;
+  errorLabel : boolean = false;
   iconSearchValue : string = "";
   colorPickerOrientation : string = "bottom";
   editMode : boolean = false;
   color : any;
   iconMatches : Set<Icon> = new Set;
   iconDatabase : Array<Icon> = new Array;
-  subscription : any;
   counter : number = 0;
   clickOutsideProtection = false;
 
@@ -62,7 +63,7 @@ export class EditMenuComponent implements OnInit {
 
   ngOnInit() {
     this.editServiceSetup();
-    this.initializeForm();
+    this.initializeForms();
     this.initializeDummyData();
     this.color=this.item.color;
   }
@@ -124,28 +125,40 @@ export class EditMenuComponent implements OnInit {
       ++this.counter;
       if(this.counter > 1)
       {
-        this.resetEditMenu();
+        this.closeEditMenu();
       }
     }
     else
     this.counter=0;
   }
 
-  resetEditMenu()
+  closeEditMenu()
   {
     this.showFullEditMenu=false;
     this.counter=0;
     this.iconSearchValue="";
   }
 
-  initializeForm() 
+  initializeForms() 
   {
-    this.search=new FormControl();
-    this.subscription=this.search.valueChanges
+    this.iconSearchbar=new FormControl();
+    this.iconSearchbar.valueChanges
         .debounceTime(200)
         .distinctUntilChanged()
         .subscribe( term => {
             this.onFormChange(term);
+        });
+
+    this.labelInput=new FormControl();
+    this.labelInput.valueChanges
+        .distinctUntilChanged()
+        .subscribe( input => {
+          if(input==="")
+            this.errorLabel=true;
+          else
+            this.errorLabel=false;
+
+          this.item.label=input
         });
   }
 
