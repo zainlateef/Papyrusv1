@@ -155,13 +155,23 @@ export class EditMenuComponent implements OnInit {
     this.labelInput.valueChanges
         .distinctUntilChanged()
         .subscribe( input => {
-          if(input==="")
-            this.labelIsEmpty=true;
-          else
-            this.labelIsEmpty=false;
-
+          this.checkIfLabelIsEmpty(input);
+          this.checkIfLabelIsUnique(input);
           this.item.label=input
         });
+  }
+
+  checkIfLabelIsEmpty(input)
+  {
+    if(input==="")
+      this.labelIsEmpty=true;
+    else
+      this.labelIsEmpty=false;
+  }
+
+  checkIfLabelIsUnique(input)
+  {
+    
   }
 
   initializeDummyData()
@@ -176,9 +186,8 @@ export class EditMenuComponent implements OnInit {
   {
     if(this.labelIsEmpty)
       return "You have to name your page";
-    else if(this.labelIsNotUnique)
+    else
       return "Can't use the same name twice"
-    return "";
   }
 
 }
