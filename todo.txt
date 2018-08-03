@@ -1,0 +1,79 @@
+Current Task:
+
+Refactor all code using the story principle.
+
+Add an effect on the user menu opening and closing. Maybe some animation on the hover over search results
+
+Implementing dragging and dropping, also deleting a facet item from a list. This is primarily editing preexisting facets.
+
+First things first, I have to be able to develop a triggering system for when the user hits the edit button. 
+
+If you hit the edit button, it sends the trigger to the list. Now all the items are draggable, and deletable. Upon clicking (mouse up and down) the item, you open the icon editing menu. If you click the plus button, a new icon is added to the bottom of the list and is automatically clicked to open the icon editing menu. 
+
+The icon editing menu has the color picker, the icon search and the tooltip name
+
+Where do we want the edit button? It should be placed in a strategic place to where the event can propagate to many components. But maybe it’d be better to use a service. 
+
+A service that’s injected to every single editable component. When the edit button is clicked
+
+Editing feeds is a different matter entirely. The 
+
+Clicking edit changes the text to save and toggles the edit service. That event is emitted to all editable components and they are changed accordingly. 
+
+Don’t forget about the loading nav bar. Also implement a fix so that you don’t show the icons when you flip the burger
+
+Edit should effect the profile picture, background image, and facet menu
+
+Have to decide the layout of the page
+
+Don’t forget to do the mobile version of the edit menu. A modal would be nice, but it might not be necessary 
+
+There is the bug that i opened on GitHub. That solution is pending.  
+
+Plus functionality is next, as well as the functionality of the edit menu. 
+
+Require all the forms in the edit menu to be completed. Which means they have to load their current values. They can never be blank
+If all of the fields aren’t satisfied, you can’t click anywhere else to close the edit menu. You can only click the delete button
+
+First link all the data to the input fields. then validate
+
+On media query, change the plus button to it’s white counterpart
+
+Look at all your subscribes and make sure you’re unsubscribing
+
+Right now i’m implementing the drop down search links
+
+Have to set it up so that it’s ready to hook up to the back end. Put the api calls where they should be. 
+
+Have to think about the save functionality. I want it to be seamless. You  send an update as soon as a change occurs AND all fields are full. Otherwise you do not update.
+That’s perfect. If you don’t care about warning the user, the update will save a new one as well. So as soon as all the values of a new one are filled out, the page will update which also saves it. So this functionality works here. but poke holes in it. 
+
+The only thing is, if they don’t fill it out correctly, the icon will just kind of stand there waiting for all the forms to be filled out, but it won’t save. 
+
+I think that’s remedied by a small exclamation point next to the unfilled form warning them that the form isn’t filled by tooltip
+
+When the user go backs from save to edit mode, reload the list, loading all the new changes. Awesome
+
+What about deleting?
+
+Don't forget about dragging
+
+We should probably warn them before they delete all their shit. OOOOOR since its all posts, you save ALL DELETED POSTS for a short amount of time and store it in a garbage bin
+
+Have a lot of things to do. Link placeholder of icon search to the current icon. Clear form after clicking out of edit menu. 
+
+You do have a save button, you should just use it. It doesn’t matter that much. Warn them if they leave the page without. It’s pretty simple than. Update color and icon in the UI. When you go from edit to save, you update the list. You should only update the icons that have been updated, which means you should flag items that have been updated.
+
+Edit mode established keep a copy of the original list. When you go back to save mode you check the original list against the new list and see if it’s different. If it is different, you send the update to the server, and when the server responds back you request the new list and update the ui. So it’s all based on edit mode, although the array in typescript also changes. 
+
+3 edit icons. Clean design. One for the background image, one for the profile image, one that hangs out on the navbar. Closing the navbar saves it. 
+
+Make it more user friendly by having hover pointer icons on the search icon, the user menu, and the facet items
+
+Don’t forget to add tooltips to everything else on the navbar
+
+All you need is a title that doesn’t match anything else you’ve provided. That’s a backend and front end check. 
+
+Do front end validation. 
+
+Might need to give the users the option to toggle the color of the mobile background of the navbar
