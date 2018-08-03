@@ -87,6 +87,7 @@ export class FacetMenuComponent extends UrlChangeDetection implements OnInit,OnD
       // new FacetItem("fa fa-user","home10","#ff0080"),
     );
     this.oldList=JSON.stringify(this.facetItems);
+    
     }
     
     toggleMenu()
@@ -120,6 +121,7 @@ export class FacetMenuComponent extends UrlChangeDetection implements OnInit,OnD
     {
       this.pageOwner=this.editService.isPageOwner;
       this.editMode=this.editService.editMode;
+      this.editService.requestsForListOfLabels.subscribe( request => this.sendListOfLabels())
 
       this.editService.pageOwnerStatus.subscribe( status => this.pageOwner=status);
       this.subscription=this.editService.editValueChange.subscribe( editButtonEvent => 
@@ -147,18 +149,18 @@ export class FacetMenuComponent extends UrlChangeDetection implements OnInit,OnD
       if(this.navButtonClicked)
       {
         this.navButtonClicked=false;
-        //if(this.changesWereMade())
-          //console.log("fire the api call of "+this.uid);
+        if(this.changesWereMade())
+          console.log("fire the api call of "+this.uid);
       }
       else
       {
-        this.checkForUnsavedChanges();
+        this.checkForUnsavedChangesBeforeClosing();
       }
       this.burgerZIndex=2;
       
     }
 
-    checkForUnsavedChanges()
+    checkForUnsavedChangesBeforeClosing()
     {
       if( this.pageOwner && this.changesWereMade())
       {
@@ -176,6 +178,11 @@ export class FacetMenuComponent extends UrlChangeDetection implements OnInit,OnD
     changesWereMade()
     {
       return !(JSON.stringify(this.facetItems)===this.oldList);
+    }
+
+    sendListOfLabels()
+    {
+      this.editService.listOfLabels.emit(JSON.stringify(this.facetItems.map( x => x.label)));
     }
 
     ngOnDestroy()

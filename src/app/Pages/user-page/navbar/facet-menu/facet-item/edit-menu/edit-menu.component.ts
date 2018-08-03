@@ -74,8 +74,9 @@ export class EditMenuComponent implements OnInit {
   {
     this.editMode=this.editService.editMode;
     if(this.editMode)
-    this.showFullEditMenu=true;
+    this.showFullEditMenuValue=true; //must be Value because of a chrome bug
     this.editService.editValueChange.subscribe( editButtonEvent => this.editMode=editButtonEvent );
+    this.editService.listOfLabels.subscribe(labels => this.checkIfLabelIsUnique(JSON.parse(labels)));
   }
 
   iconSelected(icon : Icon)
@@ -155,9 +156,9 @@ export class EditMenuComponent implements OnInit {
     this.labelInput.valueChanges
         .distinctUntilChanged()
         .subscribe( input => {
-          this.checkIfLabelIsEmpty(input);
-          this.checkIfLabelIsUnique(input);
           this.item.label=input
+          this.checkIfLabelIsEmpty(input);
+          this.requestAllLabels(input);
         });
   }
 
@@ -169,9 +170,27 @@ export class EditMenuComponent implements OnInit {
       this.labelIsEmpty=false;
   }
 
-  checkIfLabelIsUnique(input)
+  requestAllLabels(input)
   {
-    
+    this.editService.requestsForListOfLabels.emit(true);
+  }
+
+  checkIfLabelIsUnique(labels)
+  {
+    let counter=0;
+    for (var i in labels) {
+      if (this.item.label===labels[i]) 
+      {
+          ++counter;
+          if(counter > 1)
+          {
+            this.labelIsNotUnique=true;
+            return false;
+          }
+      }
+    }
+    this.labelIsNotUnique=false;
+    return true;
   }
 
   initializeDummyData()

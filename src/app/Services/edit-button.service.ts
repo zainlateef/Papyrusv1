@@ -8,9 +8,18 @@ export class EditButtonService
     @Output() editValueChange: EventEmitter<boolean> = new EventEmitter();
     @Output() pageOwnerStatus: EventEmitter<boolean> = new EventEmitter();
 
+    @Output() requestsForListOfLabels : EventEmitter<boolean> = new EventEmitter();
+    @Output() listOfLabels : EventEmitter<string> = new EventEmitter();
+
     toggle(){
         this.editMode=!this.editMode;
         this.editValueChange.emit(this.editMode);
+    }
+
+    emitPageOwnerStatus(status)
+    {
+        this.isPageOwner=status
+        this.pageOwnerStatus.emit(this.isPageOwner);
     }
 
     reset()
@@ -20,12 +29,6 @@ export class EditButtonService
         this.editValueChange.emit(this.editMode);
         this.isPageOwner=false
         this.emitPageOwnerStatus(this.isPageOwner);
-    }
-
-    emitPageOwnerStatus(status)
-    {
-        this.isPageOwner=status
-        this.pageOwnerStatus.emit(this.isPageOwner);
     }
     
 }
