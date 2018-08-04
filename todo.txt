@@ -81,3 +81,8 @@ Might need to give the users the option to toggle the color of the mobile backgr
 on the ul :  [ngStyle]="mobileView && {'background-color': 'red'}"
 
 Attempting the glass effect. I should explore options before I just throw a color picker there randomly
+
+You need to allow the users to change the color of the search and user menu icons. 
+A dark background absolutely does not work with it
+
+Need a simple and pretty way to invert the color scheme of the two right icons

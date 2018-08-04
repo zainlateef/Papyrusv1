@@ -31,6 +31,12 @@ $nav-bg: #2b3033;
     float: right;
     z-index: 2;
     height: 15vh;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none;
     @media(min-width: 640px)
     {
       max-height: 100px;
