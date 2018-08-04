@@ -198,7 +198,8 @@ export class EditMenuComponent implements OnInit {
     let icon1=new Icon("cog","fas fa-cog")
     let icon2=new Icon("plane","fas fa-plane")
     let icon3=new Icon("archive","fas fa-archive")
-    this.iconDatabase.push(icon1,icon2,icon3);
+    let icon4=new Icon("500px","fab fa-500px")
+    this.iconDatabase.push(icon1,icon2,icon3,icon4);
   }
 
   labelErrorMessage()
