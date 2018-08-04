@@ -19,3 +19,20 @@
   }
 
   li:focus {outline:0;}
+
+  html 
+  {
+    overflow: scroll;
+    overflow-x: hidden;
+    -ms-overflow-style: none;
+  }
+::-webkit-scrollbar 
+  {
+    width: 0px;  /* remove scrollbar space */
+    background: transparent;  /* optional: just make scrollbar invisible */
+  }
+/* optional: show position indicator in red */
+::-webkit-scrollbar-thumb 
+  {
+    background: #FF0000;
+  }
