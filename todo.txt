@@ -77,3 +77,7 @@ All you need is a title that doesn’t match anything else you’ve provided. Th
 Do front end validation. 
 
 Might need to give the users the option to toggle the color of the mobile background of the navbar
+
+on the ul :  [ngStyle]="mobileView && {'background-color': 'red'}"
+
+Attempting the glass effect. I should explore options before I just throw a color picker there randomly

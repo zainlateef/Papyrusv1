@@ -15,7 +15,7 @@ import { Icon } from '../../../../Models/icon';
     <div class="burger" (click)="toggleMenu()" [ngClass]="{'burger--active':showMenu && !editMode, 'checkmark':showMenu && editMode}" [ngStyle]="{'z-index': burgerZIndex}" [matTooltipDisabled]="!editMode" [matTooltip]="'Save your list'"  [matTooltipShowDelay]="600" [matTooltipPosition]="'right'">
       <div class="burger__patty"></div>
     </div>
-    <ul class="nav__list" [ngClass]="{'nav__list--active':showMenu}" [ngStyle]="mobileView && {'background-color': 'red'}">
+    <ul class="nav__list" [ngClass]="{'nav__list--active':showMenu}">
       <li *ngFor="let item of facetItems" class="nav__item background">
         <facet-item [item]="item"></facet-item>
       </li>
