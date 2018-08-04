@@ -86,3 +86,6 @@ You need to allow the users to change the color of the search and user menu icon
 A dark background absolutely does not work with it
 
 Need a simple and pretty way to invert the color scheme of the two right icons
+
+You have to do a simple button to invert. there's no way to detect the background for them
+It's not feasible. 
