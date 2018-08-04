@@ -7,13 +7,6 @@
     height: 100%;
 }
 
-.icon
-{
-    @media (max-width: 640px) {
-        color: white;
-    }
-}
-
 ul 
 {
     width: 100px;
@@ -34,6 +27,7 @@ ul
 li
 {
     background-color: white;
+    color: black;
     font: 200 13px/1.5 Helvetica, Verdana, sans-serif;
     border-bottom: 1px solid #ccc;
     padding: 5px 5px 5px 8px;
