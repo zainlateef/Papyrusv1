@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   <div class="wrapper">
     <facet-menu></facet-menu>
     <div class="right">
+        <button class="colorpicker" (colorPickerOpen)="colorPickerOpened(color)" [(colorPicker)]="color" (colorPickerChange)="setColor(color)"[style.background]="color" [cpPosition]="colorPickerOrientation" [cpDisableInput]="true"></button>
         <friend-search></friend-search>
         <user-menu></user-menu>
     </div>

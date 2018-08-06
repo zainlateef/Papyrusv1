@@ -50,6 +50,14 @@ $nav-bg: #2b3033;
     @media (max-width: 319px), (max-height: 320px){
         display: none;
     }
+
+    .colorpicker
+    {
+        display: inline-block;
+        border-width: 1px;
+        width: 15px; 
+        height: 15px;
+    }
 }
 
 facet-menu

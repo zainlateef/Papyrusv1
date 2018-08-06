@@ -74,7 +74,7 @@ Don’t forget to add tooltips to everything else on the navbar
 
 All you need is a title that doesn’t match anything else you’ve provided. That’s a backend and front end check. 
 
-Do front end validation. 
+Do front end validation. Make the api call validate everything. 
 
 Might need to give the users the option to toggle the color of the mobile background of the navbar
 
@@ -89,3 +89,6 @@ Need a simple and pretty way to invert the color scheme of the two right icons
 
 You have to do a simple button to invert. there's no way to detect the background for them
 It's not feasible. 
+
+That should work perfectly.
+Getting the body background is about the only problem.
