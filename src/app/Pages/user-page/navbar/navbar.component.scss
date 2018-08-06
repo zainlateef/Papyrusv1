@@ -44,7 +44,7 @@ $nav-bg: #2b3033;
 
     @media (max-width: 640px) {
         height: 10vh;
-        color: white;
+        color: white !important;
     }
     
     @media (max-width: 319px), (max-height: 320px){
@@ -54,9 +54,14 @@ $nav-bg: #2b3033;
     .colorpicker
     {
         display: inline-block;
+        z-index: 0;
+        vertical-align: super;
         border-width: 1px;
         width: 15px; 
         height: 15px;
+        background-color: black;
+        border-style: groove;
+        outline: none;
     }
 }
 
