@@ -43,6 +43,7 @@ export class NavbarComponent implements OnInit {
 
   searchOpenEvent(searchBarIsOpen)
   {
+    console.log("here"+searchBarIsOpen);
     this.searchBarIsOpen=searchBarIsOpen;
   }
 
