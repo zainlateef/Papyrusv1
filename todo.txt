@@ -92,3 +92,5 @@ It's not feasible.
 
 That should work perfectly.
 Getting the body background is about the only problem.
+
+Make it so that when you hover over an icon it previews how it looks in the actual list. Store a temp icon and the old icon and switch between them. 
