@@ -7,7 +7,7 @@ import { EditButtonService } from '../../../Services/edit-button.service';
   <div class="wrapper">
     <facet-menu></facet-menu>
     <div class="right" [ngStyle]="{'color': isBlack ? 'black' : 'white' }">
-        <button *ngIf="editMode && !searchBarIsOpen" class="colorpicker" [ngStyle]="{'background-color': isBlack ? 'black' : '#fffffe' }" (click)="toggleColorScheme()" [matTooltip]="'Change the color of these icons to be black or white. Color will always be white on the mobile site'" [matTooltipShowDelay]="1600"></button>
+        <button *ngIf="editMode && !searchBarIsOpen" class="colorpicker" [ngStyle]="{'background-color': isBlack ? 'black' : '#fffffe' }" (click)="toggleColorScheme()" [matTooltip]="'Change the color of these icons to be black or white. Color will always be white on the mobile site'" [matTooltipShowDelay]="1300"></button>
         <friend-search (openEvent)="searchOpenEvent($event)"></friend-search>
         <user-menu></user-menu>
     </div>

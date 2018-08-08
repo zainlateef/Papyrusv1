@@ -74,7 +74,7 @@ export class EditMenuComponent implements OnInit {
   {
     this.editMode=this.editService.editMode;
     if(this.editMode)
-    this.showFullEditMenuValue=true; //must be Value because of a chrome bug
+    this.showFullEditMenuValue=true; //must be showFullEditMenuValue instead of showFullEditMenu because of a chrome bug
     this.editService.editValueChange.subscribe( editButtonEvent => this.editMode=editButtonEvent );
     this.editService.listOfLabels.subscribe(labels => this.checkIfLabelIsUnique(JSON.parse(labels)));
   }
