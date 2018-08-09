@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
   template: `
   <div class="wrapper" (clickOutside)="onClickedOutside($event)">
     <fa (click)="toggleMenu()" class="icon" name="user" size="2x"></fa>
-    <ul *ngIf="showMenu" class="noselect">
+    <ul *ngIf="showMenu" class="noselect" (click)="closeAfterSelection()">
       <li *ngIf="loggedIn" [routerLink]="['/feed',uid]"> 
         Profile 
       </li>
@@ -60,6 +60,11 @@ export class UserMenuComponent implements OnInit {
   }
 
   onClickedOutside(e: Event) {
+    this.showMenu=false;
+  }
+
+  closeAfterSelection()
+  {
     this.showMenu=false;
   }
 
