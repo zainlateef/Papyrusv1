@@ -3,28 +3,25 @@
   display: inline-block;
 }
 
-.background
+.frosted_glass
 {
+  display: none;
   position: absolute;
-  z-index: -3; //might be able to change
+  z-index: -1;
   right: 0;
   left: 0;
-    //Frosted Glass
     @media (max-width: 640px) {
-      //background : rgba(148, 138, 138, 0.2);
+        display: unset;
         background: url(https://images.pexels.com/photos/314380/pexels-photo-314380.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb) fixed no-repeat;
         background-size: cover;
-        position: absolute;
-        z-index: -3;
         overflow: hidden;
         box-sizing: border-box;
         box-shadow: 0 .5em 1em rgba(0,0,0,0.3);
-      
-      
+
       &::before {
         content: "";
         position: absolute;
-        z-index: -3;
+        z-index: -1;
         top: 0; right: 0; bottom: 0; left: 0;
         background: inherit;
         box-shadow: inset 0 0 3000px rgba(255,255,255,.5);
@@ -32,11 +29,6 @@
         margin: -20px;
       }
     }
-}
-
-.nav__list
-{
-
 }
 
 .editIcon

@@ -16,10 +16,7 @@ import { Icon } from '../../../../Models/icon';
       <div class="burger__patty"></div>
     </div>
 
-    <ul class="nav__list background" [ngClass]="{'nav__list--active':showMenu}">
-      <li *ngFor="let item of facetItems" class="nav__item">
-      </li>
-    </ul>
+    <ul class="frosted_glass nav__list" [ngClass]="{'nav__list--active':showMenu}"><li *ngFor="let item of facetItems" class="nav__item"></li></ul>
 
     <ul class="nav__list" [ngClass]="{'nav__list--active':showMenu}">
       <li *ngFor="let item of facetItems" class="nav__item">
