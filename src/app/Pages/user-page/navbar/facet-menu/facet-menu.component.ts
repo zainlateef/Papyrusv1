@@ -180,10 +180,13 @@ export class FacetMenuComponent extends UrlChangeDetection implements OnInit,OnD
         if (confirm("Save the changes to your list?")) 
         {
           console.log(this.uid+" saved his changes");
+          console.log("Send the list to the API");
         } 
         else 
         {
           console.log(this.uid+" declined his changes");
+          this.facetItems=JSON.parse(this.oldList);
+          console.log("Here now"+JSON.stringify(this.facetItems));
         }
       }
     }
