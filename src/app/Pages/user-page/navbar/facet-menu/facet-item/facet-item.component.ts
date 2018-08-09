@@ -6,10 +6,10 @@ import { Router, ActivatedRoute } from '../../../../../../../node_modules/@angul
 @Component({
   selector: 'facet-item',
   template: 
-  ` <a (click)="routeToFacet();toggleFullEditMenu($event)" class="nav__link">
+  ` <a (click)="routeToFacet();toggleFullEditMenu($event)" class="nav__link" (mouseover)="tooltip.show()" (mouseleave)="tooltip.hide()">
       <div class="wrapper">
-        <div class="icon_wrapper">
-          <i [ngStyle]="{'color':item.color}" [class]="item.icon.iconFullName" [ngClass]="{'faa-float animated faa-fast': editMode}" [matTooltip]="item.label" [matTooltipDisabled]="editMode" [matTooltipShowDelay]="400" [matTooltipPosition]="'right'"></i>
+        <div class="icon_wrapper" #tooltip="matTooltip" [matTooltip]="item.label" [matTooltipDisabled]="editMode" [matTooltipPosition]="'right'">
+          <i [ngStyle]="{'color':item.color}" [class]="item.icon.iconFullName" [ngClass]="{'faa-float animated faa-fast': editMode}"></i>
         </div>
         <edit-menu [item]="item" [(showFullEditMenu)]="showFullEditMenu"></edit-menu>
       </div>
