@@ -161,6 +161,7 @@ export class FacetMenuComponent extends UrlChangeDetection implements OnInit,OnD
         this.navButtonClicked=false;
         if(this.changesWereMade())
           console.log("fire the api call of "+this.uid);
+        this.oldList=JSON.stringify(this.facetItems);
       }
       else
       {

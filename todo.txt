@@ -96,3 +96,10 @@ Getting the body background is about the only problem.
 Make it so that when you hover over an icon it previews how it looks in the actual list. Store a temp icon and the old icon and switch between them. 
 
 Have to find a clean way not to load the edit menu for everyone
+
+Currently stuck on the bug where the frosted glass doesn't show the edit menu
+and the notorious color picker bug. 
+
+Talking through the frosted glass problem, it helps to consider the list dragging. The easy solution
+to the list dragging is frosted the entire ul. Which means the edit menu fix requires something else.
+Ideally, a css fix would be best. I should explore that a little more, whether that's possible
