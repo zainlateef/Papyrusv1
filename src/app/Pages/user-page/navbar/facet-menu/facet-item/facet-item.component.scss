@@ -14,14 +14,6 @@ $nav-bg: #2b3033;
     cursor: pointer;
 }
 
-.nav__link
-{
-    //Frosted Glass
-    @media (max-width: 640px) {
-        background : rgba(148, 138, 138, 0.2);
-    }
-}
-
 .wrapper
 {
     position: relative;
