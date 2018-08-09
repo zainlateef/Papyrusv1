@@ -15,11 +15,16 @@ import { Icon } from '../../../../Models/icon';
     <div class="burger" (click)="toggleMenu()" [ngClass]="{'burger--active':showMenu && !editMode, 'checkmark':showMenu && editMode}" [ngStyle]="{'z-index': burgerZIndex}" [matTooltipDisabled]="!editMode" [matTooltip]="'Save your list'"  [matTooltipShowDelay]="600" [matTooltipPosition]="'right'">
       <div class="burger__patty"></div>
     </div>
+
+    <ul class="nav__list background" [ngClass]="{'nav__list--active':showMenu}">
+      <li *ngFor="let item of facetItems" class="nav__item">
+      </li>
+    </ul>
+
     <ul class="nav__list" [ngClass]="{'nav__list--active':showMenu}">
-      <li *ngFor="let item of facetItems" class="nav__item background">
+      <li *ngFor="let item of facetItems" class="nav__item">
         <facet-item [item]="item"></facet-item>
       </li>
-
       <li *ngIf="editMode" class="nav__item" [@zoomIn]="zoomIn">
         <a class="nav__link">
           <div class="wrapper">
@@ -29,8 +34,8 @@ import { Icon } from '../../../../Models/icon';
           </div>
         </a>
       </li>
-      
     </ul>
+    
   </nav>
   `,
   styleUrls: ['./facet-menu.component.scss','./original_style.scss','./facet-item/facet-item.component.scss',],
