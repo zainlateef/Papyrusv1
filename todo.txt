@@ -94,3 +94,5 @@ That should work perfectly.
 Getting the body background is about the only problem.
 
 Make it so that when you hover over an icon it previews how it looks in the actual list. Store a temp icon and the old icon and switch between them. 
+
+Have to find a clean way not to load the edit menu for everyone
