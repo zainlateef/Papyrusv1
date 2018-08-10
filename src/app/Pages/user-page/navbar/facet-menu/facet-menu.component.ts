@@ -78,21 +78,22 @@ export class FacetMenuComponent extends UrlChangeDetection implements OnInit,OnD
     {
       const bag: any = this.dragulaService.find('DragMe');
       if (bag !== undefined ) console.log(this.dragulaService.destroy('DragMe'));
-      if(this.editMode)
-      {
+      //if(this.editMode)
+     // {
         console.log("here");
         this.dragulaService.setOptions('DragMe', {
+          //the problem is with ignore drag. i see now. i'll have to delve into this further
           moves: (el, source, handle, sibling) => !el.classList.contains('ignore-drag'),
         });
-      }
-      else
-      {
-        console.log("now here");
-        this.dragulaService.setOptions('DragMe', {
-          moves: (el, source, handle, sibling) => false,
-          accepts: (el, target) => false
-        });
-      }
+     // }
+      // else
+      // {
+      //   console.log("now here");
+      //   this.dragulaService.setOptions('DragMe', {
+      //     moves: (el, source, handle, sibling) => false,
+      //     accepts: (el, target) => false
+      //   });
+      // }
     }
 
     loadOnUrlChange(params)
@@ -225,7 +226,7 @@ export class FacetMenuComponent extends UrlChangeDetection implements OnInit,OnD
           this.facetItems.splice(this.facetItems.indexOf(x),1);
       })
     }
-    
+
     ngOnDestroy()
     {
       this.editModeIsOff();

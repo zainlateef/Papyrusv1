@@ -112,3 +112,5 @@ And actually that's about it. After that it's drag and drop.
 Put the index into the close button, when the close button is clicked, pass in the index into the function. 
 It's easy. It also solves hiding the x button pretty easily. In general,
 You might want to redesign the x button. It looks like a close edit menu button
+
+ON drag, hide all the edit menus
