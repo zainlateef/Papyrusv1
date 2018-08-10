@@ -76,9 +76,23 @@ export class FacetMenuComponent extends UrlChangeDetection implements OnInit,OnD
 
     dragulaSetup()
     {
-      this.dragulaService.setOptions('DragMe', {
-        moves: (el, source, handle, sibling) => !el.classList.contains('ignore-drag')
-      });
+      const bag: any = this.dragulaService.find('DragMe');
+      if (bag !== undefined ) console.log(this.dragulaService.destroy('DragMe'));
+      if(this.editMode)
+      {
+        console.log("here");
+        this.dragulaService.setOptions('DragMe', {
+          moves: (el, source, handle, sibling) => !el.classList.contains('ignore-drag'),
+        });
+      }
+      else
+      {
+        console.log("now here");
+        this.dragulaService.setOptions('DragMe', {
+          moves: (el, source, handle, sibling) => false,
+          accepts: (el, target) => false
+        });
+      }
     }
 
     loadOnUrlChange(params)
@@ -141,6 +155,7 @@ export class FacetMenuComponent extends UrlChangeDetection implements OnInit,OnD
       {
         //console.log("this happens at startup");
         this.editMode=editButtonEvent;
+        this.dragulaSetup();
         if(this.editMode)
           this.editModeIsOn();
         else
