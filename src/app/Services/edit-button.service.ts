@@ -5,9 +5,10 @@ export class EditButtonService
 {
     editMode : boolean = false;
     isPageOwner : boolean = false;
+    deleteItem : boolean = false;
     @Output() editValueChange: EventEmitter<boolean> = new EventEmitter();
     @Output() pageOwnerStatus: EventEmitter<boolean> = new EventEmitter();
-
+    @Output() deletion: EventEmitter<boolean> = new EventEmitter();
     @Output() requestsForListOfLabels : EventEmitter<boolean> = new EventEmitter();
     @Output() listOfLabels : EventEmitter<string> = new EventEmitter();
 

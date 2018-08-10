@@ -10,7 +10,7 @@ declare var $: any;
   template:
   `
     <div class="editMenu" *ngIf="editMode" (clickOutside)="onClickedOutside($event)">
-      <img src="/assets/images/close.png">
+      <img (click)="deleteItem()"src="/assets/images/close.png">
       <div class="fullEditMenu" *ngIf="showFullEditMenuValue">
         <input class="iconSearchbar" placeholder="Search for an icon" type="search" [formControl]="iconSearchbar" [value]="iconSearchValue">
         <ul class="iconSearchResults">
@@ -133,6 +133,11 @@ export class EditMenuComponent implements OnInit {
     }
     else
     this.counter=0;
+  }
+
+  deleteItem()
+  {
+    this.editService.deleteItem=true;
   }
 
   closeEditMenu()

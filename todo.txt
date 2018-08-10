@@ -97,5 +97,15 @@ Make it so that when you hover over an icon it previews how it looks in the actu
 
 Have to find a clean way not to load the edit menu for everyone
 
-Currently stuck on the bug where the frosted glass doesn't show the edit menu
-and the notorious color picker bug. 
+Color bug is still there
+
+Also have to fix deletion
+
+You have to send the delete event to the facet menu, it's the only place the delete can happen
+Because it's responsible for the list items
+
+How do you identify the item you want to delete?
+
+So in summary, you have no idea how to delete cleanly the color picker bug is still there. 
+And actually that's about it. After that it's drag and drop. 
+

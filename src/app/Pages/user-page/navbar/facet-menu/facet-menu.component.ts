@@ -43,6 +43,9 @@ import { Icon } from '../../../../Models/icon';
 
 export class FacetMenuComponent extends UrlChangeDetection implements OnInit,OnDestroy
 {
+  checkItemsForDeletion(): any {
+    this.facetItems.forEach((x)=>{if(x.label==="DELETE_ME"){this.facetItems.splice(this.facetItems.indexOf(x),1)}})
+  }
     constructor(private route : ActivatedRoute, private editService : EditButtonService){
       super(route);
     }
@@ -134,7 +137,7 @@ export class FacetMenuComponent extends UrlChangeDetection implements OnInit,OnD
       this.pageOwner=this.editService.isPageOwner;
       this.editMode=this.editService.editMode;
       this.editService.requestsForListOfLabels.subscribe( request => this.sendListOfLabels())
-
+      this.editService.deletion.subscribe( deletion => this.checkItemsForDeletion());
       this.editService.pageOwnerStatus.subscribe( status => this.pageOwner=status);
       this.subscription=this.editService.editValueChange.subscribe( editButtonEvent => 
       {

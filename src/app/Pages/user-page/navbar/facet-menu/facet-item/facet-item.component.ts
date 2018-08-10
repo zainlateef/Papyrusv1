@@ -50,7 +50,14 @@ export class FacetItemComponent implements OnInit {
     console.log("Clicked");
     if(this.editMode)
     {
-      this.showFullEditMenu=true;
+      if(this.editService.deleteItem)
+      {
+        this.item.label="DELETE_ME";
+        this.editService.deleteItem=false;
+        this.editService.deletion.emit(true);
+      }
+      else
+        this.showFullEditMenu=true;
     }
     else
     this.showFullEditMenu=false;
