@@ -184,7 +184,7 @@ export class EditMenuComponent implements OnInit {
   {
     let counter=0;
     for (var i in labels) {
-      if (this.item.label===labels[i]) 
+      if (this.item.label===labels[i] && labels[i]) 
       {
           ++counter;
           if(counter > 1)
