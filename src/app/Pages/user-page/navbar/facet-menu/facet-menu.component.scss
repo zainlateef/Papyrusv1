@@ -3,6 +3,15 @@
   display: inline-block;
 }
 
+ul
+{
+  touch-action: none;
+}
+
+li {
+  list-style:none;
+}
+
 .frosted_glass
 {
   display: none;
