@@ -6,6 +6,7 @@ import { EditButtonService } from '../../../../Services/edit-button.service';
 import { zoomIn } from 'ng-animate';
 import { transition, trigger, useAnimation } from '@angular/animations';
 import { Icon } from '../../../../Models/icon';
+import { DragulaService } from '../../../../../../node_modules/ng2-dragula';
 @Component({
   selector: 'facet-menu',
   template: 
@@ -18,11 +19,11 @@ import { Icon } from '../../../../Models/icon';
 
     <ul class="frosted_glass nav__list" [ngClass]="{'nav__list--active':showMenu}"><li *ngFor="let item of facetItems" class="nav__item"></li></ul>
 
-    <ul class="nav__list" [ngClass]="{'nav__list--active':showMenu}">
+    <ul class="nav__list" [ngClass]="{'nav__list--active':showMenu}" dragula="DragMe" [(dragulaModel)]="facetItems">
       <li *ngFor="let item of facetItems" class="nav__item">
         <facet-item [item]="item"></facet-item>
       </li>
-      <li *ngIf="editMode" class="nav__item" [@zoomIn]="zoomIn">
+      <li *ngIf="editMode" class="nav__item ignore-drag" [@zoomIn]="zoomIn">
         <a class="nav__link">
           <div class="wrapper">
             <div class="icon_wrapper">
@@ -43,7 +44,9 @@ import { Icon } from '../../../../Models/icon';
 
 export class FacetMenuComponent extends UrlChangeDetection implements OnInit,OnDestroy
 {
-    constructor(private route : ActivatedRoute, private editService : EditButtonService){
+    constructor(private route : ActivatedRoute, 
+                private editService : EditButtonService,
+                private dragulaService : DragulaService){
       super(route);
     }
     @HostListener('window:beforeunload', ['$event'])
@@ -53,15 +56,6 @@ export class FacetMenuComponent extends UrlChangeDetection implements OnInit,OnD
           //$event.returnValue=true;
         }
     }
-    @HostListener('window:resize', ['$event'])
-    onResize(event) {
-      if(event.target.innerWidth <= 640)
-        this.mobileView=true;
-      else
-        this.mobileView=false;
-      console.log(this.mobileView)
-    }
-    mobileView : boolean;
     zoomIn: any;
     subscription: any;
     showMenu : boolean = false;
@@ -77,7 +71,28 @@ export class FacetMenuComponent extends UrlChangeDetection implements OnInit,OnD
     {
       this.detectUidChanges();
       this.editServiceSetup();
-      this.setMobileVersion();
+      this.dragulaSetup();
+    }
+
+    dragulaSetup()
+    {
+      const bag: any = this.dragulaService.find('DragMe');
+      if (bag !== undefined ) console.log(this.dragulaService.destroy('DragMe'));
+      if(this.editMode)
+      {
+        console.log("here");
+        this.dragulaService.setOptions('DragMe', {
+          moves: (el, source, handle, sibling) => !el.classList.contains('ignore-drag'),
+        });
+      }
+      else
+      {
+        console.log("now here");
+        this.dragulaService.setOptions('DragMe', {
+          moves: (el, source, handle, sibling) => false,
+          accepts: (el, target) => false
+        });
+      }
     }
 
     loadOnUrlChange(params)
@@ -140,6 +155,7 @@ export class FacetMenuComponent extends UrlChangeDetection implements OnInit,OnD
       {
         //console.log("this happens at startup");
         this.editMode=editButtonEvent;
+        this.dragulaSetup();
         if(this.editMode)
           this.editModeIsOn();
         else
@@ -201,15 +217,6 @@ export class FacetMenuComponent extends UrlChangeDetection implements OnInit,OnD
       this.editService.listOfLabels.emit(JSON.stringify(this.facetItems.map( x => x.label)));
     }
 
-    setMobileVersion()
-    {
-      let width=window.innerWidth;
-      if(width<=640)
-        this.mobileView=true;
-      else
-        this.mobileView=false;
-    }
-
     itemDeletionHasOccurred() 
     {
       this.facetItems.forEach((x)=>
@@ -218,7 +225,7 @@ export class FacetMenuComponent extends UrlChangeDetection implements OnInit,OnD
           this.facetItems.splice(this.facetItems.indexOf(x),1);
       })
     }
-
+    
     ngOnDestroy()
     {
       this.editModeIsOff();
