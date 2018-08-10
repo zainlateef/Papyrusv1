@@ -53,15 +53,6 @@ export class FacetMenuComponent extends UrlChangeDetection implements OnInit,OnD
           //$event.returnValue=true;
         }
     }
-    @HostListener('window:resize', ['$event'])
-    onResize(event) {
-      if(event.target.innerWidth <= 640)
-        this.mobileView=true;
-      else
-        this.mobileView=false;
-      console.log(this.mobileView)
-    }
-    mobileView : boolean;
     zoomIn: any;
     subscription: any;
     showMenu : boolean = false;
@@ -77,7 +68,6 @@ export class FacetMenuComponent extends UrlChangeDetection implements OnInit,OnD
     {
       this.detectUidChanges();
       this.editServiceSetup();
-      this.setMobileVersion();
     }
 
     loadOnUrlChange(params)
@@ -196,15 +186,6 @@ export class FacetMenuComponent extends UrlChangeDetection implements OnInit,OnD
     sendListOfLabels()
     {
       this.editService.listOfLabels.emit(JSON.stringify(this.facetItems.map( x => x.label)));
-    }
-
-    setMobileVersion()
-    {
-      let width=window.innerWidth;
-      if(width<=640)
-        this.mobileView=true;
-      else
-        this.mobileView=false;
     }
 
     ngOnDestroy()
