@@ -215,7 +215,7 @@ export class FacetMenuComponent extends UrlChangeDetection implements OnInit,OnD
       this.facetItems.forEach((x)=>
       {
         if(x.label==="DELETE_ME")
-        {this.facetItems.splice(this.facetItems.indexOf(x),1)}
+          this.facetItems.splice(this.facetItems.indexOf(x),1);
       })
     }
 
