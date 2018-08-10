@@ -18,7 +18,7 @@ import { Icon } from '../../../../Models/icon';
 
     <ul class="frosted_glass nav__list" [ngClass]="{'nav__list--active':showMenu}"><li *ngFor="let item of facetItems" class="nav__item"></li></ul>
 
-    <ul class="nav__list" [ngClass]="{'nav__list--active':showMenu}">
+    <ul class="nav__list" [ngClass]="{'nav__list--active':showMenu}" dragula="DragMe" [(dragulaModel)]="facetItems">
       <li *ngFor="let item of facetItems" class="nav__item">
         <facet-item [item]="item"></facet-item>
       </li>
