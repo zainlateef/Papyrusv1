@@ -9,7 +9,7 @@ declare var $: any;
   selector: 'edit-menu',
   template:
   `
-    <div class="editMenu" *ngIf="editMode" (clickOutside)="onClickedOutside($event)">
+    <div class="editMenu nondraggable" *ngIf="editMode" (clickOutside)="onClickedOutside($event)">
       <img (click)="deleteItem()"src="/assets/images/close.png" [matTooltip]="'Delete this page'" [matTooltipShowDelay]="'500'">
       <div class="fullEditMenu" *ngIf="showFullEditMenuValue">
         <input class="iconSearchbar" placeholder="Search for an icon" type="search" [formControl]="iconSearchbar" [value]="iconSearchValue">

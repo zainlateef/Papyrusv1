@@ -7,6 +7,7 @@ import { zoomIn } from 'ng-animate';
 import { transition, trigger, useAnimation } from '@angular/animations';
 import { Icon } from '../../../../Models/icon';
 import { DragulaService } from '../../../../../../node_modules/ng2-dragula';
+declare var $: any;
 @Component({
   selector: 'facet-menu',
   template: 
@@ -23,7 +24,7 @@ import { DragulaService } from '../../../../../../node_modules/ng2-dragula';
       <li *ngFor="let item of facetItems" class="nav__item">
         <facet-item [item]="item"></facet-item>
       </li>
-      <li *ngIf="editMode" class="nav__item ignore-drag" [@zoomIn]="zoomIn">
+      <li *ngIf="editMode" class="nav__item nondraggable" [@zoomIn]="zoomIn">
         <a class="nav__link">
           <div class="wrapper">
             <div class="icon_wrapper">
@@ -44,11 +45,26 @@ import { DragulaService } from '../../../../../../node_modules/ng2-dragula';
 
 export class FacetMenuComponent extends UrlChangeDetection implements OnInit,OnDestroy
 {
-    constructor(private route : ActivatedRoute, 
-                private editService : EditButtonService,
-                private dragulaService : DragulaService){
-      super(route);
+    constructor(private route : ActivatedRoute, private editService : EditButtonService, private dragulaService : DragulaService){
+        super(route);
+        this.dragulaService.setOptions('DragMe', {
+          accepts: (el, target, source, sibling) => { return this.determineIfDraggable(source)},
+          moves: (el, target, source, sibling) => { return this.determineIfDraggable(source)}
+        });
     }
+
+    determineIfDraggable(element) : boolean
+    {
+      console.log($(".nondraggable").prop("tagName")+" "+element.nodeName);
+      console.log($.contains($(".nondraggable")[0],element));
+      let elementIsInEditMenu = false;
+      $(".nondraggable").each((x) =>{ if($.contains(x,element)) elementIsInEditMenu=true})
+        if( !this.editMode || $(element).is(".nondraggable") || elementIsInEditMenu )
+          return false;
+        else
+          return true;
+    }
+
     @HostListener('window:beforeunload', ['$event'])
     unloadNotification($event: any) {
         if (this.editMode && this.changesWereMade()) {
@@ -71,29 +87,6 @@ export class FacetMenuComponent extends UrlChangeDetection implements OnInit,OnD
     {
       this.detectUidChanges();
       this.editServiceSetup();
-      this.dragulaSetup();
-    }
-
-    dragulaSetup()
-    {
-      const bag: any = this.dragulaService.find('DragMe');
-      if (bag !== undefined ) console.log(this.dragulaService.destroy('DragMe'));
-      //if(this.editMode)
-     // {
-        console.log("here");
-        this.dragulaService.setOptions('DragMe', {
-          //the problem is with ignore drag. i see now. i'll have to delve into this further
-          moves: (el, source, handle, sibling) => !el.classList.contains('ignore-drag'),
-        });
-     // }
-      // else
-      // {
-      //   console.log("now here");
-      //   this.dragulaService.setOptions('DragMe', {
-      //     moves: (el, source, handle, sibling) => false,
-      //     accepts: (el, target) => false
-      //   });
-      // }
     }
 
     loadOnUrlChange(params)
@@ -156,7 +149,6 @@ export class FacetMenuComponent extends UrlChangeDetection implements OnInit,OnD
       {
         //console.log("this happens at startup");
         this.editMode=editButtonEvent;
-        this.dragulaSetup();
         if(this.editMode)
           this.editModeIsOn();
         else
