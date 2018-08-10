@@ -6,6 +6,7 @@ import { EditButtonService } from '../../../../Services/edit-button.service';
 import { zoomIn } from 'ng-animate';
 import { transition, trigger, useAnimation } from '@angular/animations';
 import { Icon } from '../../../../Models/icon';
+import { DragulaService } from '../../../../../../node_modules/ng2-dragula';
 @Component({
   selector: 'facet-menu',
   template: 
@@ -22,7 +23,7 @@ import { Icon } from '../../../../Models/icon';
       <li *ngFor="let item of facetItems" class="nav__item">
         <facet-item [item]="item"></facet-item>
       </li>
-      <li *ngIf="editMode" class="nav__item" [@zoomIn]="zoomIn">
+      <li *ngIf="editMode" class="nav__item ignore-drag" [@zoomIn]="zoomIn">
         <a class="nav__link">
           <div class="wrapper">
             <div class="icon_wrapper">
@@ -43,7 +44,9 @@ import { Icon } from '../../../../Models/icon';
 
 export class FacetMenuComponent extends UrlChangeDetection implements OnInit,OnDestroy
 {
-    constructor(private route : ActivatedRoute, private editService : EditButtonService){
+    constructor(private route : ActivatedRoute, 
+                private editService : EditButtonService,
+                private dragulaService : DragulaService){
       super(route);
     }
     @HostListener('window:beforeunload', ['$event'])
@@ -68,6 +71,14 @@ export class FacetMenuComponent extends UrlChangeDetection implements OnInit,OnD
     {
       this.detectUidChanges();
       this.editServiceSetup();
+      this.dragulaSetup();
+    }
+
+    dragulaSetup()
+    {
+      this.dragulaService.setOptions('DragMe', {
+        moves: (el, source, handle, sibling) => !el.classList.contains('ignore-drag')
+      });
     }
 
     loadOnUrlChange(params)
