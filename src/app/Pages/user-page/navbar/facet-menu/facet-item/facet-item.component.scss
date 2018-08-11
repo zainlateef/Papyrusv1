@@ -2,7 +2,7 @@ $nav-bg: #2b3033;
 
 .nav__link:hover i
 {
-    // can't decide if i want hover or not
+    //might keep hover might note
     // @media (min-width: 640px) {
     //     font-size: 1.6em;
     //     transition: 0.2s ease-in-out;
@@ -27,5 +27,6 @@ $nav-bg: #2b3033;
         display: inline-flex;
         justify-content: center;
         align-items: center;
+        font-size: larger;
     }
 }
