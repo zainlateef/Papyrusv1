@@ -48,21 +48,28 @@ export class FacetMenuComponent extends UrlChangeDetection implements OnInit,OnD
     constructor(private route : ActivatedRoute, private editService : EditButtonService, private dragulaService : DragulaService){
         super(route);
         this.dragulaService.setOptions('DragMe', {
-          accepts: (el, target, source, sibling) => { return this.determineIfDraggable(source)},
-          moves: (el, target, source, sibling) => { return this.determineIfDraggable(source)}
+          accepts: (el, target, source, sibling) => { return this.determineIfDraggable(source,el)},
+          moves: (el, target, source, sibling) => { return this.determineIfDraggable(source,el)}
         });
     }
 
-    determineIfDraggable(element) : boolean
+    determineIfDraggable(source,element) : boolean
     {
-      console.log($(".nondraggable").prop("tagName")+" "+element.nodeName);
-      console.log($.contains($(".nondraggable")[0],element));
-      let elementIsInEditMenu = false;
-      $(".nondraggable").each((x) =>{ if($.contains(x,element)) elementIsInEditMenu=true})
-        if( !this.editMode || $(element).is(".nondraggable") || elementIsInEditMenu )
+      if(!this.editMode)
+        return false;
+      else
+      {
+        let sourceIsInEditMenu=false
+        $(".nondraggable").each((x) => {
+          if($.contains($(".nondraggable")[x],source))
+            sourceIsInEditMenu=true;
+        });
+        if( $(source).is(".nondraggable") || sourceIsInEditMenu )
           return false;
         else
           return true;
+        
+      }
     }
 
     @HostListener('window:beforeunload', ['$event'])
