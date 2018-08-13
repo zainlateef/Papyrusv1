@@ -20,20 +20,19 @@ declare var $: any;
 
     <ul class="frosted_glass nav__list" [ngClass]="{'nav__list--active':showMenu}"><li *ngFor="let item of facetItems" class="nav__item"></li></ul>
 
-    <ul class="nav__list" [ngClass]="{'nav__list--active':showMenu}" dragula="DragMe" [(dragulaModel)]="facetItems">
+    <ul id="facet_items" class="nav__list" [ngClass]="{'nav__list--active':showMenu}" dragula="DragMe" [(dragulaModel)]="facetItems" [ngStyle]="editMode && {'height' : listHeight}">
       <li *ngFor="let item of facetItems" class="nav__item">
         <facet-item [item]="item"></facet-item>
       </li>
-      <li *ngIf="editMode" class="nav__item nondraggable" [@zoomIn]="zoomIn">
-        <a class="nav__link">
-          <div class="wrapper">
-            <div class="icon_wrapper">
-              <i (click)="addNewFacet()" class="material-icons">add</i>
-            </div>
-          </div>
-        </a>
-      </li>
     </ul>
+    
+    <a class="add_button nav__link" *ngIf="editMode" [ngStyle]="{'height' : listItemHeight}" [@zoomIn]="zoomIn">
+      <div class="wrapper">
+        <div class="icon_wrapper">
+          <i (click)="addNewFacet()" class="material-icons">add</i>
+        </div>
+      </div>
+    </a>
     
   </nav>
   `,
@@ -45,32 +44,10 @@ declare var $: any;
 
 export class FacetMenuComponent extends UrlChangeDetection implements OnInit,OnDestroy
 {
-    constructor(private route : ActivatedRoute, private editService : EditButtonService, private dragulaService : DragulaService){
+    constructor(private route : ActivatedRoute, private editService : EditButtonService){
         super(route);
-        this.dragulaService.setOptions('DragMe', {
-          accepts: (el, target, source, sibling) => { return this.determineIfDraggable(source,el)},
-          moves: (el, target, source, sibling) => { return this.determineIfDraggable(source,el)}
-        });
     }
 
-    determineIfDraggable(source,element) : boolean
-    {
-      if(!this.editMode)
-        return false;
-      else
-      {
-        let sourceIsInEditMenu=false
-        $(".nondraggable").each((x) => {
-          if($.contains($(".nondraggable")[x],source))
-            sourceIsInEditMenu=true;
-        });
-        if( $(source).is(".nondraggable") || sourceIsInEditMenu )
-          return false;
-        else
-          return true;
-        
-      }
-    }
 
     @HostListener('window:beforeunload', ['$event'])
     unloadNotification($event: any) {
@@ -79,6 +56,8 @@ export class FacetMenuComponent extends UrlChangeDetection implements OnInit,OnD
           //$event.returnValue=true;
         }
     }
+    listHeight : any;
+    listItemHeight : any;
     zoomIn: any;
     subscription: any;
     showMenu : boolean = false;
@@ -137,6 +116,7 @@ export class FacetMenuComponent extends UrlChangeDetection implements OnInit,OnD
     addNewFacet()
     {
       this.facetItems.push(new FacetItem(new Icon("user","fa fa-user"),"","#000000"));
+      //this.calculateFlexHeights();
     }
 
     onClickedOutside($event)
@@ -166,13 +146,30 @@ export class FacetMenuComponent extends UrlChangeDetection implements OnInit,OnD
 
     editModeIsOn()
     {
-      //console.log("editModeOn")
+      console.log("editModeOn")
+      this.calculateFlexHeights();
       this.showMenu=true
       this.burgerZIndex=0;
       this.oldList=JSON.stringify(this.facetItems);
     }
 
+    calculateFlexHeights()
+    {
+      this.listItemHeight=$(".nav__item").height();
+      let currentListHeight=$("#facet_items").height();
+      this.listHeight=currentListHeight-this.listItemHeight;
+      this.listItemHeight=this.listItemHeight+"px";
+      this.listHeight=this.listHeight+"px";
+      console.log(this.listItemHeight+" : "+this.listHeight);
+    }
+
     editModeIsOff()
+    {
+      this.handleListChanges();
+      this.burgerZIndex=2;
+    }
+
+    handleListChanges()
     {
       if(this.navButtonClicked)
       {
@@ -185,8 +182,6 @@ export class FacetMenuComponent extends UrlChangeDetection implements OnInit,OnD
       {
         this.checkForUnsavedChangesBeforeClosing();
       }
-      this.burgerZIndex=2;
-      
     }
 
     checkForUnsavedChangesBeforeClosing()

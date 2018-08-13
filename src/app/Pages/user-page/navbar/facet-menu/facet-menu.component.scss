@@ -3,6 +3,11 @@
   display: inline-block;
 }
 
+.add_button
+{
+  position: relative !important;
+}
+
 ul
 {
   touch-action: none;
@@ -16,6 +21,7 @@ li {
 {
   display: none;
   position: absolute;
+  height: 100vh !important;
   z-index: -1;
   right: 0;
   left: 0;
