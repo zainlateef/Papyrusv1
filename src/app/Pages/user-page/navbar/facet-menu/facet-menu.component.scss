@@ -17,6 +17,15 @@ li {
   list-style:none;
 }
 
+.main_flow
+{
+  display: flex;
+  flex-flow: column;
+  flex-direction: column;
+  flex: 1;
+  height: 90vh;
+}
+
 .frosted_glass
 {
   display: none;

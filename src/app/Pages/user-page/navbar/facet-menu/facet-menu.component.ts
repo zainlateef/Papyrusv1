@@ -18,21 +18,23 @@ declare var $: any;
       <div class="burger__patty"></div>
     </div>
 
+    <div class="main_flex">
     <ul class="frosted_glass nav__list" [ngClass]="{'nav__list--active':showMenu}"><li *ngFor="let item of facetItems" class="nav__item"></li></ul>
 
-    <ul id="facet_items" class="nav__list" [ngClass]="{'nav__list--active':showMenu}" dragula="DragMe" [(dragulaModel)]="facetItems" [ngStyle]="editMode && {'height' : listHeight}">
+    <ul id="facet_items" class="nav__list" [ngClass]="{'nav__list--active':showMenu}" dragula="DragMe" [(dragulaModel)]="facetItems">
       <li *ngFor="let item of facetItems" class="nav__item">
         <facet-item [item]="item"></facet-item>
       </li>
     </ul>
     
-    <a class="add_button nav__link" *ngIf="editMode" [ngStyle]="{'height' : listItemHeight}" [@zoomIn]="zoomIn">
+    <a class="nav__link" *ngIf="editMode" [@zoomIn]="zoomIn">
       <div class="wrapper">
         <div class="icon_wrapper">
           <i (click)="addNewFacet()" class="material-icons">add</i>
         </div>
       </div>
     </a>
+    </div>
     
   </nav>
   `,
@@ -155,7 +157,7 @@ export class FacetMenuComponent extends UrlChangeDetection implements OnInit,OnD
 
     calculateFlexHeights()
     {
-      this.listItemHeight=$(".nav__item").height();
+      this.listItemHeight=$("a.nav__link").height();
       let currentListHeight=$("#facet_items").height();
       this.listHeight=currentListHeight-this.listItemHeight;
       this.listItemHeight=this.listItemHeight+"px";
