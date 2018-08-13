@@ -20,11 +20,11 @@ declare var $: any;
 
     <ul class="frosted_glass nav__list" [ngClass]="{'nav__list--active':showMenu}"><li *ngFor="let item of facetItems" class="nav__item"></li></ul>
 
-    <ul id="nav__list" class="nav__list" [ngClass]="{'nav__list--active':showMenu}" dragula="DragMe" [(dragulaModel)]="facetItems" [ngStyle]="dragging && {'height' : calculatedListHeight, 'transition' : 'unset'}">
+    <ul class="nav__list" [ngClass]="{'nav__list--active':showMenu}" dragula="DragMe" [(dragulaModel)]="facetItems">
       <li *ngFor="let item of facetItems" class="nav__item">
         <facet-item [item]="item"></facet-item>
       </li>
-      <li *ngIf="editMode && !dragging" class="nav__item nondraggable" [@zoomIn]="zoomIn">
+      <li *ngIf="editMode" class="nav__item nondraggable" [@zoomIn]="zoomIn">
         <a class="nav__link">
           <div class="wrapper">
             <div class="icon_wrapper">
@@ -34,13 +34,6 @@ declare var $: any;
         </a>
       </li>
     </ul>
-    <a class="nav__link" *ngIf="dragging" [ngStyle]="{'height':listItemHeight, 'position':'relative'}">
-      <div class="wrapper">
-        <div class="icon_wrapper">
-          <i (click)="addNewFacet()" class="material-icons">add</i>
-        </div>
-      </div>
-    </a>
     
   </nav>
   `,
@@ -58,24 +51,7 @@ export class FacetMenuComponent extends UrlChangeDetection implements OnInit,OnD
           accepts: (el, target, source, sibling) => { return this.determineIfDraggable(source,el)},
           moves: (el, target, source, sibling) => { return this.determineIfDraggable(source,el)}
         });
-        this.dragulaService.drag.subscribe((value) => {
-          this.listItemHeight=$(".nav__item").height();
-          this.calculatedListHeight=$(".nav__list").height();
-          this.calculatedListHeight=this.calculatedListHeight-this.listItemHeight;
-          this.listItemHeight=this.listItemHeight+"px";
-          this.calculatedListHeight=this.calculatedListHeight+"px";
-          console.log(this.listItemHeight+" : "+this.calculatedListHeight);
-          this.dragging=true;
-        })
-        this.dragulaService.dragend.subscribe((value) =>{
-          this.dragging=false;
-          //$('#nav__list').find('.nondraggable').appendTo('#nav__list');
-        })
-
     }
-    listItemHeight : any;
-    dragging : boolean = false;
-    calculatedListHeight : any;
 
     determineIfDraggable(source,element) : boolean
     {
