@@ -59,7 +59,165 @@ export class FacetMenuComponent extends UrlChangeDetection implements OnInit,OnD
       moves: (el, target, source, sibling) => { return this.determineIfDraggable(source,el)}	
     });	
   }
-  
+
+  @HostListener('window:beforeunload', ['$event'])
+  unloadNotification($event: any) {
+      if (this.editMode && this.changesWereMade()) {
+        //Disabled for production
+        //$event.returnValue=true;
+      }
+  }
+
+  facetItems : FacetItem[];
+  showMenu : boolean = false;
+  navButtonWasClicked : boolean = false;
+  editMode : boolean = false;
+  oldList : string;
+  pageOwner : boolean = false;
+  burgerZIndex=2;
+  zoomIn: any;
+  subscription: any;
+
+
+  ngOnInit()
+  {
+    this.detectUidChanges();
+    this.editServiceSetup();
+  }
+
+  loadOnUrlChange(params)
+  {
+    console.log("HTTP Call: Navbar loads uid:"+params.uid);
+    this.facetItems=[];
+    this.facetItems.push(
+    new FacetItem(new Icon("user","fa fa-user"),"home","#ff0080"),
+    new FacetItem(new Icon("camera-retro","fa fa-camera-retro"),"photos","#00ffff"),
+    new FacetItem(new Icon("user","fa fa-user"),"home1","#ff0080"),
+    new FacetItem(new Icon("user","fa fa-user"),"home2","#ff0080"),
+    new FacetItem(new Icon("user","fa fa-user"),"home3","#ff0080"),
+    // new FacetItem("fa fa-user","home4","#ff0080"),
+    // new FacetItem("fa fa-user","home5","#ff0080"),
+    // new FacetItem("fa fa-user","home6","#ff0080"),
+    // new FacetItem("fa fa-user","home7","#ff0080"),
+    // new FacetItem("fa fa-user","home8","#ff0080"),
+    // new FacetItem("fa fa-user","home9","#ff0080"),
+    // new FacetItem("fa fa-user","home10","#ff0080"),
+    );
+    this.oldList=JSON.stringify(this.facetItems);
+  }
+    
+  toggleMenu()
+  {
+    this.showMenu=!this.showMenu;
+    if(this.editMode)
+    {
+      this.navButtonWasClicked=true;
+      this.editService.toggle();
+    }
+  }
+
+  onClickedOutside($event)
+  {
+    if(!this.editMode)
+    this.showMenu=false;
+  }
+
+  toggleEditMode()
+  {
+    this.editService.toggle();
+  }
+
+  editServiceSetup()
+  {
+    this.pageOwner=this.editService.isPageOwner;
+    this.editMode=this.editService.editMode;
+    this.editService.pageOwnerStatus.subscribe( status => this.pageOwner=status);
+    this.subscription=this.editService.editValueChange.subscribe( editButtonEvent => 
+    {
+      //console.log("this happens at startup");
+      this.editMode=editButtonEvent;
+      if(this.editMode)
+        this.editModeIsOn();
+      else
+        this.editModeIsOff();
+      
+    });
+    this.editService.requestsForListOfLabels.subscribe( request => this.sendListOfLabels())
+    this.editService.deletion.subscribe( deletion => this.itemDeletionHasOccurred());
+  }
+
+  editModeIsOn()
+  {
+    console.log("editModeOn")
+    this.showMenu=true
+    this.burgerZIndex=0;
+    this.oldList=JSON.stringify(this.facetItems);
+  }
+
+  editModeIsOff()
+  {
+    this.handleListChanges();
+    this.burgerZIndex=2;
+  }
+
+  sendListOfLabels()
+  {
+    this.editService.listOfLabels.emit(JSON.stringify(this.facetItems.map( x => x.label)));
+  }
+
+  itemDeletionHasOccurred() 
+  {
+    this.facetItems.forEach((x) =>
+    {
+      if(x.label==="DELETE_ME")
+        this.facetItems.splice(this.facetItems.indexOf(x),1);
+    })
+  }
+
+  handleListChanges()
+  {
+    if(this.navButtonWasClicked)
+    {
+      this.navButtonWasClicked=false;
+      if(this.changesWereMade())
+        console.log("fire the api call of "+this.uid);
+      this.oldList=JSON.stringify(this.facetItems);
+    }
+    else
+    {
+      this.checkUnsavedChangesBeforePageNavigation();
+    }
+  }
+
+  checkUnsavedChangesBeforePageNavigation()
+  {
+    if( this.pageOwner && this.changesWereMade())
+    {
+      if (confirm("Save the changes to your list?")) 
+      {
+        console.log(this.uid+" saved his changes");
+        console.log("Send the list to the API");
+      } 
+      else 
+      {
+        console.log(this.uid+" declined his changes");
+        this.facetItems=JSON.parse(this.oldList);
+        console.log("Here now"+JSON.stringify(this.facetItems));
+      }
+    }
+  }
+
+  changesWereMade()
+  {
+    return !(JSON.stringify(this.facetItems)===this.oldList);
+  }
+
+  addNewFacet()
+  {
+    let defaultColor="red";
+    this.facetItems.push(new FacetItem(new Icon("user","fa fa-user"),"",defaultColor));
+  }
+
   determineIfDraggable(source,element) : boolean	
   {	
     if(!this.editMode)	
@@ -79,182 +237,9 @@ export class FacetMenuComponent extends UrlChangeDetection implements OnInit,OnD
     }	
   }
 
-
-    @HostListener('window:beforeunload', ['$event'])
-    unloadNotification($event: any) {
-        if (this.editMode && this.changesWereMade()) {
-          //Disabled for production
-          //$event.returnValue=true;
-        }
-    }
-    listHeight : any;
-    listItemHeight : any;
-    zoomIn: any;
-    subscription: any;
-    showMenu : boolean = false;
-    editMode : boolean = false;
-    pageOwner : boolean = false;
-    navButtonClicked : boolean = false;
-    facetItems : FacetItem[];
-    burgerZIndex=2;
-    oldList : string;
-
-
-    ngOnInit()
-    {
-      this.detectUidChanges();
-      this.editServiceSetup();
-    }
-
-    loadOnUrlChange(params)
-    {
-      //console.log("HTTP Call: Navbar loads uid:"+params.uid);
-      this.facetItems=[];
-      this.facetItems.push(
-      new FacetItem(new Icon("user","fa fa-user"),"home","#ff0080"),
-      new FacetItem(new Icon("camera-retro","fa fa-camera-retro"),"photos","#00ffff"),
-      new FacetItem(new Icon("user","fa fa-user"),"home1","#ff0080"),
-      new FacetItem(new Icon("user","fa fa-user"),"home2","#ff0080"),
-      new FacetItem(new Icon("user","fa fa-user"),"home3","#ff0080"),
-      // new FacetItem("fa fa-user","home4","#ff0080"),
-      // new FacetItem("fa fa-user","home5","#ff0080"),
-      // new FacetItem("fa fa-user","home6","#ff0080"),
-      // new FacetItem("fa fa-user","home7","#ff0080"),
-      // new FacetItem("fa fa-user","home8","#ff0080"),
-      // new FacetItem("fa fa-user","home9","#ff0080"),
-      // new FacetItem("fa fa-user","home10","#ff0080"),
-    );
-    this.oldList=JSON.stringify(this.facetItems);
-    
-    }
-    
-    toggleMenu()
-    {
-      this.showMenu=!this.showMenu;
-
-      if(this.editMode)
-      {
-        this.navButtonClicked=true;
-        this.editService.toggle();
-      }
-    }
-
-    toggleEditMode()
-    {
-      this.editService.toggle();
-    }
-
-    addNewFacet()
-    {
-      this.facetItems.push(new FacetItem(new Icon("user","fa fa-user"),"","#000000"));
-      //this.calculateFlexHeights();
-    }
-
-    onClickedOutside($event)
-    {
-      if(!this.editMode)
-      this.showMenu=false;
-    }
-
-    editServiceSetup()
-    {
-      this.pageOwner=this.editService.isPageOwner;
-      this.editMode=this.editService.editMode;
-      this.editService.requestsForListOfLabels.subscribe( request => this.sendListOfLabels())
-      this.editService.deletion.subscribe( deletion => this.itemDeletionHasOccurred());
-      this.editService.pageOwnerStatus.subscribe( status => this.pageOwner=status);
-      this.subscription=this.editService.editValueChange.subscribe( editButtonEvent => 
-      {
-        //console.log("this happens at startup");
-        this.editMode=editButtonEvent;
-        if(this.editMode)
-          this.editModeIsOn();
-        else
-          this.editModeIsOff();
-        
-      });
-    }
-
-    editModeIsOn()
-    {
-      console.log("editModeOn")
-      this.calculateFlexHeights();
-      this.showMenu=true
-      this.burgerZIndex=0;
-      this.oldList=JSON.stringify(this.facetItems);
-    }
-
-    calculateFlexHeights()
-    {
-      this.listItemHeight=$("a.nav__link").height();
-      let currentListHeight=$("#facet_items").height();
-      this.listHeight=currentListHeight-this.listItemHeight;
-      this.listItemHeight=this.listItemHeight+"px";
-      this.listHeight=this.listHeight+"px";
-      console.log(this.listItemHeight+" : "+this.listHeight);
-    }
-
-    editModeIsOff()
-    {
-      this.handleListChanges();
-      this.burgerZIndex=2;
-    }
-
-    handleListChanges()
-    {
-      if(this.navButtonClicked)
-      {
-        this.navButtonClicked=false;
-        if(this.changesWereMade())
-          console.log("fire the api call of "+this.uid);
-        this.oldList=JSON.stringify(this.facetItems);
-      }
-      else
-      {
-        this.checkForUnsavedChangesBeforeClosing();
-      }
-    }
-
-    checkForUnsavedChangesBeforeClosing()
-    {
-      if( this.pageOwner && this.changesWereMade())
-      {
-        if (confirm("Save the changes to your list?")) 
-        {
-          console.log(this.uid+" saved his changes");
-          console.log("Send the list to the API");
-        } 
-        else 
-        {
-          console.log(this.uid+" declined his changes");
-          this.facetItems=JSON.parse(this.oldList);
-          console.log("Here now"+JSON.stringify(this.facetItems));
-        }
-      }
-    }
-
-    changesWereMade()
-    {
-      return !(JSON.stringify(this.facetItems)===this.oldList);
-    }
-
-    sendListOfLabels()
-    {
-      this.editService.listOfLabels.emit(JSON.stringify(this.facetItems.map( x => x.label)));
-    }
-
-    itemDeletionHasOccurred() 
-    {
-      this.facetItems.forEach((x)=>
-      {
-        if(x.label==="DELETE_ME")
-          this.facetItems.splice(this.facetItems.indexOf(x),1);
-      })
-    }
-
-    ngOnDestroy()
-    {
-      this.editModeIsOff();
-      this.subscription.unsubscribe();
-    }
+  ngOnDestroy()
+  {
+    this.editModeIsOff();
+    this.subscription.unsubscribe();
+  }
 }
