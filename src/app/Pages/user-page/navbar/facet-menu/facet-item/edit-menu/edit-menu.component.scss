@@ -36,7 +36,11 @@
             width: 131px;
             z-index: 2;
             position: absolute;
-            background-color: white;  
+            background-color: white; 
+            &::hover
+            {
+                cursor: pointer;
+            } 
             li
             {
                 width: 100%;
@@ -81,7 +85,6 @@
             li:hover
             {
                 background: #f6f6f6;
-                cursor: default;
             }              
             
         }

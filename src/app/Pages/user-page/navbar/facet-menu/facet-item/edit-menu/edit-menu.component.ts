@@ -45,6 +45,8 @@ export class EditMenuComponent implements OnInit {
   set showFullEditMenu(val) {
     this.showFullEditMenuValue = val;
     this.showFullEditMenuChange.emit(this.showFullEditMenuValue);
+    if(!this.showFullEditMenuValue)
+      this.iconMatches.clear();
     console.log("set to:"+this.showFullEditMenu)
   }
 
@@ -98,6 +100,8 @@ export class EditMenuComponent implements OnInit {
           this.iconMatches.add(icon);
       });
     }
+    else
+      this.iconMatches.clear();
   }
 
   colorPickerOpened(color)

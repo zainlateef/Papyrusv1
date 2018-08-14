@@ -93,39 +93,13 @@ It's not feasible.
 That should work perfectly.
 Getting the body background is about the only problem.
 
-Make it so that when you hover over an icon it previews how it looks in the actual list. Store a temp icon and the old icon and switch between them. 
-
 Have to find a clean way not to load the edit menu for everyone
 
 Color bug is still there
 
-Also have to fix deletion
+Make it so that when you hover over an icon it previews how it looks in the actual list. Store a temp icon and the old icon and switch between them. 
 
-You have to send the delete event to the facet menu, it's the only place the delete can happen
-Because it's responsible for the list items
 
-How do you identify the item you want to delete?
 
-So in summary, you have no idea how to delete cleanly the color picker bug is still there. 
-And actually that's about it. After that it's drag and drop. 
-
-Put the index into the close button, when the close button is clicked, pass in the index into the function. 
-It's easy. It also solves hiding the x button pretty easily. In general,
-You might want to redesign the x button. It looks like a close edit menu button
-
-ON drag, hide all the edit menus
-
-pull the a out
-set the height to the same height=x as the nav links. that spaces it correctly. 
-change the ul height to ul_height-x and voila
- ngif or jquery on the list item on drag
- ngif on the outer a tag
- ngstyle to calculate a height and ul height
-
- on drag, get the height
- set the height
- remove the elements by setting the drag boolean
-
- on drop reset
 
  
