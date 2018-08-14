@@ -6,6 +6,8 @@
 .add_button
 {
   position: relative !important;
+  height: 10vh !important;
+  flex: 1;
 }
 
 ul
@@ -17,13 +19,13 @@ li {
   list-style:none;
 }
 
-.main_flow
+.main_flex
 {
   display: flex;
   flex-flow: column;
   flex-direction: column;
   flex: 1;
-  height: 90vh;
+  height: 85vh;
 }
 
 .frosted_glass

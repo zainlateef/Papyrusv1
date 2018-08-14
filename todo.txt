@@ -114,3 +114,18 @@ It's easy. It also solves hiding the x button pretty easily. In general,
 You might want to redesign the x button. It looks like a close edit menu button
 
 ON drag, hide all the edit menus
+
+pull the a out
+set the height to the same height=x as the nav links. that spaces it correctly. 
+change the ul height to ul_height-x and voila
+ ngif or jquery on the list item on drag
+ ngif on the outer a tag
+ ngstyle to calculate a height and ul height
+
+ on drag, get the height
+ set the height
+ remove the elements by setting the drag boolean
+
+ on drop reset
+
+ 

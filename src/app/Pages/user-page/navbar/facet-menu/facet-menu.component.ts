@@ -13,29 +13,35 @@ declare var $: any;
   template: 
   `
   <nav class="nav" (clickOutside)="onClickedOutside($event)">
-    <i *ngIf="pageOwner && !editMode" class="fas fa-edit editIcon" (click)="toggleEditMode()" [matTooltip]="'Edit your list'"  [matTooltipShowDelay]="1300" [@zoomIn]="zoomIn"></i>
+
+    <i name="editButton" *ngIf="pageOwner && !editMode" class="fas fa-edit editIcon" (click)="toggleEditMode()" [matTooltip]="'Edit your list'"  [matTooltipShowDelay]="1300" [@zoomIn]="zoomIn"></i>
+
     <div class="burger" (click)="toggleMenu()" [ngClass]="{'burger--active':showMenu && !editMode, 'checkmark':showMenu && editMode}" [ngStyle]="{'z-index': burgerZIndex}" [matTooltipDisabled]="!editMode" [matTooltip]="'Save your list'"  [matTooltipShowDelay]="600" [matTooltipPosition]="'right'">
       <div class="burger__patty"></div>
     </div>
 
     <div class="main_flex">
-    <ul class="frosted_glass nav__list" [ngClass]="{'nav__list--active':showMenu}"><li *ngFor="let item of facetItems" class="nav__item"></li></ul>
 
-    <ul id="facet_items" class="nav__list" [ngClass]="{'nav__list--active':showMenu}" dragula="DragMe" [(dragulaModel)]="facetItems">
-      <li *ngFor="let item of facetItems" class="nav__item">
-        <facet-item [item]="item"></facet-item>
+      <ul name="mobileFrostedBackground" class="frosted_glass nav__list" [ngClass]="{'nav__list--active':showMenu}"><li *ngFor="let item of facetItems" class="nav__item"></li></ul>
+
+      <ul name="listOfItems" class="nav__list" [ngClass]="{'nav__list--active':showMenu}" dragula="DragMe" [(dragulaModel)]="facetItems">
+        <li *ngFor="let item of facetItems" class="nav__item">
+          <facet-item [item]="item"></facet-item>
+        </li>
+      </ul>
+      
+      <li name="addButton" *ngIf="editMode">
+        <a class="nav__link add_button" [@zoomIn]="zoomIn">
+          <div class="wrapper">
+            <div class="icon_wrapper">
+              <i (click)="addNewFacet()" class="material-icons">add</i>
+            </div>
+          </div>
+        </a>
       </li>
-    </ul>
-    
-    <a class="nav__link" *ngIf="editMode" [@zoomIn]="zoomIn">
-      <div class="wrapper">
-        <div class="icon_wrapper">
-          <i (click)="addNewFacet()" class="material-icons">add</i>
-        </div>
-      </div>
-    </a>
-    </div>
-    
+
+     </div>
+
   </nav>
   `,
   styleUrls: ['./facet-menu.component.scss','./original_style.scss','./facet-item/facet-item.component.scss',],
@@ -46,9 +52,32 @@ declare var $: any;
 
 export class FacetMenuComponent extends UrlChangeDetection implements OnInit,OnDestroy
 {
-    constructor(private route : ActivatedRoute, private editService : EditButtonService){
-        super(route);
-    }
+  constructor(private route : ActivatedRoute, private editService : EditButtonService, private dragulaService : DragulaService){
+    super(route);	 
+    this.dragulaService.setOptions('DragMe', {	
+      accepts: (el, target, source, sibling) => { return this.determineIfDraggable(source,el)},	
+      moves: (el, target, source, sibling) => { return this.determineIfDraggable(source,el)}	
+    });	
+  }
+  
+  determineIfDraggable(source,element) : boolean	
+  {	
+    if(!this.editMode)	
+      return false;	
+    else	
+    {	
+      let sourceIsInEditMenu=false	
+      $(".nondraggable").each((x) => {	
+        if($.contains($(".nondraggable")[x],source))	
+          sourceIsInEditMenu=true;	
+      });	
+      if( sourceIsInEditMenu )	
+        return false;	
+      else	
+        return true;	
+        
+    }	
+  }
 
 
     @HostListener('window:beforeunload', ['$event'])
