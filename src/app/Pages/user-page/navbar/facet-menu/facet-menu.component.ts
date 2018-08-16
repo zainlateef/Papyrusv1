@@ -54,6 +54,8 @@ export class FacetMenuComponent extends UrlChangeDetection implements OnInit,OnD
 {
   constructor(private route : ActivatedRoute, private editService : EditButtonService, private dragulaService : DragulaService){
     super(route);	 
+    const bag: any = this.dragulaService.find('DragMe');
+    if (bag !== undefined ) this.dragulaService.destroy('DragMe');
     this.dragulaService.setOptions('DragMe', {	
       accepts: (el, target, source, sibling) => { return this.determineIfDraggable(source,el)},	
       moves: (el, target, source, sibling) => { return this.determineIfDraggable(source,el)}	
