@@ -13,6 +13,6 @@ export class AppComponent implements OnInit {
     let Nanobar = require('../../node_modules/nanobar');
     let options = { id : 'loadbar', classname : 'loadbar'};
     let nanobar = new Nanobar( options );
-    nanobar.go(100)
+    nanobar.go(100);
   }
 }
