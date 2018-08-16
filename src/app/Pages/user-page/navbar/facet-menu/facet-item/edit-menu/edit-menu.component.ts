@@ -21,9 +21,10 @@ declare var $: any;
             </div>
           </li>
         </ul>
-        <button class="colorpicker" (colorPickerOpen)="colorPickerOpened(color)" [(colorPicker)]="color" (colorPickerChange)="setColor(color)"[style.background]="color" [cpPosition]="colorPickerOrientation" [cpDisableInput]="true"></button>
+        <button #ignoredButton class="colorpicker" (click)="toggleColorPicker=!toggleColorPicker;" [ngStyle]="{'background-color':color}"></button>
         <input  class="labelInput" placeholder="Label" [formControl]="labelInput" [value]="item.label" [ngClass]="{'redBorder' : labelIsEmpty || labelIsNotUnique }">
         <div class="errorMessage mat-tooltip" *ngIf="labelIsEmpty || labelIsNotUnique">{{labelErrorMessage()}}</div>
+        <span #ignoredInput (colorPickerOpen)="colorPickerOpened(color)" [(colorPicker)]="color" (colorPickerChange)="setColor(color)"[style.background]="color" [cpPosition]="colorPickerOrientation" [cpDisableInput]="true" [cpIgnoredElements]="[ignoredButton, ignoredInput]" [(cpToggle)]="toggleColorPicker" ></span>
       </div>
     </div>
   `,
@@ -50,6 +51,7 @@ export class EditMenuComponent implements OnInit {
     console.log("set to:"+this.showFullEditMenu)
   }
 
+  toggleColorPicker : boolean = false;
   iconSearchbar : FormControl;
   labelInput : FormControl;
   labelIsEmpty : boolean = false;
