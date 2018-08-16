@@ -14,7 +14,7 @@ declare var $: any;
       <div class="fullEditMenu" *ngIf="showFullEditMenuValue">
         <input class="iconSearchbar" placeholder="Search for an icon" type="search" [formControl]="iconSearchbar" [value]="iconSearchValue">
         <ul class="iconSearchResults">
-          <li *ngFor="let icon of iconMatches" (click)="iconSelected(icon)">
+          <li *ngFor="let icon of iconMatches" (click)="iconSelected(icon)" (mouseenter)="startPreview(icon)" (mouseleave)="endPreview(icon)">
             <div class="listWrapper">
               <i [class]="icon.iconFullName"></i>
               <div class="nickname">{{icon.iconNickname}}</div>
@@ -62,6 +62,7 @@ export class EditMenuComponent implements OnInit {
   iconDatabase : Array<Icon> = new Array;
   counter : number = 0;
   clickOutsideProtection = false;
+  oldIcon : Icon;
 
   constructor(private editService : EditButtonService) { }
 
@@ -217,6 +218,17 @@ export class EditMenuComponent implements OnInit {
       return "You have to name your page";
     else
       return "Can't use the same name twice"
+  }
+
+  startPreview(icon)
+  {
+    this.oldIcon=this.item.icon
+    this.item.icon=icon;
+  }
+
+  endPreview()
+  {
+    this.item.icon=this.oldIcon;
   }
 
 }
