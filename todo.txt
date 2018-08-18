@@ -99,6 +99,9 @@ Color bug is still there
 
 Make it so that when you hover over an icon it previews how it looks in the actual list. Store a temp icon and the old icon and switch between them. 
 
+SLow down the entry animation of the add button to sync with the nav list dropping down
+
+I've decided on going to the top on media and going to the side on non media, media being 450px
 
 
 

@@ -21,10 +21,10 @@ declare var $: any;
             </div>
           </li>
         </ul>
-        <button #ignoredButton class="colorpicker" (click)="toggleColorPicker=!toggleColorPicker;" [ngStyle]="{'background-color':color}"></button>
         <input  class="labelInput" placeholder="Label" [formControl]="labelInput" [value]="item.label" [ngClass]="{'redBorder' : labelIsEmpty || labelIsNotUnique }">
-        <div class="errorMessage mat-tooltip" *ngIf="labelIsEmpty || labelIsNotUnique">{{labelErrorMessage()}}</div>
+        <button #ignoredButton class="colorpicker" (click)="toggleColorPicker=!toggleColorPicker;" [ngStyle]="{'background-color':color}"></button>
         <span #ignoredInput (colorPickerOpen)="colorPickerOpened(color)" [(colorPicker)]="color" (colorPickerChange)="setColor(color)"[style.background]="color" [cpPosition]="colorPickerOrientation" [cpDisableInput]="true" [cpIgnoredElements]="[ignoredButton, ignoredInput]" [(cpToggle)]="toggleColorPicker" ></span>
+        <div class="errorMessage mat-tooltip" *ngIf="labelIsEmpty || labelIsNotUnique">{{labelErrorMessage()}}</div>
       </div>
     </div>
   `,
@@ -57,7 +57,7 @@ export class EditMenuComponent implements OnInit {
   labelIsEmpty : boolean = false;
   labelIsNotUnique : boolean = false;
   iconSearchValue : string = "";
-  colorPickerOrientation : string = "bottom";
+  colorPickerOrientation : string = "right";
   editMode : boolean = false;
   color : any;
   iconMatches : Set<Icon> = new Set;
@@ -113,7 +113,10 @@ export class EditMenuComponent implements OnInit {
     let boundsOfColorPicker = el[0].getBoundingClientRect();
     //console.log(this.isElementInViewport(boundsOfColorPicker));
     if(!this.isElementInViewport(boundsOfColorPicker))
-      this.colorPickerOrientation="top";
+    {
+      $( ".color-picker" ).addClass( "colorPickerAdjustment" );
+     // $(".color-picker").css({"position":"absolute","left": "110%", "bottom": "-100%"});
+    }
     //reset the color picker
   }
 
