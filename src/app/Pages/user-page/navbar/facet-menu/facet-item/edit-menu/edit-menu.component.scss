@@ -143,7 +143,7 @@ input:focus:-ms-input-placeholder { color:transparent; } /* IE 10+ */
 {
     top: unset !important;
     touch-action: none;
-    left: unset;
+    left: unset !important;
 }
 
 ::ng-deep .colorPickerAdjustment
