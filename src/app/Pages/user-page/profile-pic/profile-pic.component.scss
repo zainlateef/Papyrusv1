@@ -21,24 +21,9 @@
         position: absolute;
         top: 0;
         right: 0;
-        @media (max-width: 640px)
-        {
-            font-size: 0.9em;
-        }
         &:hover
         {
             cursor: pointer;
-        }
-        .icon
-        {
-            font-size: 13.44px;
-            line-height: 25px;
-            left: 1px;
-        }
-        .icon-background
-        {
-            color: #2b3033;
-            font-size: 28.8px
         }
     }
 
@@ -48,25 +33,26 @@
         position: absolute;
         top: 0;
         right: -50%;
-        @media (max-width: 640px)
+        @media (max-width: 300px)
         {
-            font-size: 0.9em;
+            display: none;
         }
         &:hover
         {
             cursor: pointer;
         }
-        .icon
-        {
-            font-size: 13.44px;
-            line-height: 25px;
-            left: 1px;
-        }
-        .icon-background
-        {
-            color: #2b3033;
-            font-size: 28.8px
-        }
+    }
+
+    .icon
+    {
+        font-size: 13.44px;
+        line-height: 25px;
+        left: 1px;
+    }
+    .icon-background
+    {
+        color: #2b3033;
+        font-size: 28.8px
     }
 
 }
