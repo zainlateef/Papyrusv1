@@ -25,7 +25,10 @@ li {
   flex-flow: column;
   flex-direction: column;
   flex: 1;
-  height: 85vh;
+  &--active
+  {
+    height: 85vh;
+  }
 }
 
 .frosted_glass
