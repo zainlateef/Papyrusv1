@@ -25,6 +25,7 @@ import { MatTooltipModule } from '@angular/material';
 import { EditMenuComponent } from './Pages/user-page/navbar/facet-menu/facet-item/edit-menu/edit-menu.component';
 import { DragulaModule, DragulaService } from 'ng2-dragula';
 import 'hammerjs';
+import { ProfilePicComponent } from './pages/user-page/profile-pic/profile-pic.component';
 
 export const routes: Routes=[
   {path: '', component: HomeComponent},
@@ -52,7 +53,8 @@ export const routes: Routes=[
     NavbarComponent,
     FriendSearchComponent,
     UserMenuComponent,
-    EditMenuComponent
+    EditMenuComponent,
+    ProfilePicComponent
   ],
   imports: [
     BrowserModule,
