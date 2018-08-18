@@ -8,7 +8,18 @@ import { zoomIn } from '../../../../../node_modules/ng-animate';
   template: `
   <div class="wrapper">
     <img src="https://imagejournal.org/wp-content/uploads/bb-plugin/cache/23466317216_b99485ba14_o-panorama.jpg" alt="">
-    <i name="editButton" *ngIf="pageOwner" class="fas fa-edit editIcon" [matTooltip]="'Change your profile pic'"  [matTooltipShowDelay]="1300" [@zoomIn]="zoomIn"></i>
+    <div class="editIconProfPic">
+      <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x icon-background"></i>
+        <i name="editButton" *ngIf="pageOwner" class="fas fa-edit fa-stack-1x icon" [matTooltip]="'Change your profile pic'"  [matTooltipShowDelay]="1300" [@zoomIn]="zoomIn"></i>
+      </span>
+    </div>
+    <div class="editIconBackground">
+    <span class="fa-stack fa-lg">
+      <i class="fa fa-circle fa-stack-2x icon-background"></i>
+      <i name="editButton" *ngIf="pageOwner" class="fas fa-edit fa-stack-1x icon" [matTooltip]="'Change your background pic'"  [matTooltipShowDelay]="1300" [@zoomIn]="zoomIn"></i>
+    </span>
+    </div>
   </div>        
   `,
   styleUrls: ['./profile-pic.component.scss'],

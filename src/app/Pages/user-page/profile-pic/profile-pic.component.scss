@@ -15,7 +15,7 @@
         border-color:pink;
     }
 
-    .editIcon
+    .editIconProfPic
     {
         color: white;
         position: absolute;
@@ -28,6 +28,44 @@
         &:hover
         {
             cursor: pointer;
+        }
+        .icon
+        {
+            font-size: 13.44px;
+            line-height: 25px;
+            left: 1px;
+        }
+        .icon-background
+        {
+            color: #2b3033;
+            font-size: 28.8px
+        }
+    }
+
+    .editIconBackground
+    {
+        color: white;
+        position: absolute;
+        top: 0;
+        right: -50%;
+        @media (max-width: 640px)
+        {
+            font-size: 0.9em;
+        }
+        &:hover
+        {
+            cursor: pointer;
+        }
+        .icon
+        {
+            font-size: 13.44px;
+            line-height: 25px;
+            left: 1px;
+        }
+        .icon-background
+        {
+            color: #2b3033;
+            font-size: 28.8px
         }
     }
 
