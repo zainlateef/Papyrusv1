@@ -22,7 +22,7 @@ declare var $: any;
 
     <div class="main_flex" [ngClass]="{'main_flex--active':showMenu}">
 
-      <ul name="mobileFrostedBackground" class="frosted_glass nav__list" [ngClass]="{'nav__list--active':showMenu}"><li *ngFor="let item of facetItems" class="nav__item"></li></ul>
+      <ul *ngIf="showMenu" name="mobileFrostedBackground" class="frosted_glass nav__list" [ngClass]="{'nav__list--active':showMenu}"><li *ngFor="let item of facetItems" class="nav__item"></li></ul>
 
       <ul name="listOfItems" class="nav__list" [ngClass]="{'nav__list--active':showMenu}" dragula="DragMe" [(dragulaModel)]="facetItems">
         <li *ngFor="let item of facetItems" class="nav__item">
