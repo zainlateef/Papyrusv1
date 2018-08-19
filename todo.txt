@@ -14,7 +14,7 @@ SLow down the entry animation of the add button to sync with the nav list droppi
 
 You can preload the background image of the frosted glass if necessary by loading it off screen then bringing it on screen
 
-
+Might need to either make it frosted glass permanently or give the users a choice to have frosted glass all the time
 
 
  
