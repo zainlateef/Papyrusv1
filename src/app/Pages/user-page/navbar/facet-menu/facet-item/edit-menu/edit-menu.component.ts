@@ -152,10 +152,13 @@ export class EditMenuComponent implements OnInit {
 
   closeEditMenu()
   {
-    this.toggleColorPicker=false;
-    this.showFullEditMenu=false;
-    this.counter=0;
-    this.iconSearchValue="";
+    if(!this.toggleColorPicker)
+    {
+      this.toggleColorPicker=false;
+      this.showFullEditMenu=false;
+      this.counter=0;
+      this.iconSearchValue="";
+    }
   }
 
   initializeForms() 
