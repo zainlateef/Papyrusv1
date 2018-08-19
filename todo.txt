@@ -12,6 +12,8 @@ Have to find a clean way not to load the edit menu for everyone
 
 SLow down the entry animation of the add button to sync with the nav list dropping down. Make it smoother. 
 
+You can preload the background image of the frosted glass if necessary by loading it off screen then bringing it on screen
+
 
 
 
