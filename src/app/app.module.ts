@@ -26,6 +26,7 @@ import { EditMenuComponent } from './Pages/user-page/navbar/facet-menu/facet-ite
 import { DragulaModule, DragulaService } from 'ng2-dragula';
 import 'hammerjs';
 import { ProfilePicComponent } from './pages/user-page/profile-pic/profile-pic.component';
+import { PostComponent } from './pages/user-page/feed/post/post.component';
 
 export const routes: Routes=[
   {path: '', component: HomeComponent},
@@ -54,7 +55,8 @@ export const routes: Routes=[
     FriendSearchComponent,
     UserMenuComponent,
     EditMenuComponent,
-    ProfilePicComponent
+    ProfilePicComponent,
+    PostComponent
   ],
   imports: [
     BrowserModule,

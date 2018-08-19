@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FacetItem } from '../../../../../Models/facet-item';
 import { EditButtonService } from '../../../../../Services/edit-button.service';
-import { Router, ActivatedRoute } from '../../../../../../../node_modules/@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'facet-item',

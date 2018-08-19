@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { EditButtonService } from '../../Services/edit-button.service';
-import { ActivatedRoute } from '../../../../node_modules/@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { UrlChangeDetection } from '../../Parent-Classes/url-changes';
 
 @Component({

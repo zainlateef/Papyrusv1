@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EditButtonService } from '../../../Services/edit-button.service';
-import { trigger, transition, useAnimation } from '../../../../../node_modules/@angular/animations';
-import { zoomIn } from '../../../../../node_modules/ng-animate';
+import { trigger, transition, useAnimation } from '@angular/animations';
+import { zoomIn } from 'ng-animate';
 
 @Component({
   selector: 'profile-pic',

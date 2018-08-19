@@ -6,7 +6,7 @@ import { EditButtonService } from '../../../../Services/edit-button.service';
 import { zoomIn } from 'ng-animate';
 import { transition, trigger, useAnimation } from '@angular/animations';
 import { Icon } from '../../../../Models/icon';
-import { DragulaService } from '../../../../../../node_modules/ng2-dragula';
+import { DragulaService } from 'ng2-dragula';
 declare var $: any;
 @Component({
   selector: 'facet-menu',
