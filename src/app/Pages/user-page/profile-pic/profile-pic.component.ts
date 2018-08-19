@@ -12,15 +12,15 @@ import { FileUpload, FileUploadModule } from '../../../../../node_modules/primen
     <div class="editIconProfPic" *ngIf="pageOwner" [@zoomIn]="zoomIn">
       <span class="fa-stack fa-lg">
         <i class="fa fa-circle fa-stack-2x icon-background"></i>
-        <i name="editButton" class="fas fa-edit fa-stack-1x icon" [matTooltip]="'Change your profile pic'"  [matTooltipShowDelay]="400"></i>
-        <p-fileUpload mode="basic" name="demo[]" url="./upload.php" accept="image/*" maxFileSize="1000000" (onUpload)="onBasicUploadAuto($event)" auto="true"></p-fileUpload>
+        <i name="editButton" class="fas fa-edit fa-stack-1x icon"></i>
+        <p-fileUpload mode="basic" name="demo[]" url="./upload.php" accept="image/*" maxFileSize="1000000" (onUpload)="onBasicUploadAuto($event)" auto="true" [matTooltip]="'Change your profile pic'"  [matTooltipShowDelay]="400"></p-fileUpload>
       </span>
     </div>
-    <div class="editIconBackground" *ngIf="pageOwner" [@zoomIn]="zoomIn">
+    <div class="editIconBackground" *ngIf="pageOwner" [@zoomIn]="zoomIn" >
     <span class="fa-stack fa-lg">
       <i class="fa fa-circle fa-stack-2x icon-background"></i>
-      <i name="editButton" class="fas fa-edit fa-stack-1x icon" [matTooltip]="'Change your background pic'"  [matTooltipShowDelay]="400"></i>
-      <p-fileUpload mode="basic" name="demo[]" url="./upload.php" accept="image/*" maxFileSize="1000000" (onUpload)="onBasicUploadAuto($event)" auto="true"></p-fileUpload>
+      <i name="editButton" class="fas fa-edit fa-stack-1x icon"></i>
+      <p-fileUpload mode="basic" name="demo[]" url="./upload.php" accept="image/*" maxFileSize="1000000" (onUpload)="onBasicUploadAuto($event)" auto="true" [matTooltip]="'Change your background pic'" [matTooltipShowDelay]="400"></p-fileUpload>
     </span>
     </div>
   </div>        
