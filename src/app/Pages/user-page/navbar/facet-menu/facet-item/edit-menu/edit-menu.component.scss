@@ -1,6 +1,5 @@
 .editMenu
 {
-    // border: navajowhite dashed;
     display: inline-block;
     position: absolute;
     z-index: 2;
@@ -41,82 +40,82 @@
             {
                 cursor: pointer;
             } 
-            li
-            {
-                width: 100%;
-                background: white;
-                border-bottom: 1px solid #ccc;
-                white-space: nowrap;
-                text-decoration: none;
-                color: #000;
-                -webkit-transition: background-color 0.3s ease;
-                -moz-transition: background-color 0.3s ease;
-                -o-transition: background-color 0.3s ease;
-                -ms-transition: background-color 0.3s ease;
-                transition: background-color 0.3s ease;
-                .listWrapper
+                li
                 {
-                    display: inline-flex;
-                    justify-content: center;
-                    align-items: center;
-                    i
-                    {
-                        display: inline-block;
-                        font-size: 0.8em;
-                        padding: 0 6px;
-                    }
-                    .nickname
+                    width: 100%;
+                    background: white;
+                    border-bottom: 1px solid #ccc;
+                    white-space: nowrap;
+                    text-decoration: none;
+                    color: #000;
+                    -webkit-transition: background-color 0.3s ease;
+                    -moz-transition: background-color 0.3s ease;
+                    -o-transition: background-color 0.3s ease;
+                    -ms-transition: background-color 0.3s ease;
+                    transition: background-color 0.3s ease;
+                    .listWrapper
                     {
                         display: inline-flex;
-                        font: 200 13px/1.5 Helvetica, Verdana, sans-serif;
                         justify-content: center;
                         align-items: center;
-                        height: 100%;
+                        i
+                        {
+                            display: inline-block;
+                            font-size: 0.8em;
+                            padding: 0 6px;
+                        }
+                        .nickname
+                        {
+                            display: inline-flex;
+                            font: 200 13px/1.5 Helvetica, Verdana, sans-serif;
+                            justify-content: center;
+                            align-items: center;
+                            height: 100%;
+                        }
                     }
+
                 }
 
-            }
+                li:last-child 
+                {
+                    border: none;
+                }
 
-            li:last-child 
-            {
-                border: none;
+                li:hover
+                {
+                    background: #f6f6f6;
+                }              
+                
             }
-
-            li:hover
+            .colorpicker
             {
-                background: #f6f6f6;
-            }              
-            
+                display: inline-block;
+                border-width: 1px;
+                width: 15px; 
+                height: 15px;
+            }
+            .labelInput
+            {
+                display: inline-block;
+                width: 109px;
+                height: 17px;
+                border: 0 none;
+                padding: 6px 15px 6px 9px;
+                transition: all 0.35s;
+                -webkit-border-radius: 20px;
+                -moz-border-radius: 20px;
+                border-radius: 20px;
+            }
+            .redBorder
+            {
+                box-shadow: inset 0 0 4px red;
+            }
+            .errorMessage
+            {
+                position: absolute;
+                margin: 4px 0 0 0;
+            }
         }
-        .colorpicker
-        {
-            display: inline-block;
-            border-width: 1px;
-            width: 15px; 
-            height: 15px;
-        }
-        .labelInput
-        {
-            display: inline-block;
-            width: 109px;
-            height: 17px;
-            border: 0 none;
-            padding: 6px 15px 6px 9px;
-            transition: all 0.35s;
-            -webkit-border-radius: 20px;
-            -moz-border-radius: 20px;
-            border-radius: 20px;
-        }
-        .redBorder
-        {
-            box-shadow: inset 0 0 4px red;
-        }
-        .errorMessage
-        {
-            position: absolute;
-            margin: 4px 0 0 0;
-        }
-    }
 }
 
 input
