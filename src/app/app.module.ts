@@ -24,8 +24,9 @@ import { ColorPickerModule } from 'ngx-color-picker';
 import { MatTooltipModule } from '@angular/material';
 import { EditMenuComponent } from './Pages/user-page/navbar/facet-menu/facet-item/edit-menu/edit-menu.component';
 import { DragulaModule, DragulaService } from 'ng2-dragula';
-import 'hammerjs';
 import { ProfilePicComponent } from './pages/user-page/profile-pic/profile-pic.component';
+import {FileUploadModule} from 'primeng/fileupload';
+import 'hammerjs';
 
 export const routes: Routes=[
   {path: '', component: HomeComponent},
@@ -66,7 +67,8 @@ export const routes: Routes=[
     ClickOutsideModule,
     ColorPickerModule,
     MatTooltipModule,
-    DragulaModule
+    DragulaModule,
+    FileUploadModule
   ],
   providers: [EditButtonService,DragulaService],
   bootstrap: [AppComponent]

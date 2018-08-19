@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { EditButtonService } from '../../../Services/edit-button.service';
 import { trigger, transition, useAnimation } from '../../../../../node_modules/@angular/animations';
 import { zoomIn } from '../../../../../node_modules/ng-animate';
+import { FileUpload, FileUploadModule } from '../../../../../node_modules/primeng/fileupload';
 
 @Component({
   selector: 'profile-pic',
@@ -12,12 +13,14 @@ import { zoomIn } from '../../../../../node_modules/ng-animate';
       <span class="fa-stack fa-lg">
         <i class="fa fa-circle fa-stack-2x icon-background"></i>
         <i name="editButton" class="fas fa-edit fa-stack-1x icon" [matTooltip]="'Change your profile pic'"  [matTooltipShowDelay]="400"></i>
+        <p-fileUpload mode="basic" name="demo[]" url="./upload.php" accept="image/*" maxFileSize="1000000" (onUpload)="onBasicUploadAuto($event)" auto="true"></p-fileUpload>
       </span>
     </div>
     <div class="editIconBackground" *ngIf="pageOwner" [@zoomIn]="zoomIn">
     <span class="fa-stack fa-lg">
       <i class="fa fa-circle fa-stack-2x icon-background"></i>
       <i name="editButton" class="fas fa-edit fa-stack-1x icon" [matTooltip]="'Change your background pic'"  [matTooltipShowDelay]="400"></i>
+      <p-fileUpload mode="basic" name="demo[]" url="./upload.php" accept="image/*" maxFileSize="1000000" (onUpload)="onBasicUploadAuto($event)" auto="true"></p-fileUpload>
     </span>
     </div>
   </div>        

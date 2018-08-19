@@ -1,6 +1,9 @@
 @import '~font-awesome/css/font-awesome.min.css';
 @import '~font-awesome-animation/dist/font-awesome-animation.min.css';
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "~primeicons/primeicons.css";
+@import "~primeng/resources/themes/nova-light/theme.css";
+@import "~primeng/resources/primeng.min.css";
 * {
     -webkit-box-sizing: border-box;
        -moz-box-sizing: border-box;
