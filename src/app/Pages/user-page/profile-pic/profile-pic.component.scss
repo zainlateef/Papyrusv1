@@ -41,7 +41,6 @@
         {
             cursor: pointer;
         }
-
     }
 
     .icon
@@ -53,24 +52,7 @@
     .icon-background
     {
         color: #2b3033;
-        font-size: 28.8px;
+        font-size: 28.8px
     }
 
 }
-
-::ng-deep .ui-button
-{
-    background: transparent !important;
-    background-color: unset !important;
-    border: none !important;
-    width: 30px;
-    height: 30px;
-    left: 6px;
-    font-size: 0px !important;
-    vertical-align: middle;
-}
-
-// p-fileUpload
-// {
-//     display: none;
-// }
