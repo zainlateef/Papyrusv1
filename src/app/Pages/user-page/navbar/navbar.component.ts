@@ -7,7 +7,7 @@ import { EditButtonService } from '../../../Services/edit-button.service';
   <div class="wrapper">
     <facet-menu></facet-menu>
     <div class="right" [ngStyle]="{'color': isBlack ? 'black' : 'white' }">
-        <button *ngIf="editMode && !searchBarIsOpen" class="colorpicker" [ngStyle]="{'background-color': isBlack ? 'black' : '#fffffe' }" (click)="toggleColorScheme()" [matTooltip]="'Change the color of these icons to be black or white. Color will always be white on the mobile site'" [matTooltipShowDelay]="1300"></button>
+        <button *ngIf="pageOwner && !searchBarIsOpen" class="colorpicker" [ngStyle]="{'background-color': isBlack ? 'black' : '#fffffe' }" (click)="toggleColorScheme()"></button>
         <friend-search (openEvent)="searchOpenEvent($event)"></friend-search>
         <user-menu></user-menu>
     </div>
@@ -19,7 +19,7 @@ import { EditButtonService } from '../../../Services/edit-button.service';
 export class NavbarComponent implements OnInit {
 
   constructor(private editService : EditButtonService) { }
-  editMode : boolean = false;
+  pageOwner : boolean = false;
   isBlack : boolean = true;
   searchBarIsOpen : boolean = false;
 
@@ -31,8 +31,8 @@ export class NavbarComponent implements OnInit {
 
   editServiceSetup()
   {
-    this.editService.editMode=this.editMode;
-    this.editService.editValueChange.subscribe( value => this.editMode=value );
+    this.pageOwner=this.editService.isPageOwner;
+    this.editService.pageOwnerStatus.subscribe( value => this.pageOwner=value );
   }
 
   toggleColorScheme()
