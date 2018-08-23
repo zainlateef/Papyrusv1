@@ -5,8 +5,7 @@ import { UrlChangeDetection } from '../../../Parent-Classes/url-changes';
   selector: 'feed',
   template: 
   `
-    <ul class="feed">
-    </ul>
+  <div [froalaEditor]='options'></div>
   `
   ,
   styleUrls: ['./feed.component.scss']
@@ -15,6 +14,12 @@ export class FeedComponent extends UrlChangeDetection implements OnInit {
 
   constructor(private route : ActivatedRoute) {
     super(route);
+  }
+
+  public options: Object = {
+    placeholderText: 'Edit Your Content Here!',
+    charCounterCount: false,
+    width: "100%"
   }
 
   routeSubscription : any;
