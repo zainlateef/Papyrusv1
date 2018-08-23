@@ -22,7 +22,7 @@ declare var $: any;
           </li>
         </ul>
         <input  class="labelInput" placeholder="Label" [formControl]="labelInput" [value]="item.label" [ngClass]="{'redBorder' : labelIsEmpty || labelIsNotUnique }">
-        <p-colorPicker [(ngModel)]="item.color"></p-colorPicker>
+        <p-colorPicker (click)="changeTop()" [(ngModel)]="item.color"></p-colorPicker>
         <div class="errorMessage mat-tooltip" *ngIf="labelIsEmpty || labelIsNotUnique">{{labelErrorMessage()}}</div>
       </div>
     </div>
@@ -70,7 +70,22 @@ export class EditMenuComponent implements OnInit {
     this.initializeForms();
     this.initializeDummyData();
   }
+
+  changeTop()
+  {
+
+   let position = $('.ng-trigger-overlayAnimation ').position();
+   console.log(position.top)
+   if(position.top > 0)
+   {
+     console.log('here')
+     $('.ng-trigger-overlayAnimation').css({ top: 'unset' });
+   }
+
+      
+  }
   
+
   editServiceSetup()
   {
     this.editMode=this.editService.editMode;
