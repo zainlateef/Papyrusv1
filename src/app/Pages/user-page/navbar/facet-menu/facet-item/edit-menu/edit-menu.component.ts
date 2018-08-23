@@ -11,7 +11,7 @@ declare var $: any;
   `
     <div class="editMenu nondraggable" *ngIf="editMode" (clickOutside)="onClickedOutside($event)">
       <img (click)="deleteItem()"src="/assets/images/close.png" [matTooltip]="'Delete this page'" [matTooltipShowDelay]="'500'">
-      <div class="fullEditMenu" *ngIf="showFullEditMenuValue">
+      <div #fullMenu class="fullEditMenu" *ngIf="showFullEditMenuValue">
         <input class="iconSearchbar" placeholder="Search for an icon" type="search" [formControl]="iconSearchbar" [value]="iconSearchValue">
         <ul class="iconSearchResults">
           <li *ngFor="let icon of iconMatches" (click)="iconSelected(icon)" (mouseenter)="startPreview(icon)" (mouseleave)="endPreview(icon)">
@@ -22,8 +22,7 @@ declare var $: any;
           </li>
         </ul>
         <input  class="labelInput" placeholder="Label" [formControl]="labelInput" [value]="item.label" [ngClass]="{'redBorder' : labelIsEmpty || labelIsNotUnique }">
-        <button #ignoredButton class="colorpicker" (click)="toggleColorPicker=!toggleColorPicker;" [ngStyle]="{'background-color':color}"></button>
-        <span #ignoredInput (colorPickerOpen)="colorPickerOpened(color)" [(colorPicker)]="color" (colorPickerChange)="setColor(color)"[style.background]="color" [cpPosition]="colorPickerOrientation" [cpDisableInput]="true" [cpIgnoredElements]="[ignoredButton, ignoredInput]" [(cpToggle)]="toggleColorPicker" ></span>
+        <p-colorPicker [(ngModel)]="item.color"></p-colorPicker>
         <div class="errorMessage mat-tooltip" *ngIf="labelIsEmpty || labelIsNotUnique">{{labelErrorMessage()}}</div>
       </div>
     </div>
@@ -57,13 +56,11 @@ export class EditMenuComponent implements OnInit {
   labelIsEmpty : boolean = false;
   labelIsNotUnique : boolean = false;
   iconSearchValue : string = "";
-  colorPickerOrientation : string = "right";
   editMode : boolean = false;
-  color : any;
   iconMatches : Set<Icon> = new Set;
   iconDatabase : Array<Icon> = new Array;
   counter : number = 0;
-  clickOutsideProtection = false;
+  clickOutsideException = false;
   oldIcon : Icon;
 
   constructor(private editService : EditButtonService) { }
@@ -72,7 +69,6 @@ export class EditMenuComponent implements OnInit {
     this.editServiceSetup();
     this.initializeForms();
     this.initializeDummyData();
-    this.color=this.item.color;
   }
   
   editServiceSetup()
@@ -89,7 +85,7 @@ export class EditMenuComponent implements OnInit {
     this.item.icon=icon;
     this.iconSearchValue=this.item.icon.iconNickname;
     this.iconMatches.clear();
-    this.clickOutsideProtection=true;
+    this.clickOutsideException=true;
   }
 
   onFormChange(term: any) {
@@ -131,8 +127,8 @@ export class EditMenuComponent implements OnInit {
   }
 
   onClickedOutside(e: Event) {
-    if(this.clickOutsideProtection)
-      this.clickOutsideProtection=false;
+    if(this.clickOutsideException)
+      this.clickOutsideException=false;
     else if(this.showFullEditMenu)
     {
       ++this.counter;

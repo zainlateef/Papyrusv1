@@ -1,3 +1,4 @@
+import 'hammerjs';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { NgModule } from '@angular/core';
@@ -20,13 +21,12 @@ import { UserMenuComponent } from './Pages/user-page/navbar/user-menu/user-menu.
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ClickOutsideModule } from 'ng-click-outside';
 import { EditButtonService } from './Services/edit-button.service';
-import { ColorPickerModule } from 'ngx-color-picker';
 import { MatTooltipModule } from '@angular/material';
 import { EditMenuComponent } from './Pages/user-page/navbar/facet-menu/facet-item/edit-menu/edit-menu.component';
 import { DragulaModule, DragulaService } from 'ng2-dragula';
-import 'hammerjs';
 import { ProfilePicComponent } from './pages/user-page/profile-pic/profile-pic.component';
 import { PostComponent } from './pages/user-page/feed/post/post.component';
+import {ColorPickerModule} from 'primeng/colorpicker'
 
 export const routes: Routes=[
   {path: '', component: HomeComponent},

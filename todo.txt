@@ -16,5 +16,4 @@ You can preload the background image of the frosted glass if necessary by loadin
 
 Might need to either make it frosted glass permanently or give the users a choice to have frosted glass all the time
 
-
- 
+On click, resize the input button
