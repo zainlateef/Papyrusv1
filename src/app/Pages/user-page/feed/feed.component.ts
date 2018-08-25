@@ -5,8 +5,7 @@ import { UrlChangeDetection } from '../../../Parent-Classes/url-changes';
   selector: 'feed',
   template: 
   `
-    <ul class="feed">
-    </ul>
+    <post></post>
   `
   ,
   styleUrls: ['./feed.component.scss']
