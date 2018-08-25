@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UrlChangeDetection } from '../../../Parent-Classes/url-changes';
+import { EditButtonService } from '../../../Services/edit-button.service';
 declare var $:any;
 
 @Component({
@@ -8,7 +9,7 @@ declare var $:any;
   template: 
   `
   <div class="wrapper" [ngStyle]="{'background-color': backgroundColor }">
-    <p-colorPicker (click)="changeTop()" [(ngModel)]="backgroundColor"></p-colorPicker>
+    <p-colorPicker *ngIf="pageOwner" (click)="changeTop()" [(ngModel)]="backgroundColor"></p-colorPicker>
     <profile-pic></profile-pic>
     <post></post>
     This tale grew in the telling, until it became a history of the Great War of the Ring and included many glimpses of the yet more ancient history that preceded it. It was begun soon after The Hobbit was written and before its publication in 1937; but I did not go on with this sequel, for I wished first to complete and set in order the mythology and legends of the Elder Days, which had then been taking shape for some years. I desired to do this for my own satisfaction, and I had little hope that other people would be interested in this work, especially since it was primarily linguistic in inspiration and was begun in order to provide the necessary background of 'history' for Elvish tongues.
@@ -65,15 +66,17 @@ export class FeedComponent extends UrlChangeDetection implements OnInit {
 
   backgroundColor = 'white';
 
-  constructor(private route : ActivatedRoute) {
+  constructor(private route : ActivatedRoute, private editService : EditButtonService) {
     super(route);
   }
 
   routeSubscription : any;
+  pageOwner : boolean = false;
 
   ngOnInit() 
   { 
     this.detectAllUrlChanges();
+    this.editServiceSetup();
   }
 
   loadOnUrlChange(params)
@@ -82,6 +85,14 @@ export class FeedComponent extends UrlChangeDetection implements OnInit {
       console.log("HTTP Call:No facet selected. Load first facet of uid:"+params.uid+" by making special first facet ajax call");
     else
       console.log("HTTP Call:Feed loads uid:"+params.uid+" facet:"+params.facet);
+  }
+
+  editServiceSetup()
+  {
+    this.pageOwner=this.editService.isPageOwner;
+    this.editService.pageOwnerStatus.subscribe( pageOwnerStatus => {
+      this.pageOwner=pageOwnerStatus;
+    });
   }
 
   changeTop()
