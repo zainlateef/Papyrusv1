@@ -23,3 +23,5 @@ For now, we go with the prime color picker.
 
 We reload the profile pic and the wrapper color for each page
 So that has to happen in feed
+
+edit mode on color picker
