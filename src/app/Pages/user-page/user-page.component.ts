@@ -10,6 +10,7 @@ import { UrlChangeDetection } from '../../Parent-Classes/url-changes';
     <navbar></navbar>
     <div class="wrapper">
     <profile-pic></profile-pic>
+    <feed></feed>
     This tale grew in the telling, until it became a history of the Great War of the Ring and included many glimpses of the yet more ancient history that preceded it. It was begun soon after The Hobbit was written and before its publication in 1937; but I did not go on with this sequel, for I wished first to complete and set in order the mythology and legends of the Elder Days, which had then been taking shape for some years. I desired to do this for my own satisfaction, and I had little hope that other people would be interested in this work, especially since it was primarily linguistic in inspiration and was begun in order to provide the necessary background of 'history' for Elvish tongues.
 
     When those whose advice and opinion I sought corrected little hope to no hope, I went back to the sequel, encouraged by requests from readers for more information concerning hobbits and their adventures. But the story was drawn irresistibly towards the older world, and became an account, as it were, of its end and passing away before its beginning and middle had been told. The process had begun in the writing of The Hobbit, in which there were already some references to the older matter: Elrond, Gondolin, the High-elves, and the orcs, as well as glimpses that had arisen unbidden of things higher or deeper or darker than its surface: Durin, Moria, Gandalf, the Necromancer, the Ring. The discovery of the significance of these glimpses and of their relation to the ancient histories revealed the Third Age and its culmination in the War of the Ring.
@@ -55,7 +56,6 @@ import { UrlChangeDetection } from '../../Parent-Classes/url-changes';
     Before the crossing of the mountains the Hobbits had already become divided into three somewhat different breeds: Harfoots, Stoors, and Fallohides. The Harfoots were browner of skin, smaller, and shorter, and they were beardless and bootless; their hands and feet were neat and nimble; and they preferred highlands and hillsides. The Stoors were broader, heavier in build; their feet and hands were larger, and they preferred flat lands and riversides. The Fallohides were fairer of skin and also of hair, and they were taller and slimmer than the others; they were lovers of trees and of woodlands.
     
     The Harfoots had much to do with Dwarves in ancient times, and long lived in the foothills of the mountains. They moved westward early, and roamed over Eriador as far as Weathertop while the others were still in the Wilderland. They were the most normal and representative variety of Hobbit, and far the most numerous. They were the most inclined to settle in one place, a
-    <feed></feed>
     </div>
   `
   ,
