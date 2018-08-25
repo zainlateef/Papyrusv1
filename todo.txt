@@ -20,3 +20,6 @@ On click, resize the input button
 
 So in prime color picker we have the highlighting text bug and mobile bug. In the other color picker we have the non display bug. 
 For now, we go with the prime color picker.
+
+We reload the profile pic and the wrapper color for each page
+So that has to happen in feed

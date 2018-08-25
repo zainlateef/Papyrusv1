@@ -1,0 +1,28 @@
+.wrapper
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: justify;
+    position: relative;
+    margin: 0 auto;
+    width: -webkit-calc(100% - 200px);
+    width:    -moz-calc(100% - 200px);
+    width:         calc(100% - 200px);
+    max-width: 1000px;
+    @media(max-width: 640px)
+    {
+        width: 100%;
+        top: 10vh;
+        height: fit-content;
+    }
+}
+
+p-colorpicker
+{
+    position:  absolute;
+    top: 5px;
+    bottom:  0;
+    right: 70%;
+}
