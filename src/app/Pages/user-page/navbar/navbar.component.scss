@@ -6,10 +6,7 @@ $nav-bg: #2b3033;
     width : 100vw;
     max-width: 1500px;
     height: 15vh;
-    @media(min-width: 640px)
-    {
-      max-height: 100px;
-    }
+    max-height: 100px;
     top: 0;
     left: 0;
     right: 0;
@@ -31,16 +28,13 @@ $nav-bg: #2b3033;
     float: right;
     z-index: 2;
     height: 15vh;
+    max-height: 100px;
     -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
      -khtml-user-select: none; /* Konqueror HTML */
        -moz-user-select: none; /* Firefox */
         -ms-user-select: none; /* Internet Explorer/Edge */
             user-select: none;
-    @media(min-width: 640px)
-    {
-      max-height: 100px;
-    }
 
     @media (max-width: 640px) {
         height: 10vh;
