@@ -27,7 +27,6 @@ import { DragulaModule, DragulaService } from 'ng2-dragula';
 import 'hammerjs';
 import { ProfilePicComponent } from './pages/user-page/profile-pic/profile-pic.component';
 import { PostComponent } from './pages/user-page/feed/post/post.component';
-import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 
 export const routes: Routes=[
   {path: '', component: HomeComponent},
@@ -69,9 +68,7 @@ export const routes: Routes=[
     ClickOutsideModule,
     ColorPickerModule,
     MatTooltipModule,
-    DragulaModule,
-    FroalaEditorModule.forRoot(), 
-    FroalaViewModule.forRoot()
+    DragulaModule
   ],
   providers: [EditButtonService,DragulaService],
   bootstrap: [AppComponent]

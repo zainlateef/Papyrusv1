@@ -6,7 +6,8 @@ declare var $: any;
   selector: 'feed',
   template: 
   `
-  <div id="froala-editor" [froalaEditor]='options'></div>
+    <ul class="feed">
+    </ul>
   `
   ,
   styleUrls: ['./feed.component.scss']
@@ -15,12 +16,6 @@ export class FeedComponent extends UrlChangeDetection implements OnInit {
 
   constructor(private route : ActivatedRoute) {
     super(route);
-  }
-
-  public options: Object = {
-    placeholderText: 'Edit Your Content Here!',
-    charCounterCount: false,
-    width: "100%"
   }
 
   routeSubscription : any;

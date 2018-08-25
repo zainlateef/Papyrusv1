@@ -1,10 +1,6 @@
 @import '~font-awesome/css/font-awesome.min.css';
 @import '~font-awesome-animation/dist/font-awesome-animation.min.css';
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
-@import '~froala-editor/css/froala_editor.pkgd.min.css';
-@import '~froala-editor/css/froala_style.min.css';
-@import '~froala-editor/css/third_party/embedly.min.css';
-
 * {
     -webkit-box-sizing: border-box;
        -moz-box-sizing: border-box;
