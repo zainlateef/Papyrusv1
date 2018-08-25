@@ -16,5 +16,7 @@ You can preload the background image of the frosted glass if necessary by loadin
 
 Might need to either make it frosted glass permanently or give the users a choice to have frosted glass all the time
 
+On click, resize the input button
 
- 
+So in prime color picker we have the highlighting text bug and mobile bug. In the other color picker we have the non display bug. 
+For now, we go with the prime color picker.

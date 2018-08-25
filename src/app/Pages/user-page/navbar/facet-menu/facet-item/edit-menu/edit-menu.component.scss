@@ -91,13 +91,6 @@
                 }              
                 
             }
-            .colorpicker
-            {
-                display: inline-block;
-                border-width: 1px;
-                width: 15px; 
-                height: 15px;
-            }
             .labelInput
             {
                 display: inline-block;
@@ -137,27 +130,23 @@ input:focus:-moz-placeholder { color:transparent; } /* FF 4-18 */
 input:focus::-moz-placeholder { color:transparent; } /* FF 19+ */
 input:focus:-ms-input-placeholder { color:transparent; } /* IE 10+ */
 
-::ng-deep .arrow-bottom, ::ng-deep .arrow-right
-{
-    visibility: hidden;
-}
 
-::ng-deep .color-picker
+::ng-deep p-colorpicker
 {
-    top: unset !important;
-    touch-action: none;
-    left: unset !important;
-}
-
-::ng-deep .colorPickerAdjustment
-{
-    left: 110% !important;
-    position: absolute !important;
-    bottom: -100% !important;
-    @media (max-width:450px) {
-        left: 20px !important;
-        bottom: 110% !important;
+    input
+    {
+        width: 15px !important;
+        height: 15px !important;
     }
+}
+
+::ng-deep .ui-colorpicker-panel
+{
+    @if top == "15px"
+    {
+        top : 0 !important;
+    }
+    background-color: ghostwhite !important;
 }
 
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
