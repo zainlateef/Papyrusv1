@@ -25,6 +25,9 @@ li {
   flex-flow: column;
   flex-direction: column;
   flex: 1;
+  height: -webkit-calc(100vh - 100px);
+  height:    -moz-calc(100vh - 100px);
+  height:        calc(100vh - 100px);
 }
 
 .frosted_glass
