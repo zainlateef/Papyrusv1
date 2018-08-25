@@ -142,10 +142,6 @@ input:focus:-ms-input-placeholder { color:transparent; } /* IE 10+ */
 
 ::ng-deep .ui-colorpicker-panel
 {
-    @if top == "15px"
-    {
-        top : 0 !important;
-    }
     background-color: ghostwhite !important;
 }
 
