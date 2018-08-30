@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EditButtonService } from '../../../Services/edit-button.service';
+import { EditButtonService } from '../../../../Services/edit-button.service';
 import { trigger, transition, useAnimation } from '@angular/animations';
 import { zoomIn } from 'ng-animate';
 

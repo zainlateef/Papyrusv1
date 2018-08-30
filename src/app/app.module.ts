@@ -24,7 +24,7 @@ import { EditButtonService } from './Services/edit-button.service';
 import { MatTooltipModule } from '@angular/material';
 import { EditMenuComponent } from './Pages/user-page/navbar/facet-menu/facet-item/edit-menu/edit-menu.component';
 import { DragulaModule, DragulaService } from 'ng2-dragula';
-import { ProfilePicComponent } from './pages/user-page/profile-pic/profile-pic.component';
+import { ProfilePicComponent } from './pages/user-page/feed/profile-pic/profile-pic.component';
 import { PostComponent } from './pages/user-page/feed/post/post.component';
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 import {ColorPickerModule} from 'primeng/colorpicker'
