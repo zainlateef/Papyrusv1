@@ -4,7 +4,9 @@
 @import '~froala-editor/css/froala_editor.pkgd.min.css';
 @import '~froala-editor/css/froala_style.min.css';
 @import '~froala-editor/css/third_party/embedly.min.css';
-
+@import "~primeicons/primeicons.css";
+@import "~primeng/resources/themes/nova-light/theme.css";
+@import "~primeng/resources/primeng.min.css";
 * {
     -webkit-box-sizing: border-box;
        -moz-box-sizing: border-box;
