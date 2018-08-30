@@ -25,9 +25,14 @@
         position: absolute;
         top: 0;
         right: 0;
+        height: 30px;
         &:hover
         {
             cursor: pointer;
+        }
+        span 
+        {
+            height: 100%;
         }
     }
 
@@ -37,6 +42,7 @@
         position: absolute;
         top: 0;
         right: -50%;
+        height: 30px;
         @media (max-width: 300px)
         {
             display: none;
@@ -44,6 +50,10 @@
         &:hover
         {
             cursor: pointer;
+        }
+        span 
+        {
+            height: 100%;
         }
     }
 

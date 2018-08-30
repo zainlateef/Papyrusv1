@@ -73,16 +73,16 @@ export class EditMenuComponent implements OnInit {
 
   changeTop()
   {
-
    let position = $('.ng-trigger-overlayAnimation ').position();
    console.log(position.top)
-   if(position.top > 0)
+   if(position != null)
    {
-     console.log('here')
-     $('.ng-trigger-overlayAnimation').css({ top: 'unset' });
+    if(position.top > 0)
+    {
+      console.log('here')
+      $('.ng-trigger-overlayAnimation').css({ top: 'unset' });
+    }
    }
-
-      
   }
   
 
