@@ -1,12 +1,11 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UrlChangeDetection } from '../../../Parent-Classes/url-changes';
-declare var $: any;
 @Component({
   selector: 'feed',
   template: 
   `
-  <div id="froala-editor" [froalaEditor]='options'></div>
+  <post></post>
   `
   ,
   styleUrls: ['./feed.component.scss']
@@ -17,18 +16,11 @@ export class FeedComponent extends UrlChangeDetection implements OnInit {
     super(route);
   }
 
-  public options: Object = {
-    placeholderText: 'Edit Your Content Here!',
-    charCounterCount: false,
-    width: "100%"
-  }
-
   routeSubscription : any;
 
   ngOnInit() 
   { 
     this.detectAllUrlChanges();
-    this.initializeEditor();
   }
 
   loadOnUrlChange(params)
@@ -37,20 +29,6 @@ export class FeedComponent extends UrlChangeDetection implements OnInit {
       console.log("HTTP Call:No facet selected. Load first facet of uid:"+params.uid+" by making special first facet ajax call");
     else
       console.log("HTTP Call:Feed loads uid:"+params.uid+" facet:"+params.facet);
-  }
-
-  initializeEditor(): any {
-    $('div#froala-editor').froalaEditor({
-      toolbarButtons: 
-      ['fontFamily', 'fontSize' , 'color', '|',
-      'bold','italic','underline','|',
-      'alignment','insertHL','|',
-      'formatOL','formatUL','|',
-      'emoticons','specialCharacters','|',
-      'embedly','insertLink','insertImage','insertVideo', '|',
-      'fullscreen'
-      ]
-    })
   }
 
 }
