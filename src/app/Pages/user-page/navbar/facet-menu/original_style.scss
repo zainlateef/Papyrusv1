@@ -34,7 +34,10 @@ ul {
   &__list {
     display: flex;
     flex-flow: column wrap;
-    height: 85vh;
+    //height: 85vh;
+    height: -webkit-calc(100vh - 100px);
+    height:    -moz-calc(100vh - 100px);
+    height:         calc(100vh - 100px);
     transform: translate(0, -100%);
     transition: $ease;
     
@@ -87,8 +90,7 @@ ul {
 }
 
 .burger {
-  height: 15vh;
-  max-height: 100px;
+  height: 100px;
   position: relative;
   display: flex;
   justify-content: center;
