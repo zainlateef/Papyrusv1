@@ -98,11 +98,8 @@ export class FeedComponent extends UrlChangeDetection implements OnInit {
   changeTop()
   {
    let position = $('.ng-trigger-overlayAnimation ').position();
-   console.log(position.top)
-   if(position != null)
-   {
-    if(position.top > 0)
-    {
+   if(position != null){ 
+    if(position.top > 0){
       console.log('here')
       $('.ng-trigger-overlayAnimation').css({ top: 'unset' });
     }
