@@ -20,7 +20,7 @@ declare var $: any;
       <div class="burger__patty"></div>
     </div>
 
-    <div class="main_flex" [ngClass]="{'main_flex--active':showMenu}">
+    <div class="main_flex" [ngClass]="{'main_flex--edit':editMode}">
 
       <ul *ngIf="showMenu" name="mobileFrostedBackground" class="frosted_glass nav__list" [ngClass]="{'nav__list--active':showMenu}"><li *ngFor="let item of facetItems" class="nav__item"></li></ul>
 
