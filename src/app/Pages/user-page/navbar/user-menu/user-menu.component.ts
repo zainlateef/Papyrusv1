@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
         Profile 
       </li>
       <li *ngIf="loggedIn" [routerLink]="['/interact',uid]"> 
-        Friends 
+        Feed 
       </li>
       <li *ngIf="loggedIn" [routerLink]="['/publish',uid]"> 
         Publish 

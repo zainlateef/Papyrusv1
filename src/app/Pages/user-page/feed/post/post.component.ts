@@ -17,7 +17,6 @@ export class PostComponent implements OnInit {
     let Font = Quill.import('formats/font');
     Font.whitelist = fonts;
     Quill.register(Font, true);
-
     let quill = new Quill('#editor', {
       modules: {
         toolbar: [

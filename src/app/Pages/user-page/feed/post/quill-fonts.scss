@@ -23,7 +23,7 @@
 ::ng-deep.ql-font-sofia {
   font-family: 'Sofia', sans-serif;
 }
-::ng-deep.ql-snow .ql-picker.ql-font .ql-active.ql-picker-label[data-value=sofia]::before,
+::ng-deep.ql-snow .ql-picker.ql-font .ql-picker-label[data-value=sofia]::before,
 ::ng-deep.ql-snow .ql-picker.ql-font .ql-picker-item[data-value=sofia]::before {
     content: 'Sofia';
     font-family: 'Sofia', sans-serif;
@@ -32,7 +32,7 @@
 ::ng-deep.ql-font-indie_flower {
     font-family: 'Indie Flower', sans-serif;
   }
-::ng-deep.ql-snow .ql-picker.ql-font .ql-active.ql-picker-label[data-value=indie_flower]::before,
+::ng-deep.ql-snow .ql-picker.ql-font .ql-picker-label[data-value=indie_flower]::before,
 ::ng-deep.ql-snow .ql-picker.ql-font .ql-picker-item[data-value=indie_flower]::before {
     content: 'Indie Flower';
     font-family: 'Indie Flower', cursive;
