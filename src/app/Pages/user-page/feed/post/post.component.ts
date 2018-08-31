@@ -26,12 +26,24 @@ export class PostComponent implements OnInit {
       toolbarButtons: 
       ['fontFamily', 'fontSize' , 'color', '|',
       'bold','italic','underline','|',
-      'alignment','insertHL','|',
-      'formatOL','formatUL','|',
+      'align','|',
       'emoticons','specialCharacters','|',
-      'embedly','insertLink','insertImage','insertVideo', '|',
+      'embedly','|',
       'fullscreen'
-      ]
+      ],
+      quickInsertTags: [''],
+      tabSpaces: 8,
+      fontFamily: {
+        "Arial,sans-serif": 'Arial',
+        "Indie Flower, cursive": 'Hobbes',
+        'Princess Sofia, cursive': "Sofia",
+        'Permanent Marker, cursive': "Marker",
+        'Monoton, cursive': "Inception",
+        'Homemade Apple, cursive': "Jefferson",
+        "'Press Start 2P', cursive": "P1",
+        'Fredericka the Great, cursive': "Sketch",
+        'Faster One, cursive': "Speed"
+      }
     })
   }
 

@@ -12,7 +12,7 @@ declare var $: any;
     <div class="editMenu nondraggable" *ngIf="editMode" (clickOutside)="onClickedOutside($event)">
       <img (click)="deleteItem()"src="/assets/images/close.png" [matTooltip]="'Delete this page'" [matTooltipShowDelay]="'500'">
       <div #fullMenu class="fullEditMenu" *ngIf="showFullEditMenuValue">
-        <input class="iconSearchbar" placeholder="Search for an icon" type="search" [formControl]="iconSearchbar" [value]="iconSearchValue">
+        <input class="iconSearchbar" placeholder="Icon search" type="search" [formControl]="iconSearchbar" [value]="iconSearchValue">
         <ul class="iconSearchResults">
           <li *ngFor="let icon of iconMatches" (click)="iconSelected(icon)" (mouseenter)="startPreview(icon)" (mouseleave)="endPreview(icon)">
             <div class="listWrapper">

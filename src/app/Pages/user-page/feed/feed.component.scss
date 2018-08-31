@@ -37,7 +37,12 @@ post
     }
 }
 
-::ng-deep .fr-toolbar
+::ng-deep #froala-editor
 {
     z-index: 0;
+}
+
+::ng-deep .fr-box.fr-basic .fr-element
+{
+    overflow-x: hidden !important;
 }
