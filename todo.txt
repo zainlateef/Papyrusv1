@@ -48,3 +48,9 @@ content, timestamp, froala (flag),
 Publish button and animation when you delete an icon
 
 Also check out froala plugins
+
+Froala bugs:
+z index of toolbar going over mobile nav bar
+publish button getting pushed off the side
+
+toolbar sticky offset to solve one of those problems

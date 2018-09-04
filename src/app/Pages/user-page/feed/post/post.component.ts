@@ -3,53 +3,28 @@ declare var $: any;
 @Component({
   selector: 'post',
   template: `
-  <div id="froala-editor" [froalaEditor]='options'></div>
+  <div [froalaEditor]="options" [(froalaModel)]="editorContent"></div>
+  <div *ngIf="!editorOn" [froalaView]="editorContent"></div>
+  <button (click)="toggleEditor()">editorOn</button>
   `,
   styleUrls: ['./post.component.scss']
 })
 export class PostComponent implements OnInit {
 
   constructor() { }
+  
+  editorOn : boolean = true;
+  editorContent : any;
 
   public options: Object = {
-    placeholderText: 'Edit Your Content Here!',
-    charCounterCount: false,
-    width: "100%"
-  }
-
-  ngOnInit() {
-    this.initializeEditor();
-  }
-
-  initializeEditor(): any {
-    
-    $.FroalaEditor.DefineIcon('publish', {NAME: 'publish'});
-    $.FroalaEditor.RegisterCommand('publish', {
-      title: '',
-      focus: false,
-      undo: false,
-      refreshAfterCallback: false,
-      callback: function () {
-        if ($('div#froala-editor').data('froala.editor')) 
-        {
-          $('div#froala-editor').froalaEditor('destroy');
-        }
-        else if (!$('div#froala-editor').data('froala.editor')) 
-        {
-          $('div#froala-editor').froalaEditor();
-        }
-      }
-    });
-
-    $('div#froala-editor').froalaEditor({
-      toolbarButtons: 
+    toolbarButtons: 
       ['fontFamily', 'fontSize' , 'color', 
       'bold','italic','underline',
       'align',
       'emoticons','specialCharacters',
       'embedly',
-      'publish'/*,
-      'fullscreen', */
+      'publish',
+      'fullscreen',
       ],
       quickInsertTags: [''],
       tabSpaces: 8,
@@ -63,8 +38,33 @@ export class PostComponent implements OnInit {
         "'Press Start 2P', cursive": "P1",
         'Fredericka the Great, cursive': "Sketch",
         'Faster One, cursive': "Speed"
+      },
+      charCounterCount: false,
+      keepFormatOnDelete: true
+  }
+
+  ngOnInit() {
+    this.registerPublishButton();
+  }
+
+  registerPublishButton()
+  {
+    $.FroalaEditor.DefineIcon('publish', {NAME: 'publish'});
+    $.FroalaEditor.RegisterCommand('publish', {
+      title: '',
+      focus: false,
+      undo: false,
+      refreshAfterCallback: true,
+      callback: () => {
+        this.toggleEditor();
       }
-    })
+    });
+  }
+
+  toggleEditor()
+  {
+    console.log(this.editorContent);
+    this.editorOn=!this.editorOn;
   }
 
 }
