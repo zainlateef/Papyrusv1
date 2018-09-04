@@ -48,8 +48,8 @@ export class PostComponent implements OnInit {
       'align',
       'emoticons','specialCharacters',
       'embedly',
-      'publish',
-      'fullscreen', 
+      'publish'/*,
+      'fullscreen', */
       ],
       quickInsertTags: [''],
       tabSpaces: 8,

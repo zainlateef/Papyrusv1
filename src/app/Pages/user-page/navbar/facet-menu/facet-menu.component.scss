@@ -30,6 +30,10 @@ li {
     height: -webkit-calc(100vh - 100px);
     height:    -moz-calc(100vh - 100px);
     height:         calc(100vh - 100px);
+    @media(max-width: 640px)
+    {
+      height: 85vh;
+    }
   }
 }
 
@@ -73,6 +77,10 @@ li {
     font-size: 0.9em;
     left: 100%;
     top: 14px;
+  }
+  @media (max-height: 320px)
+  {
+    display: none;
   }
   &:hover
   {
