@@ -22,14 +22,34 @@ export class PostComponent implements OnInit {
   }
 
   initializeEditor(): any {
+    
+    $.FroalaEditor.DefineIcon('publish', {NAME: 'publish'});
+    $.FroalaEditor.RegisterCommand('publish', {
+      title: '',
+      focus: false,
+      undo: false,
+      refreshAfterCallback: false,
+      callback: function () {
+        if ($('div#froala-editor').data('froala.editor')) 
+        {
+          $('div#froala-editor').froalaEditor('destroy');
+        }
+        else if (!$('div#froala-editor').data('froala.editor')) 
+        {
+          $('div#froala-editor').froalaEditor();
+        }
+      }
+    });
+
     $('div#froala-editor').froalaEditor({
       toolbarButtons: 
-      ['fontFamily', 'fontSize' , 'color', '|',
-      'bold','italic','underline','|',
-      'align','|',
-      'emoticons','specialCharacters','|',
-      'embedly','|',
-      'fullscreen'
+      ['fontFamily', 'fontSize' , 'color', 
+      'bold','italic','underline',
+      'align',
+      'emoticons','specialCharacters',
+      'embedly',
+      'publish',
+      'fullscreen', 
       ],
       quickInsertTags: [''],
       tabSpaces: 8,

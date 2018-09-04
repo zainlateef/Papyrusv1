@@ -28,3 +28,23 @@ We reload the profile pic and the wrapper color for each page
 So that has to happen in feed
 
 edit mode on color picker
+
+
+Can't store the stream tokens on the client side
+Which means you need them on the server side. 
+
+You get a list of links anyways
+
+so call to the feed of the user
+users feed has a stream
+
+2 async requests should do it actually. 
+One for the paginated froala posts, one for the stream if there is one
+They're inserted into the feed sorted by time. 
+Brilliant. 
+
+content, timestamp, froala (flag),
+
+Publish button and animation when you delete an icon
+
+Also check out froala plugins

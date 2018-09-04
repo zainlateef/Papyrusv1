@@ -1,0 +1,35 @@
+::ng-deep #publish-1
+{
+    display: flex;
+    top: 6px;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 24px;
+    font-family: sans-serif;
+    font-size: 1em;
+    &:hover
+    {
+        background: url("../../../../../assets/images/fireworks.gif");
+        color: white;
+    }
+    & span{
+        display: none;
+    }
+    &:after
+    {
+        content: "publish";
+    }
+
+    & i
+    {
+        display: none;
+    }
+}
+
+.pvw-title span {
+    display: none;
+  }
+  .pvw-title:after {
+    content: 'whatever it is you want to add';
+  }
