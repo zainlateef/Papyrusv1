@@ -4,9 +4,8 @@ declare var $: any;
   selector: 'post',
   template: `
   <div #wrapper class="wrapper">
-    <div [froalaEditor]="options" [(froalaModel)]="editorContent" (froalaInit)="initialize($event)"></div>
-    <div (click)="toggleEditor()" [froalaView]="editorContent"></div>
-    <button #button (click)="toggleEditor();bump('hi')">HEYEY</button>
+    <div [ngStyle]="!editorOn && {'display':'none'}" [froalaEditor]="options" [(froalaModel)]="editorContent" (froalaInit)="initialize($event)"></div>
+    <div *ngIf="!editorOn" (click)="toggleEditor()" [froalaView]="editorContent"></div>
   </div>
   `,
   styleUrls: ['./post.component.scss']
@@ -19,13 +18,7 @@ export class PostComponent implements OnInit {
   editorContent : any;
   initControls : any;
   @ViewChild('wrapper') wrapper : ElementRef; 
-  @ViewChild('button') button : ElementRef;
-
-  bump(hey)
-  {
-    alert(hey);
-  }
-
+  
   public options: Object = {
     toolbarButtons: 
       [
@@ -71,7 +64,6 @@ export class PostComponent implements OnInit {
       undo: false,
       refreshAfterCallback: true,
       callback: () => {
-        // this.toggleEditor()
       }
     });
   }
@@ -85,7 +77,8 @@ export class PostComponent implements OnInit {
       this.initControls.initialize();
       console.log(this.wrapper.nativeElement);
       $(this.wrapper.nativeElement).find($('[id^="publish"]')).click(() => {
-        $(this.button.nativeElement).click();
+        //TODO: Fix the keyup delay bug
+        this.toggleEditor();
       });
     }
     else
