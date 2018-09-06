@@ -72,3 +72,14 @@ header does not have a publish button. just click in  and click out
 new post is the only one with a publish button because it's going to fire that post and then clear the html
 
 everything else is click in and click out. 
+
+The regular posts have a solid background color, same style as the main background color
+
+It's taking shape. That's exciting. 
+Still have to crack the froala editor open. It's not complete yet.
+
+All the posts need a frame of some sort. But what?
+
+Probably going to need that scroll bar lol
+
+need to frame each post
