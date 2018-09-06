@@ -54,3 +54,12 @@ z index of toolbar going over mobile nav bar
 publish button getting pushed off the side
 
 toolbar sticky offset to solve one of those problems
+
+Get it to where the publish button destroys and initializes. 
+You have the view. That's fine. If you double click on the view, you hide the view and you initialize the editor. 
+When you click publish, you hide the editor, which should be by destroying it. 
+To get rid of the double model view you can have display none instead of ngif
+
+Change the color picker for the right icons to be ngprime
+
+There's a delay between the model update and the keyup event. Table it for now. If they press publish too fast they might see it

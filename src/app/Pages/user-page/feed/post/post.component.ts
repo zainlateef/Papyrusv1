@@ -3,9 +3,8 @@ declare var $: any;
 @Component({
   selector: 'post',
   template: `
-  <div [froalaEditor]="options" [(froalaModel)]="editorContent"></div>
-  <div *ngIf="!editorOn" [froalaView]="editorContent"></div>
-  <button (click)="toggleEditor()">editorOn</button>
+  <div [ngStyle]="!editorOn && {'display':'none'}" [froalaEditor]="options" [(froalaModel)]="editorContent" (froalaInit)="initialize($event)"></div>
+  <div *ngIf="!editorOn" (click)="toggleEditor()" [froalaView]="editorContent"></div>
   `,
   styleUrls: ['./post.component.scss']
 })
@@ -13,18 +12,20 @@ export class PostComponent implements OnInit {
 
   constructor() { }
   
-  editorOn : boolean = true;
+  editorOn : boolean = false;
   editorContent : any;
+  initControls : any;
 
   public options: Object = {
     toolbarButtons: 
-      ['fontFamily', 'fontSize' , 'color', 
+      [
+      'fullscreen',
+      'fontFamily', 'fontSize' , 'color', 
       'bold','italic','underline',
       'align',
       'emoticons','specialCharacters',
       'embedly',
-      'publish',
-      'fullscreen',
+      'publish'
       ],
       quickInsertTags: [''],
       tabSpaces: 8,
@@ -40,11 +41,15 @@ export class PostComponent implements OnInit {
         'Faster One, cursive': "Speed"
       },
       charCounterCount: false,
-      keepFormatOnDelete: true
+      keepFormatOnDelete: true,
+      spellcheck: false,
+      tooltips: false,
+      immediateAngularModelUpdate: true
   }
 
   ngOnInit() {
     this.registerPublishButton();
+    this.editorContent="<p>sdsdfsdgsdgs</p>"
   }
 
   registerPublishButton()
@@ -55,16 +60,27 @@ export class PostComponent implements OnInit {
       focus: false,
       undo: false,
       refreshAfterCallback: true,
-      callback: () => {
-        this.toggleEditor();
-      }
+      callback: this.toggleEditor()
     });
   }
 
   toggleEditor()
   {
-    console.log(this.editorContent);
+    console.log(this.editorContent)
     this.editorOn=!this.editorOn;
+    if(this.editorOn)
+    {
+      this.initControls.initialize();
+    }
+    else
+    {
+      this.initControls.destroy();
+    }
+  }
+
+  initialize(initControls) {
+    this.initControls = initControls;
+    this.initControls.initialize();
   }
 
 }
