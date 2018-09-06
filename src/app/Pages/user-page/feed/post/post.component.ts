@@ -5,6 +5,7 @@ declare var $: any;
   template: `
   <div [ngStyle]="!editorOn && {'display':'none'}" [froalaEditor]="options" [(froalaModel)]="editorContent" (froalaInit)="initialize($event)"></div>
   <div *ngIf="!editorOn" (click)="toggleEditor()" [froalaView]="editorContent"></div>
+  <button (click)="toggleEditor()">HEYEY</button>
   `,
   styleUrls: ['./post.component.scss']
 })
@@ -60,7 +61,9 @@ export class PostComponent implements OnInit {
       focus: false,
       undo: false,
       refreshAfterCallback: true,
-      callback: this.toggleEditor()
+      callback: () => {
+        this.toggleEditor()
+      }
     });
   }
 
@@ -80,7 +83,6 @@ export class PostComponent implements OnInit {
 
   initialize(initControls) {
     this.initControls = initControls;
-    this.initControls.initialize();
   }
 
 }
