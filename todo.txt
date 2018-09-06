@@ -63,3 +63,6 @@ To get rid of the double model view you can have display none instead of ngif
 Change the color picker for the right icons to be ngprime
 
 There's a delay between the model update and the keyup event. Table it for now. If they press publish too fast they might see it
+^^that's fixed if i can get the publish button to click from the outside
+There are quite a few more bugs. The embedly cards don't render correctly when you toggle posts
+ONe problem at a time. That's really not a terrible problem to have. Beyond that, the editor works beautifully.

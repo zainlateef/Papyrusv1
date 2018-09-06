@@ -3,7 +3,7 @@ declare var $: any;
 @Component({
   selector: 'post',
   template: `
-  <div [ngStyle]="!editorOn && {'display':'none'}" [froalaEditor]="options" [(froalaModel)]="editorContent" (froalaInit)="initialize($event)"></div>
+  <div [froalaEditor]="options" [(froalaModel)]="editorContent" (froalaInit)="initialize($event)"></div>
   <div *ngIf="!editorOn" (click)="toggleEditor()" [froalaView]="editorContent"></div>
   <button (click)="toggleEditor()">HEYEY</button>
   `,
