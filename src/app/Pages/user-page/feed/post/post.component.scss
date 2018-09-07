@@ -25,3 +25,23 @@
         display: none !important;
     }
 }
+.readOnly
+{
+    .date
+    {
+        font-family: "Homemade Apple", cursive;
+        margin: 0 10px 0 0;
+        float: right;
+        mix-blend-mode: color; 
+    }
+    .view
+    {
+        border-top: 5px solid #222;
+        box-shadow: 0 1px 3px rgba(0,0,0,.12), 0 1px 1px 1px rgba(0,0,0,.16);
+        padding: 16px;
+        min-height: 52px;
+        margin: 10px;
+        clear: right;
+    }
+
+}

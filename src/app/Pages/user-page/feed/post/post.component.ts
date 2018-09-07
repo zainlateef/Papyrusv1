@@ -5,7 +5,10 @@ declare var $: any;
   template: `
   <div #wrapper class="wrapper">
     <div [ngStyle]="!editorOn && {'display':'none'}" [froalaEditor]="options" [(froalaModel)]="editorContent" (froalaInit)="initialize($event)"></div>
-    <div *ngIf="!editorOn" (click)="toggleEditor()" [froalaView]="editorContent"></div>
+    <div class="readOnly" *ngIf="!editorOn">
+      <span class="date"><fa name="bookmark"></fa>9/7/2018</span>
+      <div class="view" *ngIf="!editorOn" (click)="toggleEditor()" [froalaView]="editorContent"></div>
+    </div>
   </div>
   `,
   styleUrls: ['./post.component.scss']
