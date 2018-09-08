@@ -5,7 +5,7 @@ declare var $: any;
   template: `
   <div #wrapper class="wrapper">
     <div [ngStyle]="!editorOn && {'display':'none'}" [froalaEditor]="options" [(froalaModel)]="editorContent" (froalaInit)="initialize($event)"></div>
-    <div *ngIf="!editorOn" class="view"  (click)="toggleEditor()">
+    <div *ngIf="!editorOn" class="view" (click)="toggleEditor()" [ngStyle]="{'background-color': postBackgroundColor }">
       <span class="header noselect">
         <i class="bookmark" (click)="toggleBookmarked()" [ngClass]="bookmarked ? 'fas fa-bookmark' : 'far fa-bookmark' " [matTooltip]="bookmarked ? null : 'Add to your library'"  [matTooltipShowDelay]="400"></i>
         9/7/2018
@@ -24,6 +24,7 @@ export class PostComponent implements OnInit {
   editorContent : any;
   initControls : any;
   bookmarked : boolean = false;
+  postBackgroundColor : string = 'wheat';
   @ViewChild('wrapper') wrapper : ElementRef; 
   
   public options: Object = {
@@ -35,7 +36,8 @@ export class PostComponent implements OnInit {
       'align',
       'emoticons','specialCharacters',
       'embedly',
-      'publish'
+      'publish',
+      'myDropdown'
       ],
       quickInsertTags: [''],
       tabSpaces: 8,
@@ -73,6 +75,47 @@ export class PostComponent implements OnInit {
       callback: () => {
       }
     });
+    $.FroalaEditor.DefineIcon('dropdownIcon', { NAME: 'magic'})
+    $.FroalaEditor.RegisterCommand('myDropdown', {
+      title: 'My Dropdown',
+      type: 'dropdown',
+      icon: 'dropdownIcon',
+      options: {
+        'white': 'White',
+        'wheat': 'Wheat',
+        'rgb(240, 209, 240)' : 'Strawberry',
+        'rgb(245, 165, 95)' : 'Red Tiger',
+        'rgb(158, 226, 235)' : 'Blue Tiger'
+      },
+      html: function () {
+        return `
+          <ul id="colorOptions" class="fr-dropdown-list" role="presentation">
+            <li style="background-color: wheat" role="presentation"><a class="fr-command" tabindex="-1" role="option" data-cmd="myDropdown" data-param1="wheat" title="Wheat" aria-selected="false">Wheat</a></li>
+            <li style="background-color: white" role="presentation"><a class="fr-command" tabindex="-1" role="option" data-cmd="myDropdown" data-param1="white" title="White" aria-selected="false">White</a></li>
+            <li style="background-color: rgb(240, 209, 240)" role="presentation"><a class="fr-command" tabindex="-1" role="option" data-cmd="myDropdown" data-param1="rgb(240, 209, 240)" title="Strawberry" aria-selected="false">Strawberry</a></li>
+            <li style="background-color: rgb(245, 165, 95)" role="presentation"><a class="fr-command" tabindex="-1" role="option" data-cmd="myDropdown" data-param1="rgb(245, 165, 95)" title="Red Tiger" aria-selected="false">Red Tiger</a></li>
+            <li style="background-color: rgb(158, 226, 235)" role="presentation"><a class="fr-command" tabindex="-1" role="option" data-cmd="myDropdown" data-param1="rgb(158, 226, 235)" title="Blue Tiger" aria-selected="false">Blue Tiger</a></li>
+          </ul>
+        `;
+      },
+      undo: false,
+      focus: true,
+      refreshAfterCallback: true,
+      callback: (cmd,val,params)=> {
+        //this.postBackgroundColor=val;
+      },
+      // Called when the dropdown button state might have changed.
+      refresh: function ($btn) {
+        // The current context is the editor instance.
+        console.log (this.selection.element());
+      },
+    
+      // Called when the dropdown is shown.
+      refreshOnShow: function ($btn, $dropdown) {
+        // The current context is the editor instance.
+        console.log (this.selection.element());
+      }
+    })
   }
 
   toggleEditor()
@@ -86,6 +129,9 @@ export class PostComponent implements OnInit {
       $(this.wrapper.nativeElement).find($('[id^="publish"]')).click(() => {
         //TODO: Fix the keyup delay bug
         this.toggleEditor();
+      });
+      $(this.wrapper.nativeElement).find($('#colorOptions li')).on('click', (e) => {
+          this.postBackgroundColor=$(e.currentTarget).css('backgroundColor');
       });
     }
     else
