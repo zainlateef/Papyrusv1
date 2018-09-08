@@ -9,7 +9,7 @@ declare var $:any;
   template: 
   `
   <div class="wrapper" [ngStyle]="{'background-color': backgroundColor }">
-    <p-colorPicker *ngIf="pageOwner" (click)="changeTop()" [(ngModel)]="backgroundColor"></p-colorPicker>
+    <!--p-colorPicker *ngIf="pageOwner" (click)="changeTop()" [(ngModel)]="backgroundColor"></p-colorPicker!-->
     <profile-pic></profile-pic>
     <post></post>
     <post></post>
@@ -66,7 +66,7 @@ declare var $:any;
 })
 export class FeedComponent extends UrlChangeDetection implements OnInit {
 
-  backgroundColor = 'white';
+  backgroundColor = 'unset';
 
   constructor(private route : ActivatedRoute, private editService : EditButtonService) {
     super(route);

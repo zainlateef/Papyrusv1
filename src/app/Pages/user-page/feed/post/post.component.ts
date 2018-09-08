@@ -5,9 +5,9 @@ declare var $: any;
   template: `
   <div #wrapper class="wrapper">
     <div [ngStyle]="!editorOn && {'display':'none'}" [froalaEditor]="options" [(froalaModel)]="editorContent" (froalaInit)="initialize($event)"></div>
-    <div class="readOnly" *ngIf="!editorOn">
+    <div *ngIf="!editorOn" class="view"  (click)="toggleEditor()">
       <span class="date"><fa name="bookmark"></fa>9/7/2018</span>
-      <div class="view" *ngIf="!editorOn" (click)="toggleEditor()" [froalaView]="editorContent"></div>
+      <div [froalaView]="editorContent"></div>
     </div>
   </div>
   `,
