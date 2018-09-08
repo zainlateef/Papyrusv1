@@ -24,7 +24,7 @@ export class PostComponent implements OnInit {
   editorContent : any;
   initControls : any;
   bookmarked : boolean = false;
-  postBackgroundColor : string = 'wheat';
+  postBackgroundColor : string = 'white';
   @ViewChild('wrapper') wrapper : ElementRef; 
   
   public options: Object = {
@@ -89,14 +89,32 @@ export class PostComponent implements OnInit {
       },
       html: function () {
         return `
-          <ul id="colorOptions" class="fr-dropdown-list" role="presentation">
-            <li style="background-color: wheat" role="presentation"><a class="fr-command" tabindex="-1" role="option" data-cmd="myDropdown" data-param1="wheat" title="Wheat" aria-selected="false">Wheat</a></li>
-            <li style="background-color: white" role="presentation"><a class="fr-command" tabindex="-1" role="option" data-cmd="myDropdown" data-param1="white" title="White" aria-selected="false">White</a></li>
-            <li style="background-color: rgb(240, 209, 240)" role="presentation"><a class="fr-command" tabindex="-1" role="option" data-cmd="myDropdown" data-param1="rgb(240, 209, 240)" title="Strawberry" aria-selected="false">Strawberry</a></li>
-            <li style="background-color: rgb(245, 165, 95)" role="presentation"><a class="fr-command" tabindex="-1" role="option" data-cmd="myDropdown" data-param1="rgb(245, 165, 95)" title="Red Tiger" aria-selected="false">Red Tiger</a></li>
-            <li style="background-color: rgb(158, 226, 235)" role="presentation"><a class="fr-command" tabindex="-1" role="option" data-cmd="myDropdown" data-param1="rgb(158, 226, 235)" title="Blue Tiger" aria-selected="false">Blue Tiger</a></li>
+          <ul id="colorOptions">
+            <li class="fr-command" style="background-color: wheat"></li>
+            <li class="fr-command" style="background-color: white"></li>
+            <li class="fr-command" style="background-color: rgb(240, 209, 240)"></li>
+            <li class="fr-command" style="background-color: rgb(245, 165, 95)"></li>
+            <li class="fr-command" style="background-color: rgb(158, 226, 235)"></li>
           </ul>
         `;
+        // return `
+        //   <ul id="colorOptions" class="fr-dropdown-list" role="presentation">
+        //     <li style="background-color: wheat" role="presentation"><a class="fr-command" tabindex="-1" role="option" data-cmd="myDropdown" data-param1="wheat" title="Wheat" aria-selected="false">Wheat</a></li>
+        //     <li style="background-color: white" role="presentation"><a class="fr-command" tabindex="-1" role="option" data-cmd="myDropdown" data-param1="white" title="White" aria-selected="false">White</a></li>
+        //     <li style="background-color: rgb(240, 209, 240)" role="presentation"><a class="fr-command" tabindex="-1" role="option" data-cmd="myDropdown" data-param1="rgb(240, 209, 240)" title="Strawberry" aria-selected="false">Strawberry</a></li>
+        //     <li style="background-color: rgb(245, 165, 95)" role="presentation"><a class="fr-command" tabindex="-1" role="option" data-cmd="myDropdown" data-param1="rgb(245, 165, 95)" title="Red Tiger" aria-selected="false">Red Tiger</a></li>
+        //     <li style="background-color: rgb(158, 226, 235)" role="presentation"><a class="fr-command" tabindex="-1" role="option" data-cmd="myDropdown" data-param1="rgb(158, 226, 235)" title="Blue Tiger" aria-selected="false">Blue Tiger</a></li>
+        //   </ul>
+        // `;
+      //   return `
+      //       <ul id="colorOptions" class="fr-dropdown-list" role="presentation">
+      //         <li style="background-color: wheat" role="presentation"><a class="fr-command" tabindex="-1" role="option" data-cmd="myDropdown" data-param1="wheat" title="Wheat" aria-selected="false">g</a></li>
+      //         <li style="background-color: white" role="presentation"><a class="fr-command" tabindex="-1" role="option" data-cmd="myDropdown" data-param1="white" title="White" aria-selected="false">g</a></li>
+      //         <li style="background-color: rgb(240, 209, 240)" role="presentation"><a class="fr-command" tabindex="-1" role="option" data-cmd="myDropdown" data-param1="rgb(240, 209, 240)" title="Strawberry" aria-selected="false">g</a></li>
+      //         <li style="background-color: rgb(245, 165, 95)" role="presentation"><a class="fr-command" tabindex="-1" role="option" data-cmd="myDropdown" data-param1="rgb(245, 165, 95)" title="Red Tiger" aria-selected="false">g</a></li>
+      //         <li style="background-color: rgb(158, 226, 235)" role="presentation"><a class="fr-command" tabindex="-1" role="option" data-cmd="myDropdown" data-param1="rgb(158, 226, 235)" title="Blue Tiger" aria-selected="false">g</a></li>
+      //       </ul>
+      // `;
       },
       undo: false,
       focus: true,
