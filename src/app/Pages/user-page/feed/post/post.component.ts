@@ -7,7 +7,7 @@ declare var $: any;
     <div [ngStyle]="!editorOn && {'display':'none'}" [froalaEditor]="options" [(froalaModel)]="editorContent" (froalaInit)="initialize($event)"></div>
     <div *ngIf="!editorOn" class="view"  (click)="toggleEditor()">
       <span class="header noselect">
-        <i (click)="toggleBookmarked()" [ngClass]="bookmarked ? 'fas fa-bookmark' : 'far fa-bookmark' "></i>
+        <i class="bookmark" (click)="toggleBookmarked()" [ngClass]="bookmarked ? 'fas fa-bookmark' : 'far fa-bookmark' " [matTooltip]="bookmarked ? null : 'Add to your library'"  [matTooltipShowDelay]="400"></i>
         9/7/2018
       </span>
       <div [froalaView]="editorContent"></div>
