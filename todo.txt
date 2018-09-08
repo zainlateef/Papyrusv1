@@ -29,6 +29,9 @@ So that has to happen in feed
 
 edit mode on color picker
 
+I want the "books" icon for saving something to the library, but thats font awesome pro
+If it becomes necessary to include more icons, switch to that icon and purchase font awesome pro
+
 
 Can't store the stream tokens on the client side
 Which means you need them on the server side. 
@@ -83,3 +86,8 @@ All the posts need a frame of some sort. But what?
 Probably going to need that scroll bar lol
 
 need to frame each post
+
+limit the background colors they can choose. white, wheat, light blue, light pink. Extremely limited pallete so you don't have to change the header
+
+The concept of the library is pretty awesome. In the library you have authors A-Z or you have posts by timeline
+You also need an easy way to the library but the user menu is getting cluttered. 

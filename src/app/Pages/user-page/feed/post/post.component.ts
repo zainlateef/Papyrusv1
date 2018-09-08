@@ -6,7 +6,10 @@ declare var $: any;
   <div #wrapper class="wrapper">
     <div [ngStyle]="!editorOn && {'display':'none'}" [froalaEditor]="options" [(froalaModel)]="editorContent" (froalaInit)="initialize($event)"></div>
     <div *ngIf="!editorOn" class="view"  (click)="toggleEditor()">
-      <span class="date"><fa name="bookmark"></fa>9/7/2018</span>
+      <span class="header noselect">
+        <i (click)="toggleBookmarked()" [ngClass]="bookmarked ? 'fas fa-bookmark' : 'far fa-bookmark' "></i>
+        9/7/2018
+      </span>
       <div [froalaView]="editorContent"></div>
     </div>
   </div>
@@ -20,6 +23,7 @@ export class PostComponent implements OnInit {
   editorOn : boolean = false;
   editorContent : any;
   initControls : any;
+  bookmarked : boolean = false;
   @ViewChild('wrapper') wrapper : ElementRef; 
   
   public options: Object = {
@@ -88,6 +92,11 @@ export class PostComponent implements OnInit {
     {
       this.initControls.destroy();
     }
+  }
+
+  toggleBookmarked()
+  {
+    this.bookmarked=!this.bookmarked;
   }
 
   initialize(initControls) {
