@@ -31,8 +31,8 @@ export class PostComponent implements OnInit {
     toolbarButtons: 
       [
       'fullscreen',
-      'fontFamily', 'fontSize' , 
-      'background','color', 
+      'background',
+      'fontFamily', 'fontSize' , 'color', 
       'bold','italic','underline',
       'align',
       'emoticons','specialCharacters',
@@ -78,7 +78,7 @@ export class PostComponent implements OnInit {
 
   registerFillBackgroundButton()
   {
-    $.FroalaEditor.DefineIcon('fill-Icon', { NAME: 'fill-drip'})
+    $.FroalaEditor.DefineIcon('fill-Icon', { NAME: 'paint-brush'})
     $.FroalaEditor.RegisterCommand('background', {
       title: 'Post background',
       type: 'dropdown',
